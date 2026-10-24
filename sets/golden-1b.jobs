@@ -1,0 +1,8 @@
+# Golden set 1, follow-up (2026-10-18): OpenSSH on 2019/2022. The capability
+# needs Windows Update, so set 1's ssh runs there were stock (renamed to
+# -sshfod-offline-g1). Here: the Win32-OpenSSH MSI offline, and once through
+# Windows Update on the internet bridge, for the download's DNS and flows.
+
+win2019-std-desktop-ssh-g1 ISO=17763.3650.221105-1748.rs5_release_svc_refresh_SERVER_EVAL_x64FRE_en-us.iso OSINFO=win2k19 FEATURES=OpenSSH-MSI SCAN=1
+win2022-std-desktop-ssh-g1 FEATURES=OpenSSH-MSI SCAN=1
+win2022-std-desktop-ssh-egress-g1 FEATURES=OpenSSH EGRESS=1

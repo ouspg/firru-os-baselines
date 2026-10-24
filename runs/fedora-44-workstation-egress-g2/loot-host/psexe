@@ -1,0 +1,158 @@
+      1 root     systemd         /usr/lib/systemd/systemd --switched-root --system --deserialize=55
+      2 root     kthreadd        [kthreadd]
+      3 root     pool_workqueue_ [pool_workqueue_release]
+      4 root     kworker/R-rcu_g [kworker/R-rcu_gp]
+      5 root     kworker/R-sync_ [kworker/R-sync_wq]
+      6 root     kworker/R-kvfre [kworker/R-kvfree_rcu_reclaim]
+      7 root     kworker/R-slub_ [kworker/R-slub_flushwq]
+      8 root     kworker/R-netns [kworker/R-netns]
+     10 root     kworker/0:0H-kb [kworker/0:0H-kblockd]
+     12 root     kworker/u8:0-ev [kworker/u8:0-events_unbound]
+     13 root     kworker/R-mm_pe [kworker/R-mm_percpu_wq]
+     14 root     kworker/u8:1-bt [kworker/u8:1-btrfs-discard]
+     15 root     ksoftirqd/0     [ksoftirqd/0]
+     16 root     rcu_preempt     [rcu_preempt]
+     17 root     rcu_exp_par_gp_ [rcu_exp_par_gp_kthread_worker/0]
+     18 root     rcu_exp_gp_kthr [rcu_exp_gp_kthread_worker]
+     19 root     migration/0     [migration/0]
+     20 root     idle_inject/0   [idle_inject/0]
+     21 root     cpuhp/0         [cpuhp/0]
+     22 root     cpuhp/1         [cpuhp/1]
+     23 root     idle_inject/1   [idle_inject/1]
+     24 root     migration/1     [migration/1]
+     25 root     ksoftirqd/1     [ksoftirqd/1]
+     26 root     kworker/1:0-eve [kworker/1:0-events]
+     27 root     kworker/1:0H-kb [kworker/1:0H-kblockd]
+     30 root     kdevtmpfs       [kdevtmpfs]
+     31 root     kworker/R-inet_ [kworker/R-inet_frag_wq]
+     32 root     rcu_tasks_kthre [rcu_tasks_kthread]
+     33 root     rcu_tasks_rude_ [rcu_tasks_rude_kthread]
+     34 root     rcu_tasks_trace [rcu_tasks_trace_kthread]
+     35 root     kauditd         [kauditd]
+     36 root     oom_reaper      [oom_reaper]
+     37 root     kworker/u9:1-ev [kworker/u9:1-events_unbound]
+     38 root     kworker/R-write [kworker/R-writeback]
+     40 root     kcompactd0      [kcompactd0]
+     41 root     ksmd            [ksmd]
+     42 root     khugepaged      [khugepaged]
+     43 root     kworker/R-kbloc [kworker/R-kblockd]
+     44 root     kworker/R-blkcg [kworker/R-blkcg_punt_bio]
+     45 root     kworker/R-kinte [kworker/R-kintegrityd]
+     47 root     irq/9-acpi      [irq/9-acpi]
+     48 root     kworker/R-tpm_d [kworker/R-tpm_dev_wq]
+     49 root     kworker/R-ata_s [kworker/R-ata_sff]
+     50 root     kworker/R-md_bi [kworker/R-md_bitmap]
+     51 root     kworker/R-md    [kworker/R-md]
+     52 root     kworker/R-edac- [kworker/R-edac-poller]
+     53 root     kworker/R-devfr [kworker/R-devfreq_wq]
+     54 root     watchdogd       [watchdogd]
+     55 root     kworker/u10:1-b [kworker/u10:1-btrfs-endio-meta]
+     56 root     kworker/R-quota [kworker/R-quota_events_unbound]
+     58 root     kswapd0         [kswapd0]
+     59 root     kworker/R-crypt [kworker/R-cryptd]
+     62 root     kworker/R-kthro [kworker/R-kthrotld]
+     63 root     irq/24-aerdrv   [irq/24-aerdrv]
+     64 root     irq/25-aerdrv   [irq/25-aerdrv]
+     65 root     irq/26-aerdrv   [irq/26-aerdrv]
+     66 root     irq/27-aerdrv   [irq/27-aerdrv]
+     67 root     irq/28-aerdrv   [irq/28-aerdrv]
+     68 root     irq/29-aerdrv   [irq/29-aerdrv]
+     69 root     irq/30-aerdrv   [irq/30-aerdrv]
+     70 root     irq/31-aerdrv   [irq/31-aerdrv]
+     71 root     irq/32-aerdrv   [irq/32-aerdrv]
+     72 root     irq/33-aerdrv   [irq/33-aerdrv]
+     73 root     irq/34-aerdrv   [irq/34-aerdrv]
+     74 root     irq/35-aerdrv   [irq/35-aerdrv]
+     75 root     irq/36-aerdrv   [irq/36-aerdrv]
+     76 root     irq/37-aerdrv   [irq/37-aerdrv]
+     77 root     kworker/R-acpi_ [kworker/R-acpi_thermal_pm]
+     78 root     kworker/0:2-eve [kworker/0:2-events]
+     79 root     hwrng           [hwrng]
+     80 root     scsi_eh_0       [scsi_eh_0]
+     81 root     kworker/R-scsi_ [kworker/R-scsi_tmf_0]
+     82 root     scsi_eh_1       [scsi_eh_1]
+     83 root     kworker/R-scsi_ [kworker/R-scsi_tmf_1]
+     84 root     scsi_eh_2       [scsi_eh_2]
+     85 root     kworker/R-scsi_ [kworker/R-scsi_tmf_2]
+     86 root     scsi_eh_3       [scsi_eh_3]
+     87 root     kworker/R-scsi_ [kworker/R-scsi_tmf_3]
+     88 root     scsi_eh_4       [scsi_eh_4]
+     89 root     kworker/R-scsi_ [kworker/R-scsi_tmf_4]
+     90 root     scsi_eh_5       [scsi_eh_5]
+     91 root     kworker/R-scsi_ [kworker/R-scsi_tmf_5]
+     92 root     kworker/u9:3-bt [kworker/u9:3-btrfs-endio]
+     93 root     kworker/u9:4-bt [kworker/u9:4-btrfs-endio-write]
+     94 root     kworker/u9:5-bt [kworker/u9:5-btrfs-delalloc]
+     98 root     kworker/R-dm_bu [kworker/R-dm_bufio_cache]
+     99 root     kworker/R-mld   [kworker/R-mld]
+    100 root     kworker/R-ipv6_ [kworker/R-ipv6_addrconf]
+    101 root     kworker/0:1H-kb [kworker/0:1H-kblockd]
+    102 root     kworker/R-kstrp [kworker/R-kstrp]
+    112 root     kworker/u11:0   [kworker/u11:0]
+    113 root     kworker/u12:0   [kworker/u12:0]
+    114 root     kworker/u13:0   [kworker/u13:0]
+    182 root     kworker/1:1H-kb [kworker/1:1H-kblockd]
+    183 root     kworker/1:3-eve [kworker/1:3-events]
+    184 root     kworker/u10:2-b [kworker/u10:2-btrfs-endio-meta]
+    307 root     kworker/u10:3-b [kworker/u10:3-btrfs-endio-meta]
+    440 root     card1-crtc0     [card1-crtc0]
+    453 root     kworker/0:3-eve [kworker/0:3-events]
+    484 root     kworker/R-btrfs [kworker/R-btrfs-worker]
+    485 root     kworker/R-btrfs [kworker/R-btrfs-delalloc]
+    486 root     kworker/R-btrfs [kworker/R-btrfs-flush_delalloc]
+    487 root     kworker/R-btrfs [kworker/R-btrfs-cache]
+    488 root     kworker/R-btrfs [kworker/R-btrfs-fixup]
+    489 root     kworker/R-btrfs [kworker/R-btrfs-endio]
+    490 root     kworker/R-btrfs [kworker/R-btrfs-endio-meta]
+    491 root     kworker/R-btrfs [kworker/R-btrfs-rmw]
+    492 root     kworker/R-btrfs [kworker/R-btrfs-endio-write]
+    493 root     kworker/R-btrfs [kworker/R-btrfs-freespace-write]
+    494 root     kworker/R-btrfs [kworker/R-btrfs-delayed-meta]
+    495 root     kworker/R-btrfs [kworker/R-btrfs-qgroup-rescan]
+    496 root     btrfs-cleaner   [btrfs-cleaner]
+    497 root     btrfs-transacti [btrfs-transaction]
+    733 root     psimon          [psimon]
+    743 root     systemd-journal /usr/lib/systemd/systemd-journald
+    768 root     systemd-userdbd /usr/lib/systemd/systemd-userdbd
+    780 systemd+ systemd-resolve /usr/lib/systemd/systemd-resolved
+    788 root     systemd-udevd   /usr/lib/systemd/systemd-udevd
+    789 root     psimon          [psimon]
+    820 systemd+ systemd-oomd    /usr/lib/systemd/systemd-oomd
+    853 root     jbd2/vda2-8     [jbd2/vda2-8]
+    854 root     kworker/R-ext4- [kworker/R-ext4-rsv-conversion]
+    896 root     auditd          /usr/bin/auditd
+    942 root     kworker/R-rpcio [kworker/R-rpciod]
+    943 root     kworker/R-xprti [kworker/R-xprtiod]
+    959 dbus     dbus-broker-lau /usr/bin/dbus-broker-launch --scope system --audit
+    961 dbus     dbus-broker     dbus-broker --log 10 --controller 9 --machine-id b5f96a0fd2ad4e90b06358a76be40a84 --max-bytes 536870912 --max-fds 4096 --max-matches 131072 --audit
+    964 avahi    avahi-daemon    avahi-daemon: running [baseline-fedora.local]
+    965 chrony   chronyd         /usr/sbin/chronyd -n -F 2
+    968 root     mcelog          /usr/sbin/mcelog --daemon --foreground
+    969 polkitd  polkitd         /usr/lib/polkit-1/polkitd --no-debug --log-level=notice
+    974 root     systemd-homed   /usr/lib/systemd/systemd-homed
+    975 root     systemd-machine /usr/lib/systemd/systemd-machined
+    979 root     qemu-ga         /usr/bin/qemu-ga --method=virtio-serial --path=/dev/virtio-ports/org.qemu.guest_agent.0 -F/etc/qemu-ga/fsfreeze-hook
+    990 root     systemd-logind  /usr/lib/systemd/systemd-logind
+    991 avahi    avahi-daemon    avahi-daemon: chroot helper
+    994 root     abrtd           /usr/sbin/abrtd -d -s
+    997 root     psimon          [psimon]
+   1037 root     ModemManager    /usr/bin/ModemManager
+   1038 root     firewalld       /usr/bin/python3 -sP /usr/bin/firewalld --nofork --nopid
+   1044 root     abrt-dump-journ /usr/bin/abrt-dump-journal-core -D -T -f -e
+   1045 root     abrt-dump-journ /usr/bin/abrt-dump-journal-oops -fxtD
+   1046 root     abrt-dump-journ /usr/bin/abrt-dump-journal-xorg -fxtD
+   1108 root     bpftrace        /run/bl-tools/bpftrace -f json -o /var/lib/firru/conn-audit.jsonl /var/lib/firru/conn-audit.bt
+   1112 root     bpftrace        /run/bl-tools/bpftrace -f json -o /var/lib/firru/conn-audit.jsonl /var/lib/firru/conn-audit.bt
+   1143 root     bash            /bin/bash /run/bl-tools/collect.sh
+   1146 root     NetworkManager  /usr/bin/NetworkManager --no-daemon
+   1191 root     gssproxy        /usr/bin/gssproxy -i
+   1194 root     tuned           /usr/bin/python3 -Es /usr/sbin/tuned -l -P
+   1346 root     agetty          /usr/sbin/agetty --noreset --noclear --issue-file=/etc/issue:/etc/issue.d:/run/issue.d:/usr/lib/issue.d - linux
+   1351 root     agetty          /usr/sbin/agetty --noreset --noclear --issue-file=/etc/issue:/etc/issue.d:/run/issue.d:/usr/lib/issue.d --keep-baud 115200,57600,38400,9600 - vt220
+   1746 root     systemd-userwor systemd-userwork: waiting...
+   1747 root     systemd-userwor systemd-userwork: waiting...
+   1748 root     kworker/0:0-eve [kworker/0:0-events]
+   1749 root     kworker/1:1-eve [kworker/1:1-events]
+   1894 root     systemd-userwor systemd-userwork: waiting...
+   1927 root     bash            bash /run/bl-tools/loot-host.sh /var/tmp/baseline/loot-host
+   1935 root     ps              ps -eo pid,user,comm,args --no-headers

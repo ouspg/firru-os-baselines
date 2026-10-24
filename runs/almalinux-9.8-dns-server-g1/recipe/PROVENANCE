@@ -1,0 +1,16 @@
+run_started=2026-10-19T06:25:18Z
+installed=2026-10-19T06:30:40Z
+run_finished=2026-10-19T06:45:36Z
+iso=AlmaLinux-9.8-x86_64-dvd.iso iso_bytes=15151923200 iso_sha256=7a392bdc879afd159b30da39a356b7b26c1ddf618b01549164da9aadbc40d814
+packages=@^minimal-environment;@dns-server
+collector=loot-host.sh git_blob=c7eb2a34af8b5650ae325235c2e587da11a16c9b sha256=5894c09e66265b6120f27483e0255432a59cfb8f11e96e6a69d1121d684a21f9
+osquery=osquery-5.23.1_1.linux_x86_64.tar.gz 0f37a478a1dbda24b67c81551e32d734b392c5a2f5deb156bf1c41ca204cfa67
+source=the ISO only (cdrom); isolated bridge, no network during install
+scan=1 settle=300 stable=600 maxwait=3600 window=3600
+memory_mib=4096 vcpus=2 osinfo=almalinux9
+mac=52:54:00:8b:b9:88 bridge=virbr-bl network=bl-iso (isolated: no forward, no DNS, no gateway)
+hardware=virtio disk and nic, uefi without secure boot (the installer kernel is booted directly), no balloon, no guest agent; COM1 = console log, COM2 = host-to-guest control socket (scan done)
+added_by_run=/usr/local/sbin/baseline-job.sh, baseline-job.service (recipe/stub.sh); /var/tmp/baseline
+user_password=<random, never used> root=locked
+host=7.2.9-200.fc44.x86_64 qemu-kvm-core-10.2.2 libvirt-daemon-12.0.0 edk2-ovmf-20260812
+host_paths=the runner's home is written as $HOME in recipe/ and nmap/ (the files the host writes)

@@ -1,0 +1,6 @@
+# Linux golden set 2, AlmaLinux and Fedora again: the first runs had no
+# connection audit (SELinux denied the CD's bpftrace; fixed in stub.sh).
+almalinux-9.8-minimal-g2             ISO=AlmaLinux-9.8-x86_64-dvd.iso SCAN=1 PACKAGES=@^minimal-environment
+fedora-44-minimal-g2                 ISO=Fedora-Everything-netinst-x86_64-44-1.7.iso SCAN=1 PACKAGES=@^custom-environment
+almalinux-9.8-server-g2              ISO=AlmaLinux-9.8-x86_64-dvd.iso SCAN=1 PACKAGES=@^server-product-environment
+fedora-44-server-g2                  ISO=Fedora-Everything-netinst-x86_64-44-1.7.iso SCAN=1 PACKAGES=@^server-product-environment

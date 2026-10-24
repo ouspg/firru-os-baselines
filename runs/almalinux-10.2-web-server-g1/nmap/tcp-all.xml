@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE nmaprun>
+<?xml-stylesheet href="file:///usr/share/nmap/nmap.xsl" type="text/xsl"?>
+<!-- Nmap 7.92 scan initiated Thu Oct 22 16:54:25 2026 as: $HOME/.local/bin/nmap-raw -sT -p- -T4 -Pn -n -&#45;max-retries 1 -&#45;min-rate 1500 -oX $HOME/firru-os-baselines/work/linux/tmp.3GOvRuyQkY/nmap/tcp-all.xml 192.168.150.137 -->
+<nmaprun scanner="nmap" args="$HOME/.local/bin/nmap-raw -sT -p- -T4 -Pn -n -&#45;max-retries 1 -&#45;min-rate 1500 -oX $HOME/firru-os-baselines/work/linux/tmp.3GOvRuyQkY/nmap/tcp-all.xml 192.168.150.137" start="1792677265" startstr="Thu Oct 22 16:54:25 2026" version="7.92" xmloutputversion="1.05">
+<scaninfo type="connect" protocol="tcp" numservices="65535" services="1-65535"/>
+<verbose level="0"/>
+<debugging level="0"/>
+<host starttime="1792677265" endtime="1792677352"><status state="up" reason="user-set" reason_ttl="0"/>
+<address addr="192.168.150.137" addrtype="ipv4"/>
+<hostnames>
+</hostnames>
+<ports><extraports state="filtered" count="65533">
+<extrareasons reason="no-response" count="65440" proto="tcp" ports="1-21,24-25,27-52,54-134,136-198,200-992,994-1033,1035-1654,1656-1680,1682-3225,3227-3305,3307-3456,3458-4138,4140-4202,4204-4225,4227-4320,4322-5527,5529-5627,5629-5998,6000-6400,6402-8045,8047-8289,8291-9089,9091-9155,9157-11727,11729-12371,12373-13148,13150-13330,13332-13818,13820-15076,15078-15270,15272-16211,16213-18366,18368-19539,19541-19780,19782-22010,22012-22270,22272-22480,22482-23952,23954-25016,25018-25890,25892-26066,26068-27161,27163-27560,27562-27924,27926-29527,29529-29586,29588-32141,32143-33441,33443-34873,34875-36139,36141-36870,36872-37367,37369-37552,37554-37750,37752-38101,38103-38460,38462-39498,39500-40517,40519-43404,43406-43562,43564-44247,44249-45157,45159-46554,46556-46995,46997-47525,47527-49035,49037-49660,49662-51667,51669-51820,51822-51972,51974-52101,52103-52282,52284-52648,52650-53306,53308-53725,53727-53958,53960-54784,54786-55389,55391-55437,55439-55487,55489-55712,55714-55725,55727-56355,56357-56441,56443-56589,56591-58180,58182-59117,59119-59541,59543-61071,61073-61677,61679-62877,62879-63587,63589-65532,65534-65535"/>
+<extrareasons reason="host-unreach" count="93" proto="tcp" ports="23,26,53,135,199,993,1034,1655,1681,3226,3306,3457,4139,4203,4226,4321,5528,5628,5999,6401,8046,8290,9156,11728,12372,13149,13331,13819,15077,15271,16212,18367,19540,19781,22011,22271,22481,23953,25017,25891,26067,27162,27561,27925,29528,29587,32142,33442,34874,36140,36871,37368,37553,37751,38102,38461,39499,40518,43405,43563,44248,45158,46555,46996,47526,49036,49661,51668,51821,51973,52102,52283,52649,53307,53726,53959,54785,55390,55438,55488,55713,55726,56356,56442,56590,58181,59118,59542,61072,61678,62878,63588,65533"/>
+</extraports>
+<port protocol="tcp" portid="22"><state state="open" reason="syn-ack" reason_ttl="0"/><service name="ssh" method="table" conf="3"/></port>
+<port protocol="tcp" portid="9090"><state state="closed" reason="conn-refused" reason_ttl="0"/><service name="zeus-admin" method="table" conf="3"/></port>
+</ports>
+<times srtt="153" rttvar="17" to="100000"/>
+</host>
+<runstats><finished time="1792677352" timestr="Thu Oct 22 16:55:52 2026" summary="Nmap done at Thu Oct 22 16:55:52 2026; 1 IP address (1 host up) scanned in 87.45 seconds" elapsed="87.45" exit="success"/><hosts up="1" down="0" total="1"/>
+</runstats>
+</nmaprun>

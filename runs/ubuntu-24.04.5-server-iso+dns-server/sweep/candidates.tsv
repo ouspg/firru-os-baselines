@@ -1,0 +1,27 @@
+console-getty.service	skip	deny-list
+debug-shell.service	skip	deny-list
+iscsid.service	test	disabled
+named-resolvconf.service	skip	oneshot
+nftables.service	skip	oneshot
+rsync.service	test	disabled
+serial-getty@.service	skip	template
+systemd-boot-check-no-failures.service	skip	oneshot
+systemd-confext.service	skip	oneshot
+systemd-journald-audit.socket	test	disabled
+systemd-network-generator.service	skip	oneshot
+systemd-networkd-wait-online@.service	skip	template
+systemd-pcrextend.socket	test	disabled
+systemd-pcrlock-file-system.service	skip	oneshot
+systemd-pcrlock-firmware-code.service	skip	oneshot
+systemd-pcrlock-firmware-config.service	skip	oneshot
+systemd-pcrlock-machine-id.service	skip	oneshot
+systemd-pcrlock-make-policy.service	skip	oneshot
+systemd-pcrlock-secureboot-authority.service	skip	oneshot
+systemd-pcrlock-secureboot-policy.service	skip	oneshot
+systemd-sysext.service	skip	tested via systemd-sysext.socket
+systemd-sysext.socket	test	disabled
+systemd-sysupdate-reboot.service	skip	oneshot
+systemd-sysupdate.service	test	indirect
+systemd-time-wait-sync.service	skip	oneshot
+upower.service	test	disabled
+uuidd.service	test	indirect

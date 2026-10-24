@@ -1,0 +1,4 @@
+# Linux egress set 4 (g3 had the audit after the network: an ordering deadlock, fixed in firru 1d88ddb; g4 is the rerun): stock Ubuntu again with baseline-audit.service (the
+# audit attached before network-pre), to give the boot-time lookups
+# (pollinate, snapd) their owners. Short hold: boot is what is being checked.
+ubuntu-24.04.5-server-egress-g4                  ISO=ubuntu-24.04.5-live-server-amd64.iso SCAN=0 SNAPSHOT=20261015T000000Z PACKAGES= EGRESS=1

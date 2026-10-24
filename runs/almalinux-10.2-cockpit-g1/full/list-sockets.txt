@@ -1,0 +1,32 @@
+@/org/kernel/linux/storage/multipathd      multipathd.socket                       multipathd.service
+@ISCSIADM_ABSTRACT_NAMESPACE               iscsid.socket                           iscsid.service
+@ISCSID_UIP_ABSTRACT_NAMESPACE             iscsiuio.socket                         iscsiuio.service
+[::]:9090                                  cockpit.socket                          cockpit.service
+audit 1                                    systemd-journald-audit.socket           systemd-journald.service
+kobject-uevent 1                           systemd-udevd-kernel.socket             systemd-udevd.service
+vsock::22                                  sshd-vsock.socket                       -
+/dev/rfkill                                systemd-rfkill.socket                   systemd-rfkill.service
+/run/.heim_org.h5l.kcm-socket              sssd-kcm.socket                         sssd-kcm.service
+/run/cockpit/session                       cockpit-session.socket                  -
+/run/cockpit/wsinstance/http.sock          cockpit-wsinstance-http.socket          cockpit-wsinstance-http.service
+/run/cockpit/wsinstance/https-factory.sock cockpit-wsinstance-https-factory.socket -
+/run/dbus/system_bus_socket                dbus.socket                             dbus-broker.service
+/run/dmeventd-client                       dm-event.socket                         dm-event.service
+/run/dmeventd-server                       dm-event.socket                         dm-event.service
+/run/initctl                               systemd-initctl.socket                  systemd-initctl.service
+/run/lvm/lvmpolld.socket                   lvm2-lvmpolld.socket                    lvm2-lvmpolld.service
+/run/multipathd.socket                     multipathd.socket                       multipathd.service
+/run/ssh-unix-local/socket                 sshd-unix-local.socket                  -
+/run/systemd/coredump                      systemd-coredump.socket                 -
+/run/systemd/io.systemd.BootControl        systemd-bootctl.socket                  -
+/run/systemd/io.systemd.Credentials        systemd-creds.socket                    -
+/run/systemd/io.systemd.Hostname           systemd-hostnamed.socket                systemd-hostnamed.service
+/run/systemd/io.systemd.PCRExtend          systemd-pcrextend.socket                -
+/run/systemd/io.systemd.PCRLock            systemd-pcrlock.socket                  -
+/run/systemd/io.systemd.sysext             systemd-sysext.socket                   -
+/run/systemd/journal/dev-log               systemd-journald-dev-log.socket         systemd-journald.service
+/run/systemd/journal/socket                systemd-journald.socket                 systemd-journald.service
+/run/systemd/journal/stdout                systemd-journald.socket                 systemd-journald.service
+/run/systemd/journal/syslog                syslog.socket                           syslog.service
+/run/systemd/userdb/io.systemd.Multiplexer systemd-userdbd.socket                  systemd-userdbd.service
+/run/udev/control                          systemd-udevd-control.socket            systemd-udevd.service

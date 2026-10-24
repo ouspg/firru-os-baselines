@@ -1,0 +1,28 @@
+# Firewall signatures of known configuration layers: the rules (by DisplayName,
+# regex; Name is often a per-install GUID) and profile changes a tool or recipe
+# leaves behind. Evidence that a host is consistent with a layer, never proof
+# that the layer built it. Each entry names the code it was read from.
+layers:
+  packer-windoze:
+    source: jborean93/packer-windoze v1.2.0, roles/sysprep/files/PackerWindoze.psm1 (Reset-WinRMConfig)
+    rules:
+      - display: '^Windows Remote Management \(HTTPS-In\)$'
+      - display: '^PackerWindoze temp WinRM'
+  win_openssh:
+    source: jborean93.win_openssh v0.3.2 (rule name per tests/custom_vars.yml), pulled in by packer-windoze main.yml with profiles domain,private,public
+    rules:
+      - display: '^Win32-OpenSSH inbound$'
+  ansible-remoting:
+    source: ConfigureRemotingForAnsible.ps1 (GOAD vagrant/ConfigureRemotingForAnsible.ps1:416, netsh ... name="Allow WinRM HTTPS")
+    rules:
+      - display: '^Allow WinRM HTTPS$'
+  goad:
+    source: Orange-Cyberdefense/GOAD ansible/roles/common/tasks/main.yml:49, roles/mssql/tasks/main.yml:131-143, roles/vulns/disable_firewall
+    rules:
+      - display: '^Administrator access for RDP \(TCP-In\)$'
+      - display: '^Access for MSSQL \((TCP|UDP)-In\)$'
+    profiles_disabled: true
+  win32-openssh-msi:
+    source: PowerShell/Win32-OpenSSH install-sshd.ps1 / MSI (New-NetFirewallRule -Name sshd / OpenSSH-Server-In-TCP)
+    rules:
+      - name: '^(sshd|OpenSSH-Server-In-TCP)$'

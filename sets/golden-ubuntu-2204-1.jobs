@@ -1,0 +1,14 @@
+# Ubuntu 22.04.5 server golden set: stock, every server task, egress; the same snapshot as 24.04's.
+ubuntu-22.04.5-server-g1                     ISO=ubuntu-22.04.5-live-server-amd64.iso SCAN=1 SNAPSHOT=20261015T000000Z PACKAGES=
+ubuntu-22.04.5-server+openssh-server-g1      ISO=ubuntu-22.04.5-live-server-amd64.iso SCAN=1 SNAPSHOT=20261015T000000Z PACKAGES= SSH=true
+ubuntu-22.04.5-server+dns-server-g1          ISO=ubuntu-22.04.5-live-server-amd64.iso SCAN=1 SNAPSHOT=20261015T000000Z PACKAGES=dns-server^
+ubuntu-22.04.5-server+lamp-server-g1         ISO=ubuntu-22.04.5-live-server-amd64.iso SCAN=1 SNAPSHOT=20261015T000000Z PACKAGES=lamp-server^
+ubuntu-22.04.5-server+mail-server-g1         ISO=ubuntu-22.04.5-live-server-amd64.iso SCAN=1 SNAPSHOT=20261015T000000Z PACKAGES=mail-server^
+ubuntu-22.04.5-server+postgresql-server-g1   ISO=ubuntu-22.04.5-live-server-amd64.iso SCAN=1 SNAPSHOT=20261015T000000Z PACKAGES=postgresql-server^
+ubuntu-22.04.5-server+print-server-g1        ISO=ubuntu-22.04.5-live-server-amd64.iso SCAN=1 SNAPSHOT=20261015T000000Z PACKAGES=print-server^
+ubuntu-22.04.5-server+samba-server-g1        ISO=ubuntu-22.04.5-live-server-amd64.iso SCAN=1 SNAPSHOT=20261015T000000Z PACKAGES=samba-server^
+# egress-g1 ran without the connection audit (the runner took a file inside
+# bpftrace's unpacked tree for the binary); its Zeek data stands, g2 repeats
+# it with the audit.
+ubuntu-22.04.5-server-egress-g1              ISO=ubuntu-22.04.5-live-server-amd64.iso SCAN=1 SNAPSHOT=20261015T000000Z PACKAGES= EGRESS=4
+ubuntu-22.04.5-server-egress-g2              ISO=ubuntu-22.04.5-live-server-amd64.iso SCAN=1 SNAPSHOT=20261015T000000Z PACKAGES= EGRESS=4

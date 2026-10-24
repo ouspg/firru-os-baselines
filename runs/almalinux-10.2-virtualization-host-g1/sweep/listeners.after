@@ -1,0 +1,6 @@
+tcp 0.0.0.0:22 /system.slice/sshd.service
+tcp 192.168.122.1:53 /system.slice/virtnetworkd.service
+tcp [::]:22 /system.slice/sshd.service
+tcp *:9090 /system.slice/cockpit.socket
+udp 0.0.0.0%virbr0:67 /system.slice/virtnetworkd.service
+udp 192.168.122.1:53 /system.slice/virtnetworkd.service

@@ -1,0 +1,3 @@
+tcp 0.0.0.0:22 /system.slice/ssh.socket
+tcp [::]:22 /system.slice/ssh.socket
+udp 10.0.2.15%enp1s0:68 /system.slice/systemd-networkd.service

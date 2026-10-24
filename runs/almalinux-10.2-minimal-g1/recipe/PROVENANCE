@@ -1,0 +1,18 @@
+run_started=2026-10-22T12:34:11Z
+installed=2026-10-22T12:38:44Z
+run_finished=2026-10-22T12:54:30Z
+iso=AlmaLinux-10.2-x86_64-dvd.iso iso_bytes=10106372096 iso_sha256=90244ac532f67c978831a381b420da8bda363729e1f4cf8fb8991daca70ee287
+packages=@^minimal-environment
+collector=loot-host.sh git_blob=c63e1e5a0bbb4ac329cd753e4940c35fb02cbd20 sha256=45761c0c1126cb158be5ba0858e34fc9c7fe4135872a232d5bc232d9f996e9c1
+collector=conn-audit.sh git_blob=72be48e8ea432da284073c3c777a1f048e65abb5 sha256=4df07405dabd73188dc8c771327db12315fe474a02d8841c60447d8146ea2203
+osquery=osquery-5.23.1_1.linux_x86_64.tar.gz 0f37a478a1dbda24b67c81551e32d734b392c5a2f5deb156bf1c41ca204cfa67
+bpftrace=bpftrace-0.26.1 (static release binary) 17ded991241f8c6c56bf907aab948ef172404ed2a5ea2f0e11f73a7652f3dcc0
+source=the ISO only (cdrom); isolated bridge, no network during install
+scan=1 settle=300 stable=600 maxwait=3600 window=3600
+memory_mib=4096 vcpus=2 osinfo=almalinux10
+mac=52:54:00:df:66:ea bridge=virbr-bl network=bl-iso (isolated: no forward, no DNS, no gateway)
+hardware=virtio disk and nic, uefi without secure boot (the installer kernel is booted directly), no balloon, no guest agent; COM1 = console log, COM2 = host-to-guest control socket (scan done; a delta job's start and clock)
+added_by_run=/usr/local/sbin/baseline-job.sh, baseline-job.service (recipe/stub.sh); /var/tmp/baseline; /var/lib/firru, baseline-audit.service and the transient firru-conn-audit.service (connection audit, bpftrace from the CD; holds network-pre.target until its probes are attached)
+user_password=<random, never used> root=locked
+host=7.2.9-200.fc44.x86_64 qemu-kvm-core-10.2.2 libvirt-daemon-12.0.0 edk2-ovmf-20260812
+host_paths=the runner's home is written as $HOME in recipe/ and nmap/ (the files the host writes)

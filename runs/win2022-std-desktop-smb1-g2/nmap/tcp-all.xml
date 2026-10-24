@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE nmaprun>
+<?xml-stylesheet href="file:///usr/share/nmap/nmap.xsl" type="text/xsl"?>
+<!-- Nmap 7.92 scan initiated Tue Oct 20 00:22:10 2026 as: $HOME/.local/bin/nmap-raw -sT -p- -T4 -Pn -n -&#45;max-retries 1 -&#45;min-rate 1500 -oX $HOME/firru-os-baselines/work/win/nmap-win2022-std-desktop-smb1-g2/tcp-all.xml 192.168.150.116 -->
+<nmaprun scanner="nmap" args="$HOME/.local/bin/nmap-raw -sT -p- -T4 -Pn -n -&#45;max-retries 1 -&#45;min-rate 1500 -oX $HOME/firru-os-baselines/work/win/nmap-win2022-std-desktop-smb1-g2/tcp-all.xml 192.168.150.116" start="1792444930" startstr="Tue Oct 20 00:22:10 2026" version="7.92" xmloutputversion="1.05">
+<scaninfo type="connect" protocol="tcp" numservices="65535" services="1-65535"/>
+<verbose level="0"/>
+<debugging level="0"/>
+<host starttime="1792444930" endtime="1792445009"><status state="up" reason="user-set" reason_ttl="0"/>
+<address addr="192.168.150.116" addrtype="ipv4"/>
+<hostnames>
+</hostnames>
+<ports><extraports state="filtered" count="65532">
+<extrareasons reason="no-response" count="65532" proto="tcp" ports="1-134,136-444,446-5984,5986-65535"/>
+</extraports>
+<port protocol="tcp" portid="135"><state state="open" reason="syn-ack" reason_ttl="0"/><service name="msrpc" method="table" conf="3"/></port>
+<port protocol="tcp" portid="445"><state state="open" reason="syn-ack" reason_ttl="0"/><service name="microsoft-ds" method="table" conf="3"/></port>
+<port protocol="tcp" portid="5985"><state state="open" reason="syn-ack" reason_ttl="0"/><service name="wsman" method="table" conf="3"/></port>
+</ports>
+<times srtt="211" rttvar="18" to="100000"/>
+</host>
+<runstats><finished time="1792445009" timestr="Tue Oct 20 00:23:29 2026" summary="Nmap done at Tue Oct 20 00:23:29 2026; 1 IP address (1 host up) scanned in 79.06 seconds" elapsed="79.06" exit="success"/><hosts up="1" down="0" total="1"/>
+</runstats>
+</nmaprun>

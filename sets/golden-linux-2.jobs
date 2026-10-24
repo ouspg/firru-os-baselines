@@ -1,0 +1,8 @@
+# Linux golden set 2: the stock installs again with the connection audit from
+# the first collect.sh start (conn-audit/). AlmaLinux 9's kernel is 5.14,
+# older than conn-audit.sh's tested range: the minimal run goes first.
+almalinux-9.8-minimal-g2             ISO=AlmaLinux-9.8-x86_64-dvd.iso SCAN=1 PACKAGES=@^minimal-environment
+fedora-44-minimal-g2                 ISO=Fedora-Everything-netinst-x86_64-44-1.7.iso SCAN=1 PACKAGES=@^custom-environment
+ubuntu-24.04.5-server-g2             ISO=ubuntu-24.04.5-live-server-amd64.iso SCAN=1 SNAPSHOT=20261015T000000Z PACKAGES=
+almalinux-9.8-server-g2              ISO=AlmaLinux-9.8-x86_64-dvd.iso SCAN=1 PACKAGES=@^server-product-environment
+fedora-44-server-g2                  ISO=Fedora-Everything-netinst-x86_64-44-1.7.iso SCAN=1 PACKAGES=@^server-product-environment

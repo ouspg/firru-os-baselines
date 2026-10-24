@@ -1,0 +1,4 @@
+# Bundle B again, alone: its first install got 503s from snapshot.ubuntu.com
+# while three runs downloaded at once (bl_packages_rc=100), and the run was
+# collected as if it had finished.
+ubuntu-24.04.5-server+bundle-b-egress-g1         ISO=ubuntu-24.04.5-live-server-amd64.iso SCAN=1 SNAPSHOT=20261015T000000Z PACKAGES=bacula-director,slapd,knot,icecc,iperf3,quassel-core,epoptes,xrdp,docker.io,strongswan EGRESS=4

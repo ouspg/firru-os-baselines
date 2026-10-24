@@ -1,0 +1,24 @@
+# AlmaLinux golden set (bl-linux.sh): offline from the DVD (BaseOS and
+# AppStream as released), the variant's packages chosen at install time as an
+# administrator would. firewalld and SELinux at their defaults.
+text
+cdrom
+lang en_US.UTF-8
+keyboard us
+timezone UTC --utc
+network --bootproto=dhcp --activate --hostname=baseline-alma
+rootpw --lock
+user --name=alma --iscrypted --password='@PWHASH@'
+zerombr
+clearpart --all --initlabel
+autopart
+bootloader
+poweroff
+
+%packages
+@PACKAGES@
+%end
+
+%post
+@STUB@
+%end

@@ -1,0 +1,15 @@
+tcp *:3389 /system.slice/xrdp.service
+tcp 0.0.0.0:10245 /system.slice/iceccd.service
+tcp 0.0.0.0:25 /system.slice/system-postfix.slice/postfix@-.service
+tcp 0.0.0.0:389 /system.slice/slapd.service
+tcp 0.0.0.0:4242 /system.slice/quasselcore.service
+tcp 0.0.0.0:789 /system.slice/epoptes.service
+tcp [::]:25 /system.slice/system-postfix.slice/postfix@-.service
+tcp [::]:389 /system.slice/slapd.service
+tcp [::]:4242 /system.slice/quasselcore.service
+udp 0.0.0.0:4500 /system.slice/strongswan-starter.service
+udp 0.0.0.0:500 /system.slice/strongswan-starter.service
+udp 0.0.0.0:59206 /system.slice/iceccd.service
+udp 192.168.122.146%enp1s0:68 /system.slice/systemd-networkd.service
+udp [::]:4500 /system.slice/strongswan-starter.service
+udp [::]:500 /system.slice/strongswan-starter.service

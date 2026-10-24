@@ -1,0 +1,140 @@
+{
+  "_comment": [
+    "Datapoints that show how a host was weakened or hardened against its stock image.",
+    "Run together with osquery's own packs/windows-hardening.conf (UAC, DEP/ASLR/SEHOP, SecureBoot,",
+    "SRP/AppLocker, Sysmon, ...), which ships with osquery; this file only adds what that pack lacks:",
+    "remote access and network settings, shares, local admins, persistence, and the Linux side.",
+    "Stable columns only (no timestamps, pids, uptimes). Never a secret: Winlogon DefaultPassword is",
+    "reported as present, SSH keys by hash. ASA diffs (work/asa) find what this misses; add from there."
+  ],
+  "queries": {
+    "os": {
+      "platform": "all",
+      "query": "SELECT name, version, major, minor, patch, build, platform, arch FROM os_version;"
+    },
+    "packages_deb": {
+      "platform": "linux",
+      "query": "SELECT name, version, arch FROM deb_packages ORDER BY name;"
+    },
+    "packages_rpm": {
+      "platform": "linux",
+      "query": "SELECT name, version, release, arch FROM rpm_packages ORDER BY name;"
+    },
+    "systemd_units": {
+      "platform": "linux",
+      "query": "SELECT id, unit_file_state, fragment_path FROM systemd_units WHERE unit_file_state != '' ORDER BY id;"
+    },
+    "kernel_modules": {
+      "platform": "linux",
+      "query": "SELECT name FROM kernel_modules ORDER BY name;"
+    },
+    "suid_sgid": {
+      "platform": "linux",
+      "query": "SELECT path, username, groupname, permissions FROM suid_bin ORDER BY path;"
+    },
+    "file_capabilities": {
+      "platform": "linux",
+      "query": "SELECT x.path, x.value FROM file f JOIN extended_attributes x ON x.path = f.path WHERE (f.path LIKE '/usr/bin/%' OR f.path LIKE '/usr/sbin/%' OR f.path LIKE '/usr/libexec/%%' OR f.path LIKE '/usr/lib/%/%') AND f.type = 'regular' AND x.key = 'security.capability' ORDER BY x.path;"
+    },
+    "sysctl_net": {
+      "platform": "linux",
+      "query": "SELECT DISTINCT name, current_value FROM system_controls WHERE name LIKE 'net.ipv4.conf.all.%' OR name LIKE 'net.ipv4.conf.default.%' OR name LIKE 'net.ipv6.conf.all.%' OR name LIKE 'net.ipv6.conf.default.%' OR name IN ('net.ipv4.ip_forward','net.ipv4.tcp_syncookies','net.ipv4.icmp_echo_ignore_broadcasts','kernel.kptr_restrict','kernel.dmesg_restrict','kernel.yama.ptrace_scope','kernel.unprivileged_bpf_disabled','kernel.randomize_va_space','kernel.sysrq','fs.protected_symlinks','fs.protected_hardlinks','fs.suid_dumpable') ORDER BY name;"
+    },
+    "sshd_config": {
+      "platform": "linux",
+      "query": "SELECT label, value FROM augeas WHERE path = '/etc/ssh/sshd_config' AND label IN ('PermitRootLogin','PasswordAuthentication','PubkeyAuthentication','PermitEmptyPasswords','X11Forwarding','AllowTcpForwarding','GatewayPorts','ListenAddress','Port','UsePAM','KbdInteractiveAuthentication') ORDER BY label;"
+    },
+    "selinux": {
+      "platform": "linux",
+      "query": "SELECT scope, key, value FROM selinux_settings WHERE scope IN ('', 'booleans') ORDER BY scope, key;"
+    },
+    "apparmor": {
+      "platform": "linux",
+      "query": "SELECT name, mode FROM apparmor_profiles ORDER BY name;"
+    },
+    "users_linux": {
+      "platform": "linux",
+      "query": "SELECT username, uid, gid, shell, directory FROM users ORDER BY uid;"
+    },
+    "privileged_groups": {
+      "platform": "linux",
+      "query": "SELECT g.groupname, u.username FROM user_groups ug JOIN users u USING (uid) JOIN groups g USING (gid) WHERE g.groupname IN ('sudo','wheel','admin','adm','docker','lxd','libvirt','disk','shadow') ORDER BY g.groupname, u.username;"
+    },
+    "sudoers": {
+      "platform": "linux",
+      "query": "SELECT source, header, rule_details FROM sudoers ORDER BY source, header;"
+    },
+    "authorized_keys": {
+      "platform": "linux",
+      "query": "SELECT u.username, ak.algorithm, hex(sha256(ak.key)) AS key_sha256 FROM users u JOIN authorized_keys ak USING (uid) ORDER BY u.username;"
+    },
+    "crontab": {
+      "platform": "linux",
+      "query": "SELECT path, minute, hour, day_of_month, month, day_of_week, command FROM crontab ORDER BY path, command;"
+    },
+    "secureboot": {
+      "platform": "linux",
+      "query": "SELECT secure_boot, setup_mode FROM secureboot;"
+    },
+    "services_windows": {
+      "platform": "windows",
+      "query": "SELECT name, start_type, service_type, path, user_account FROM services ORDER BY name;"
+    },
+    "registry_datapoints": {
+      "platform": "windows",
+      "query": "SELECT path, CASE WHEN name = 'DefaultPassword' THEN '<present>' ELSE data END AS data FROM registry WHERE path IN ('HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Control\\Lsa\\LmCompatibilityLevel','HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Control\\Lsa\\RunAsPPL','HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Control\\Lsa\\RestrictAnonymous','HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Control\\Lsa\\NoLMHash','HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Control\\Lsa\\DisableRestrictedAdmin','HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Control\\SecurityProviders\\WDigest\\UseLogonCredential','HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System\\LocalAccountTokenFilterPolicy','HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System\\FilterAdministratorToken','HKEY_LOCAL_MACHINE\\SOFTWARE\\Policies\\Microsoft\\Windows NT\\DNSClient\\EnableMulticast','HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\LanmanServer\\Parameters\\RequireSecuritySignature','HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\LanmanServer\\Parameters\\EnableSecuritySignature','HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\LanmanServer\\Parameters\\SMB1','HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\LanmanWorkstation\\Parameters\\RequireSecuritySignature','HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\NTDS\\Parameters\\LDAPServerIntegrity','HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\NTDS\\Parameters\\LdapEnforceChannelBinding','HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\WSMAN\\Service\\auth_basic','HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\WSMAN\\Service\\allow_unencrypted','HKEY_LOCAL_MACHINE\\SOFTWARE\\Policies\\Microsoft\\Windows\\WinRM\\Service\\AllowBasic','HKEY_LOCAL_MACHINE\\SOFTWARE\\Policies\\Microsoft\\Windows\\WinRM\\Service\\AllowUnencryptedTraffic','HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Control\\Terminal Server\\fDenyTSConnections','HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Control\\Terminal Server\\WinStations\\RDP-Tcp\\UserAuthentication','HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Control\\Terminal Server\\WinStations\\RDP-Tcp\\SecurityLayer','HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Winlogon\\AutoAdminLogon','HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Winlogon\\DefaultUserName','HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Winlogon\\DefaultPassword','HKEY_LOCAL_MACHINE\\SOFTWARE\\Policies\\Microsoft\\Windows Defender\\DisableAntiSpyware','HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\SharedAccess\\Parameters\\FirewallPolicy\\DomainProfile\\EnableFirewall','HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\SharedAccess\\Parameters\\FirewallPolicy\\StandardProfile\\EnableFirewall','HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\SharedAccess\\Parameters\\FirewallPolicy\\PublicProfile\\EnableFirewall') ORDER BY path;"
+    },
+    "defender_exclusions": {
+      "platform": "windows",
+      "query": "SELECT key, name FROM registry WHERE key LIKE 'HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows Defender\\Exclusions\\%' ORDER BY key, name;"
+    },
+    "netbios_over_tcpip": {
+      "platform": "windows",
+      "query": "SELECT data FROM registry WHERE key LIKE 'HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\NetBT\\Parameters\\Interfaces\\%' AND name = 'NetbiosOptions' GROUP BY data ORDER BY data;"
+    },
+    "shares": {
+      "platform": "windows",
+      "query": "SELECT name, path, type FROM shared_resources ORDER BY name;"
+    },
+    "local_admins": {
+      "platform": "windows",
+      "query": "SELECT g.groupname, u.username FROM user_groups ug JOIN users u USING (uid) JOIN groups g USING (gid) WHERE g.groupname IN ('Administrators','Remote Desktop Users','Remote Management Users','Backup Operators','Server Operators') ORDER BY g.groupname, u.username;"
+    },
+    "users_windows": {
+      "platform": "windows",
+      "query": "SELECT username, type, shell FROM users WHERE type = 'local' ORDER BY username;"
+    },
+    "scheduled_tasks": {
+      "platform": "windows",
+      "query": "SELECT path, action, enabled, hidden FROM scheduled_tasks ORDER BY path;"
+    },
+    "wmi_persistence": {
+      "platform": "windows",
+      "query": "SELECT 'filter' AS kind, name, query AS detail FROM wmi_event_filters UNION ALL SELECT 'cli', name, command_line_template FROM wmi_cli_event_consumers UNION ALL SELECT 'script', name, scripting_engine FROM wmi_script_event_consumers ORDER BY kind, name;"
+    },
+    "drivers": {
+      "platform": "windows",
+      "query": "SELECT service, image, signed, provider FROM drivers WHERE service != '' GROUP BY service ORDER BY service;"
+    },
+    "certificates_machine": {
+      "platform": "windows",
+      "query": "SELECT store, sha1, common_name FROM certificates WHERE store_location = 'LocalMachine' AND store IN ('Root','CA','My','TrustedPublisher','AuthRoot') ORDER BY store, sha1;"
+    },
+    "optional_features": {
+      "platform": "windows",
+      "query": "SELECT name, state FROM windows_optional_features WHERE state = 1 ORDER BY name;"
+    },
+    "programs": {
+      "platform": "windows",
+      "query": "SELECT name, version, publisher FROM programs ORDER BY name;"
+    },
+    "security_products": {
+      "platform": "windows",
+      "query": "SELECT type, name, state, signatures_up_to_date FROM windows_security_products ORDER BY type, name;"
+    },
+    "patches": {
+      "platform": "windows",
+      "query": "SELECT hotfix_id FROM patches ORDER BY hotfix_id;"
+    }
+  }
+}

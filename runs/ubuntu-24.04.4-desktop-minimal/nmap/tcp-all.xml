@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE nmaprun>
+<?xml-stylesheet href="file:///usr/bin/../share/nmap/nmap.xsl" type="text/xsl"?>
+<!-- Nmap 7.92 scan initiated Thu Oct  1 18:56:04 2026 as: nmap -sT -p- -T4 -Pn -&#45;max-retries 2 -oX ~/baselines/work/nmap-ubuntu-24.04.4-desktop-minimal/tcp-all.xml 192.168.122.88 -->
+<nmaprun scanner="nmap" args="nmap -sT -p- -T4 -Pn -&#45;max-retries 2 -oX ~/baselines/work/nmap-ubuntu-24.04.4-desktop-minimal/tcp-all.xml 192.168.122.88" start="1790870164" startstr="Thu Oct  1 18:56:04 2026" version="7.92" xmloutputversion="1.05">
+<scaninfo type="connect" protocol="tcp" numservices="65535" services="1-65535"/>
+<verbose level="0"/>
+<debugging level="0"/>
+<host starttime="1790870164" endtime="1790870167"><status state="up" reason="user-set" reason_ttl="0"/>
+<address addr="192.168.122.88" addrtype="ipv4"/>
+<hostnames>
+</hostnames>
+<ports><extraports state="closed" count="65535">
+<extrareasons reason="conn-refused" count="65535" proto="tcp" ports="1-65535"/>
+</extraports>
+</ports>
+<times srtt="246" rttvar="165" to="100000"/>
+</host>
+<runstats><finished time="1790870167" timestr="Thu Oct  1 18:56:07 2026" summary="Nmap done at Thu Oct  1 18:56:07 2026; 1 IP address (1 host up) scanned in 2.41 seconds" elapsed="2.41" exit="success"/><hosts up="1" down="0" total="1"/>
+</runstats>
+</nmaprun>

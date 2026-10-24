@@ -1,0 +1,17 @@
+[Unit]
+Description=DNS/mDNS/LLMNR/DHCP pcap on baseline bridge %i
+After=libvirtd.service virtnetworkd.service network-online.target
+
+[Service]
+# /usr/sbin/tcpdump is netutils_exec_t, so it runs confined as netutils_t,
+# which may not write under /var/lib (and unconfined_service_t may not enter
+# it via SELinuxContext=: 203/EXEC). install.sh copies it to a bin_t path,
+# which runs unconfined like zeek.
+StateDirectory=bl-zeek/%i
+# Raw backup of what Zeek turns into dns.log/dhcp.log; hourly files, small.
+ExecStart=/usr/local/libexec/bl-tcpdump -i %i -n -s 0 -U -Z root -G 3600 -w /var/lib/bl-zeek/%i/dns-%%Y%%m%%d-%%H.pcap udp port 53 or tcp port 53 or udp port 5353 or udp port 5355 or udp port 67 or udp port 68
+Restart=always
+RestartSec=15
+
+[Install]
+WantedBy=multi-user.target

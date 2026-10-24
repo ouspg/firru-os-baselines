@@ -1,0 +1,41 @@
+# Linux golden set 1 (2026-10-19): installed from the ISO per run, the
+# variant's packages chosen at install time (pipeline/linux/bl-linux.sh).
+# AlmaLinux offline from the DVD; Ubuntu through snapshot.ubuntu.com at one
+# fixed timestamp. Variants as the 2026-10-01 runs, which they replace.
+# NAME ENV=VALUE ... ; run by bin/run-list.sh.
+
+# Untested paths first (add-on group, Ubuntu task, graphical), one per worker.
+almalinux-9.8-web-server-g1          ISO=AlmaLinux-9.8-x86_64-dvd.iso SCAN=1 PACKAGES=@^minimal-environment;@web-server
+ubuntu-24.04.5-server+lamp-server-g1        ISO=ubuntu-24.04.5-live-server-amd64.iso SCAN=1 SNAPSHOT=20261015T000000Z PACKAGES=lamp-server^
+almalinux-9.8-workstation-g1         ISO=AlmaLinux-9.8-x86_64-dvd.iso SCAN=1 PACKAGES=@^workstation-product-environment GRAPHICS=vnc MEMORY=6144
+
+almalinux-9.8-minimal-g1             ISO=AlmaLinux-9.8-x86_64-dvd.iso SCAN=1 PACKAGES=@^minimal-environment
+almalinux-9.8-server-g1              ISO=AlmaLinux-9.8-x86_64-dvd.iso SCAN=1 PACKAGES=@^server-product-environment
+almalinux-9.8-cockpit-g1             ISO=AlmaLinux-9.8-x86_64-dvd.iso SCAN=1 PACKAGES=@^minimal-environment;cockpit
+almalinux-9.8-dns-server-g1          ISO=AlmaLinux-9.8-x86_64-dvd.iso SCAN=1 PACKAGES=@^minimal-environment;@dns-server
+almalinux-9.8-mail-server-g1         ISO=AlmaLinux-9.8-x86_64-dvd.iso SCAN=1 PACKAGES=@^minimal-environment;@mail-server
+almalinux-9.8-file-server-g1         ISO=AlmaLinux-9.8-x86_64-dvd.iso SCAN=1 PACKAGES=@^minimal-environment;@file-server
+almalinux-9.8-smb-server-g1          ISO=AlmaLinux-9.8-x86_64-dvd.iso SCAN=1 PACKAGES=@^minimal-environment;@smb-server
+almalinux-9.8-ftp-server-g1          ISO=AlmaLinux-9.8-x86_64-dvd.iso SCAN=1 PACKAGES=@^minimal-environment;@ftp-server
+almalinux-9.8-network-server-g1      ISO=AlmaLinux-9.8-x86_64-dvd.iso SCAN=1 PACKAGES=@^minimal-environment;@network-server
+almalinux-9.8-mariadb-g1             ISO=AlmaLinux-9.8-x86_64-dvd.iso SCAN=1 PACKAGES=@^minimal-environment;mariadb-server
+almalinux-9.8-mysql-g1               ISO=AlmaLinux-9.8-x86_64-dvd.iso SCAN=1 PACKAGES=@^minimal-environment;mysql-server
+almalinux-9.8-postgresql-g1          ISO=AlmaLinux-9.8-x86_64-dvd.iso SCAN=1 PACKAGES=@^minimal-environment;postgresql-server
+almalinux-9.8-virtualization-host-g1 ISO=AlmaLinux-9.8-x86_64-dvd.iso SCAN=1 PACKAGES=@^virtualization-host-environment
+almalinux-9.8-server-gui-g1          ISO=AlmaLinux-9.8-x86_64-dvd.iso SCAN=1 PACKAGES=@^graphical-server-environment GRAPHICS=vnc MEMORY=6144
+ubuntu-24.04.5-server-g1                    ISO=ubuntu-24.04.5-live-server-amd64.iso SCAN=1 SNAPSHOT=20261015T000000Z PACKAGES=
+ubuntu-24.04.5-server+openssh-server-g1     ISO=ubuntu-24.04.5-live-server-amd64.iso SCAN=1 SNAPSHOT=20261015T000000Z PACKAGES= SSH=true
+ubuntu-24.04.5-server+dns-server-g1         ISO=ubuntu-24.04.5-live-server-amd64.iso SCAN=1 SNAPSHOT=20261015T000000Z PACKAGES=dns-server^
+ubuntu-24.04.5-server+mail-server-g1        ISO=ubuntu-24.04.5-live-server-amd64.iso SCAN=1 SNAPSHOT=20261015T000000Z PACKAGES=mail-server^
+ubuntu-24.04.5-server+postgresql-server-g1  ISO=ubuntu-24.04.5-live-server-amd64.iso SCAN=1 SNAPSHOT=20261015T000000Z PACKAGES=postgresql-server^
+ubuntu-24.04.5-server+print-server-g1       ISO=ubuntu-24.04.5-live-server-amd64.iso SCAN=1 SNAPSHOT=20261015T000000Z PACKAGES=print-server^
+ubuntu-24.04.5-server+samba-server-g1       ISO=ubuntu-24.04.5-live-server-amd64.iso SCAN=1 SNAPSHOT=20261015T000000Z PACKAGES=samba-server^
+
+# Universe packages at shipped defaults (2026-10-19, for the firru public
+# release: software seen on lab hosts that a stock-OS baseline cannot explain).
+ubuntu-24.04.5-server+caddy-g1                    ISO=ubuntu-24.04.5-live-server-amd64.iso SCAN=1 SNAPSHOT=20261015T000000Z PACKAGES=caddy
+ubuntu-24.04.5-server+prometheus-node-exporter-g1 ISO=ubuntu-24.04.5-live-server-amd64.iso SCAN=1 SNAPSHOT=20261015T000000Z PACKAGES=prometheus-node-exporter
+ubuntu-24.04.5-server+xrdp-g1                     ISO=ubuntu-24.04.5-live-server-amd64.iso SCAN=1 SNAPSHOT=20261015T000000Z PACKAGES=xrdp
+ubuntu-24.04.5-server+strongswan-g1               ISO=ubuntu-24.04.5-live-server-amd64.iso SCAN=1 SNAPSHOT=20261015T000000Z PACKAGES=strongswan
+ubuntu-24.04.5-server+charon-systemd-g1           ISO=ubuntu-24.04.5-live-server-amd64.iso SCAN=1 SNAPSHOT=20261015T000000Z PACKAGES=charon-systemd
+ubuntu-24.04.5-server+docker.io-g1                ISO=ubuntu-24.04.5-live-server-amd64.iso SCAN=1 SNAPSHOT=20261015T000000Z PACKAGES=docker.io

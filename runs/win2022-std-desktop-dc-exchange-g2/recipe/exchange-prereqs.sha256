@@ -1,0 +1,10 @@
+# Exchange Server SE prerequisites that are not on the Exchange ISO or in
+# Windows (.NET 4.8 ships with Server 2022; UCMA 4.0 is in \UCMARedist on the
+# ISO; Windows features come from Setup /InstallWindowsComponents). Fetched
+# into work/win/bin/exchange/ when missing; checked against these sha256
+# (taken 2026-10-19 from Microsoft's download servers). The ISO itself is
+# checked against the hash Microsoft publishes (KB5047155).
+681be3e5ba9fd3da02c09d7e565adfa078640ed66a0d58583efad2c1e3cc4064  vcredist2012_x64.exe     https://download.microsoft.com/download/1/6/B/16B06F60-3B20-4FF2-B699-5E9B7962F9AE/VSU_4/vcredist_x64.exe
+a4bba7701e355ae29c403431f871a537897c363e215cafe706615e270984f17c  vcredist2013_x64.exe     https://download.visualstudio.microsoft.com/download/pr/10912041/cee5d6bca2ddbcd039da727bf4acb48a/vcredist_x64.exe
+37342ff2f585f263f34f48e9de59eb1051d61015a8e967dbde4075716230a32a  rewrite_amd64_en-US.msi  https://download.microsoft.com/download/1/2/8/128E2E22-C1B9-44A4-BE2A-5859ED1D4592/rewrite_amd64_en-US.msi
+cd2b13f2c297187776af4cff3541b4be3c677cf907cca69d85ab0e2b70377bd1  ExchangeServerSE-x64.iso https://www.microsoft.com/download/details.aspx?id=108244

@@ -1,0 +1,13 @@
+/usr/bin/arping cap_net_raw=p
+/usr/bin/clockdiff cap_net_raw=p
+/usr/bin/kwin_wayland cap_sys_nice=ep
+/usr/bin/mtr-packet cap_net_raw=ep
+/usr/bin/newgidmap cap_setgid=ep
+/usr/bin/newuidmap cap_setuid=ep
+/usr/bin/wodim cap_ipc_lock=ep
+/usr/libexec/gstreamer-1.0/gst-ptp-helper cap_net_bind_service,cap_net_admin,cap_sys_nice=ep
+/usr/libexec/ksysguard/ksgrd_network_helper cap_net_raw=ep
+/usr/libexec/ksystemstats_intel_helper cap_perfmon=ep
+/usr/libexec/sssd/krb5_child cap_dac_read_search,cap_setgid,cap_setuid=p
+/usr/libexec/sssd/ldap_child cap_dac_read_search=p
+/usr/libexec/sssd/sssd_pam cap_dac_read_search=p

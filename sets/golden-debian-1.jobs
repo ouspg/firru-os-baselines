@@ -1,0 +1,13 @@
+# Debian golden set 1: Debian 13.7 (trixie) and 12.15 (bookworm), from the
+# snapshot.debian.org archive at 20261015T000000Z through the snapshot proxy
+# (the netboot installer of the same snapshot), the connection audit from
+# boot. server = the tasks a server install leaves ticked (standard,
+# ssh-server); minimal = no task; web-server adds tasksel's web-server task.
+debian-13.7-server-g1                    ISO=debian-13.7.0-amd64-netinst.iso SCAN=1 SNAPSHOT=20261015T000000Z PACKAGES=
+debian-13.7-minimal-g1                   ISO=debian-13.7.0-amd64-netinst.iso SCAN=1 SNAPSHOT=20261015T000000Z PACKAGES= TASKS=
+debian-13.7-web-server-g1                ISO=debian-13.7.0-amd64-netinst.iso SCAN=1 SNAPSHOT=20261015T000000Z PACKAGES= TASKS=standard,ssh-server,web-server
+debian-13.7-server-egress-g1             ISO=debian-13.7.0-amd64-netinst.iso SCAN=1 SNAPSHOT=20261015T000000Z PACKAGES= EGRESS=4
+debian-12.15-server-g1                   ISO=debian-12.15.0-amd64-netinst.iso SCAN=1 SNAPSHOT=20261015T000000Z PACKAGES=
+debian-12.15-minimal-g1                  ISO=debian-12.15.0-amd64-netinst.iso SCAN=1 SNAPSHOT=20261015T000000Z PACKAGES= TASKS=
+debian-12.15-web-server-g1               ISO=debian-12.15.0-amd64-netinst.iso SCAN=1 SNAPSHOT=20261015T000000Z PACKAGES= TASKS=standard,ssh-server,web-server
+debian-12.15-server-egress-g1            ISO=debian-12.15.0-amd64-netinst.iso SCAN=1 SNAPSHOT=20261015T000000Z PACKAGES= EGRESS=4

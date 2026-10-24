@@ -1,0 +1,29 @@
+# Delta set 4: every delta package again, with noble-updates (bl-apt before
+# this read it as a component: sets 1-3 installed from noble + security only).
+# Base: ubuntu-24.04.5-server-base1.
+ubuntu-24.04.5-server+strongswan-d3              OVERLAY=ubuntu-24.04.5-server-base1  SCAN=1  PACKAGES=strongswan              
+ubuntu-24.04.5-server+caddy-d3                   OVERLAY=ubuntu-24.04.5-server-base1  SCAN=1  PACKAGES=caddy                   REBOOT=1
+ubuntu-24.04.5-server+xrdp-d3                    OVERLAY=ubuntu-24.04.5-server-base1  SCAN=1  PACKAGES=xrdp                    REBOOT=1
+ubuntu-24.04.5-server+munin-node-d3              OVERLAY=ubuntu-24.04.5-server-base1  SCAN=1  PACKAGES=munin-node              ENABLE=1
+ubuntu-24.04.5-server+systemd-journal-remote-d3  OVERLAY=ubuntu-24.04.5-server-base1  SCAN=1  PACKAGES=systemd-journal-remote  ENABLE=1
+ubuntu-24.04.5-server+glusterfs-server-d3        OVERLAY=ubuntu-24.04.5-server-base1  SCAN=1  PACKAGES=glusterfs-server        ENABLE=1
+ubuntu-24.04.5-server+ovn-central-d3             OVERLAY=ubuntu-24.04.5-server-base1  SCAN=1  PACKAGES=ovn-central             ENABLE=1
+ubuntu-24.04.5-server+ovn-host-d3                OVERLAY=ubuntu-24.04.5-server-base1  SCAN=1  PACKAGES=ovn-host                ENABLE=1
+ubuntu-24.04.5-server+owserver-d3                OVERLAY=ubuntu-24.04.5-server-base1  SCAN=1  PACKAGES=owserver                ENABLE=1
+ubuntu-24.04.5-server+taskd-d3                   OVERLAY=ubuntu-24.04.5-server-base1  SCAN=1  PACKAGES=taskd                   ENABLE=1
+ubuntu-24.04.5-server+icecc-d3                   OVERLAY=ubuntu-24.04.5-server-base1  SCAN=1  PACKAGES=icecc                   ENABLE=1
+ubuntu-24.04.5-server+bacula-fd-d3               OVERLAY=ubuntu-24.04.5-server-base1  SCAN=1  PACKAGES=bacula-fd               ENABLE=1
+ubuntu-24.04.5-server+bacula-sd-d3               OVERLAY=ubuntu-24.04.5-server-base1  SCAN=1  PACKAGES=bacula-sd               ENABLE=1
+ubuntu-24.04.5-server+bacula-director-d3         OVERLAY=ubuntu-24.04.5-server-base1  SCAN=1  PACKAGES=bacula-director         ENABLE=1
+ubuntu-24.04.5-server+coturn-d3                  OVERLAY=ubuntu-24.04.5-server-base1  SCAN=1  PACKAGES=coturn                  ENABLE=1
+ubuntu-24.04.5-server+ejabberd-d3                OVERLAY=ubuntu-24.04.5-server-base1  SCAN=1  PACKAGES=ejabberd                ENABLE=1
+ubuntu-24.04.5-server+epoptes-d3                 OVERLAY=ubuntu-24.04.5-server-base1  SCAN=1  PACKAGES=epoptes                 ENABLE=1
+ubuntu-24.04.5-server+iperf3-d3                  OVERLAY=ubuntu-24.04.5-server-base1  SCAN=1  PACKAGES=iperf3                  ENABLE=1
+ubuntu-24.04.5-server+knot-d3                    OVERLAY=ubuntu-24.04.5-server-base1  SCAN=1  PACKAGES=knot                    ENABLE=1
+ubuntu-24.04.5-server+lighttpd-d3                OVERLAY=ubuntu-24.04.5-server-base1  SCAN=1  PACKAGES=lighttpd                ENABLE=1
+ubuntu-24.04.5-server+nginx-d3                   OVERLAY=ubuntu-24.04.5-server-base1  SCAN=1  PACKAGES=nginx                   ENABLE=1
+ubuntu-24.04.5-server+quassel-core-d3            OVERLAY=ubuntu-24.04.5-server-base1  SCAN=1  PACKAGES=quassel-core            ENABLE=1
+ubuntu-24.04.5-server+slapd-d3                   OVERLAY=ubuntu-24.04.5-server-base1  SCAN=1  PACKAGES=slapd                   ENABLE=1
+ubuntu-24.04.5-server+squid-d3                   OVERLAY=ubuntu-24.04.5-server-base1  SCAN=1  PACKAGES=squid                   ENABLE=1
+ubuntu-24.04.5-server+syncthing-d3               OVERLAY=ubuntu-24.04.5-server-base1  SCAN=1  PACKAGES=syncthing               ENABLE=1
+ubuntu-24.04.5-server+wsdd-server-d3             OVERLAY=ubuntu-24.04.5-server-base1  SCAN=1  PACKAGES=wsdd-server             ENABLE=1

@@ -1,0 +1,20 @@
+# AlmaLinux 10.2 set: the 9.8 set (golden-1, egress-1) on the 10.2 DVD, with the
+# boot audit. EL10 renames MySQL's server package (mysql8.4-server); every
+# group and environment the 9.8 set uses is on the 10.2 DVD.
+almalinux-10.2-cockpit-g1             ISO=AlmaLinux-10.2-x86_64-dvd.iso SCAN=1 PACKAGES=@^minimal-environment;cockpit
+almalinux-10.2-dns-server-g1          ISO=AlmaLinux-10.2-x86_64-dvd.iso SCAN=1 PACKAGES=@^minimal-environment;@dns-server
+almalinux-10.2-file-server-g1         ISO=AlmaLinux-10.2-x86_64-dvd.iso SCAN=1 PACKAGES=@^minimal-environment;@file-server
+almalinux-10.2-ftp-server-g1          ISO=AlmaLinux-10.2-x86_64-dvd.iso SCAN=1 PACKAGES=@^minimal-environment;@ftp-server
+almalinux-10.2-mail-server-g1         ISO=AlmaLinux-10.2-x86_64-dvd.iso SCAN=1 PACKAGES=@^minimal-environment;@mail-server
+almalinux-10.2-mariadb-g1             ISO=AlmaLinux-10.2-x86_64-dvd.iso SCAN=1 PACKAGES=@^minimal-environment;mariadb-server
+almalinux-10.2-minimal-g1             ISO=AlmaLinux-10.2-x86_64-dvd.iso SCAN=1 PACKAGES=@^minimal-environment
+almalinux-10.2-mysql-g1               ISO=AlmaLinux-10.2-x86_64-dvd.iso SCAN=1 PACKAGES=@^minimal-environment;mysql8.4-server
+almalinux-10.2-network-server-g1      ISO=AlmaLinux-10.2-x86_64-dvd.iso SCAN=1 PACKAGES=@^minimal-environment;@network-server
+almalinux-10.2-postgresql-g1          ISO=AlmaLinux-10.2-x86_64-dvd.iso SCAN=1 PACKAGES=@^minimal-environment;postgresql-server
+almalinux-10.2-server-egress-g1       ISO=AlmaLinux-10.2-x86_64-dvd.iso SCAN=1 PACKAGES=@^server-product-environment EGRESS=4
+almalinux-10.2-server-g1              ISO=AlmaLinux-10.2-x86_64-dvd.iso SCAN=1 PACKAGES=@^server-product-environment
+almalinux-10.2-server-gui-g1          ISO=AlmaLinux-10.2-x86_64-dvd.iso SCAN=1 PACKAGES=@^graphical-server-environment GRAPHICS=vnc MEMORY=6144
+almalinux-10.2-smb-server-g1          ISO=AlmaLinux-10.2-x86_64-dvd.iso SCAN=1 PACKAGES=@^minimal-environment;@smb-server
+almalinux-10.2-virtualization-host-g1 ISO=AlmaLinux-10.2-x86_64-dvd.iso SCAN=1 PACKAGES=@^virtualization-host-environment
+almalinux-10.2-web-server-g1          ISO=AlmaLinux-10.2-x86_64-dvd.iso SCAN=1 PACKAGES=@^minimal-environment;@web-server
+almalinux-10.2-workstation-g1         ISO=AlmaLinux-10.2-x86_64-dvd.iso SCAN=1 PACKAGES=@^workstation-product-environment GRAPHICS=vnc MEMORY=6144

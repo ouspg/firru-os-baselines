@@ -1,0 +1,68 @@
+Hit:1 http://fi.archive.ubuntu.com/ubuntu noble InRelease
+Get:2 http://fi.archive.ubuntu.com/ubuntu noble-updates InRelease [126 kB]
+Hit:3 http://security.ubuntu.com/ubuntu noble-security InRelease
+Hit:4 http://fi.archive.ubuntu.com/ubuntu noble-backports InRelease
+Get:5 http://fi.archive.ubuntu.com/ubuntu noble-updates/main amd64 Packages [1347 kB]
+Get:6 http://fi.archive.ubuntu.com/ubuntu noble-updates/main Translation-en [302 kB]
+Get:7 http://fi.archive.ubuntu.com/ubuntu noble-updates/restricted amd64 Packages [1709 kB]
+Get:8 http://fi.archive.ubuntu.com/ubuntu noble-updates/restricted Translation-en [391 kB]
+Get:9 http://fi.archive.ubuntu.com/ubuntu noble-updates/universe amd64 Packages [1699 kB]
+Fetched 5574 kB in 2s (3713 kB/s)
+Reading package lists...
+Reading package lists...
+Building dependency tree...
+Reading state information...
+python3-distro is already the newest version (1.9.0-1).
+python3-distro set to manually installed.
+Suggested packages:
+  molly-guard monkeysphere ssh-askpass
+The following NEW packages will be installed:
+  libwrap0 ncurses-term openssh-server openssh-sftp-server ssh-import-id
+0 upgraded, 5 newly installed, 0 to remove and 15 not upgraded.
+Need to get 881 kB of archives.
+After this operation, 6857 kB of additional disk space will be used.
+Get:1 http://fi.archive.ubuntu.com/ubuntu noble-updates/main amd64 openssh-sftp-server amd64 1:9.6p1-3ubuntu13.19 [37.1 kB]
+Get:2 http://fi.archive.ubuntu.com/ubuntu noble/main amd64 libwrap0 amd64 7.6.q-33 [47.9 kB]
+Get:3 http://fi.archive.ubuntu.com/ubuntu noble-updates/main amd64 openssh-server amd64 1:9.6p1-3ubuntu13.19 [511 kB]
+Get:4 http://fi.archive.ubuntu.com/ubuntu noble-updates/main amd64 ncurses-term all 6.4+20240113-1ubuntu2.2 [275 kB]
+Get:5 http://fi.archive.ubuntu.com/ubuntu noble-updates/main amd64 ssh-import-id all 5.11-0ubuntu2.24.04.1 [10.1 kB]
+Preconfiguring packages ...
+Fetched 881 kB in 1s (1109 kB/s)
+Selecting previously unselected package openssh-sftp-server.
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 85516 files and directories currently installed.)
+Preparing to unpack .../openssh-sftp-server_1%3a9.6p1-3ubuntu13.19_amd64.deb ...
+Unpacking openssh-sftp-server (1:9.6p1-3ubuntu13.19) ...
+Selecting previously unselected package libwrap0:amd64.
+Preparing to unpack .../libwrap0_7.6.q-33_amd64.deb ...
+Unpacking libwrap0:amd64 (7.6.q-33) ...
+Selecting previously unselected package openssh-server.
+Preparing to unpack .../openssh-server_1%3a9.6p1-3ubuntu13.19_amd64.deb ...
+Unpacking openssh-server (1:9.6p1-3ubuntu13.19) ...
+Selecting previously unselected package ncurses-term.
+Preparing to unpack .../ncurses-term_6.4+20240113-1ubuntu2.2_all.deb ...
+Unpacking ncurses-term (6.4+20240113-1ubuntu2.2) ...
+Selecting previously unselected package ssh-import-id.
+Preparing to unpack .../ssh-import-id_5.11-0ubuntu2.24.04.1_all.deb ...
+Unpacking ssh-import-id (5.11-0ubuntu2.24.04.1) ...
+Setting up openssh-sftp-server (1:9.6p1-3ubuntu13.19) ...
+Setting up ssh-import-id (5.11-0ubuntu2.24.04.1) ...
+Setting up libwrap0:amd64 (7.6.q-33) ...
+Setting up ncurses-term (6.4+20240113-1ubuntu2.2) ...
+Setting up openssh-server (1:9.6p1-3ubuntu13.19) ...
+
+Creating config file /etc/ssh/sshd_config with new version
+Created symlink /etc/systemd/system/sockets.target.wants/ssh.socket → /usr/lib/systemd/system/ssh.socket.
+Created symlink /etc/systemd/system/ssh.service.requires/ssh.socket → /usr/lib/systemd/system/ssh.socket.
+Processing triggers for ufw (0.36.2-6) ...
+Processing triggers for man-db (2.12.0-4build2) ...
+Processing triggers for libc-bin (2.39-0ubuntu8.9) ...
+
+Running kernel seems to be up-to-date.
+
+No services need to be restarted.
+
+No containers need to be restarted.
+
+No user sessions are running outdated binaries.
+
+No VM guests are running outdated hypervisor (qemu) binaries on this host.

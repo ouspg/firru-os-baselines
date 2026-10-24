@@ -1,0 +1,90 @@
+#cloud-config
+# Ubuntu golden set (bl-linux.sh): the server ISO, packages from
+# snapshot.ubuntu.com at one fixed timestamp through the host's proxy (the
+# guest reaches nothing else). The stock sources are put back before the
+# first boot, so the installed system points at the archive as usual.
+autoinstall:
+  version: 1
+  refresh-installer:
+    update: false
+  source:
+    id: ubuntu-server
+  apt:
+    geoip: false
+    preserve_sources_list: false
+    mirror-selection:
+      primary:
+      - uri: https://snapshot.ubuntu.com/ubuntu/20261015T000000Z
+    # The security pocket too: by default it goes to security.ubuntu.com,
+    # which the guest cannot reach.
+    security:
+    - arches: [default]
+      uri: https://snapshot.ubuntu.com/ubuntu/20261015T000000Z
+    fallback: abort
+    # Retries with backoff for the installer's own apt too (an egress run
+    # fetches from snapshot.ubuntu.com directly, which answers 503 under load).
+    # curtin writes this into the target; a late-command removes it again.
+    conf: |
+      Acquire::Retries "20";
+      Acquire::Retries::Delay::Maximum "60";
+  identity:
+    hostname: baseline-ubuntu
+    username: ubuntu
+    password: '<random hash, never used>'
+  ssh:
+    install-server: false
+  # Subiquity installs offline (ignoring the mirror) when there is no default
+  # route, and the isolated bridge has none. The installer alone gets one, to
+  # the host, which forwards nothing; the late-commands put back the netplan
+  # file Subiquity writes for a plain DHCP install.
+  network:
+    version: 2
+    ethernets:
+      bl:
+        match:
+          name: "en*"
+        dhcp4: true
+        routes:
+        - to: default
+          via: 192.168.122.1
+  storage:
+    layout:
+      name: lvm
+  # Retries with apt's backoff: an egress run fetches from snapshot.ubuntu.com
+  # directly, which answers 503 when several runs download at once.
+  # The variant's packages go in with plain apt-get in the target, while its
+  # apt still points at the snapshot proxy (the next command restores the
+  # stock sources): Subiquity's own packages list fails on tasks
+  # (lamp-server^), apt-get resolves them as an administrator's apt would.
+  packages: []
+  late-commands:
+  - |
+    [ -z "" ] || { curtin in-target --target=/target -- sh -c 'apt-get -o Acquire::Retries=20 update && DEBIAN_FRONTEND=noninteractive apt-get -o Acquire::Retries=20 -o Acquire::Retries::Delay::Maximum=60 install -y ' > /target/var/log/bl-packages.log 2>&1; echo "bl_packages_rc=$?" >> /target/var/log/bl-packages.log; }; true
+  - |
+    cat > /target/etc/apt/sources.list.d/ubuntu.sources <<'S'
+    Types: deb
+    URIs: http://archive.ubuntu.com/ubuntu/
+    Suites: noble noble-updates noble-backports
+    Components: main restricted universe multiverse
+    Signed-By: /usr/share/keyrings/ubuntu-archive-keyring.gpg
+
+    Types: deb
+    URIs: http://security.ubuntu.com/ubuntu/
+    Suites: noble-security
+    Components: main restricted universe multiverse
+    Signed-By: /usr/share/keyrings/ubuntu-archive-keyring.gpg
+    S
+  - rm -f /target/var/lib/apt/lists/snapshot.ubuntu.com*
+  - rm -f /target/etc/apt/apt.conf.d/94curtin-config
+  - |
+    nic=$(ls /sys/class/net | grep '^en' | head -1)
+    printf "# This is the network config written by 'subiquity'\nnetwork:\n  ethernets:\n    %s:\n      dhcp4: true\n  version: 2\n" "$nic" > /target/etc/netplan/50-cloud-init.yaml
+    chmod 600 /target/etc/netplan/50-cloud-init.yaml
+    # cloud-init re-renders netplan on first boot from the installer's copy
+    # of the network section: that copy gets the same DHCP-only config.
+    for f in $(grep -l '192.168.122.1' /target/etc/cloud/cloud.cfg.d/* 2>/dev/null); do
+      echo "bl: route scrubbed from $f"
+      printf "network:\n  ethernets:\n    %s:\n      dhcp4: true\n  version: 2\n" "$nic" > "$f"
+    done
+  - echo IyBJbnN0YWxsZWQgYnkgdGhlIGluc3RhbGxlciAoa2lja3N0YXJ0ICVwb3N0LCBhdXRvaW5zdGFsbCBsYXRlLWNvbW1hbmRzKToKIyB0aGUgb25seSBmaWxlIGFuZCB1bml0cyBhIGdvbGRlbi1zZXQgcnVuIGFkZHMgdG8gdGhlIHN5c3RlbS4gQXQgZXZlcnkgYm9vdAojIGl0IG1vdW50cyB0aGUgQkxUT09MUyBDRCwgaWYgcHJlc2VudCwgYW5kIHJ1bnMgaXRzIGNvbGxlY3Quc2ggb25jZTsgYmVmb3JlCiMgdGhhdCwgYmFzZWxpbmUtYXVkaXQuc2VydmljZSBzdGFydHMgdGhlIGNvbm5lY3Rpb24gYXVkaXQgZnJvbSB0aGUgQ0QgYW5kCiMgaG9sZHMgdGhlIG5ldHdvcmsgYmFjayB1bnRpbCBpdHMgcHJvYmVzIGFyZSBhdHRhY2hlZCAoYSBmZXcgc2Vjb25kcyksIHNvCiMgYm9vdC10aW1lIGxvb2t1cHMgKHBvbGxpbmF0ZSwgc25hcGQpIGFyZSBzZWVuIHRvby4KbWtkaXIgLXAgL3Vzci9sb2NhbC9zYmluCmNhdCA+IC91c3IvbG9jYWwvc2Jpbi9iYXNlbGluZS1qb2Iuc2ggPDwnSicKIyEvYmluL3NoCiMgYmFzZWxpbmUtam9iLnNoIFthdWRpdF0KWyAtZSAvdmFyL3RtcC9iYXNlbGluZS9kb25lIF0gJiYgZXhpdCAwCm1rZGlyIC1wIC9ydW4vYmwtdG9vbHMKIyBVbmRlciBTRUxpbnV4IHRoZSBDRCdzIGZpbGVzIGFyZSBpc285NjYwX3QsIHdoaWNoIGEgc2VydmljZSBtYXkgbm90IGV4ZWN1dGUKIyAoYnBmdHJhY2UgZm9yIHRoZSBjb25uZWN0aW9uIGF1ZGl0KTogbW91bnRlZCBhcyBiaW5fdCwgbGlrZSBhbnkgc3lzdGVtIGJpbmFyeS4Kbz1ybzsgWyAtZSAvc3lzL2ZzL3NlbGludXgvZW5mb3JjZSBdICYmIG89cm8sY29udGV4dD1zeXN0ZW1fdTpvYmplY3RfcjpiaW5fdDpzMAojIEVhcmx5IGluIGJvb3QgKGJlbG93KSB0aGUgZHJpdmUgY2FuIGJlIGxhdGU6IHVwIHRvIDMwIHMuCmk9MDsgdW50aWwgbW91bnRwb2ludCAtcSAvcnVuL2JsLXRvb2xzIHx8IG1vdW50IC1vICRvIExBQkVMPUJMVE9PTFMgL3J1bi9ibC10b29scyAyPi9kZXYvbnVsbDsgZG8KICBpPSQoKGkrMSkpOyBbICRpIC1sdCAxNSBdIHx8IGV4aXQgMDsgc2xlZXAgMjsgZG9uZQppZiBbICIkezE6LX0iID0gYXVkaXQgXTsgdGhlbgogIFsgLWUgL3J1bi9ibC10b29scy9icGZ0cmFjZSBdICYmIFsgLWUgL3J1bi9ibC10b29scy9jb25uLWF1ZGl0LnNoIF0gfHwgZXhpdCAwCiAgUEFUSD0vcnVuL2JsLXRvb2xzOiRQQVRIIGV4ZWMgL2Jpbi9iYXNoIC9ydW4vYmwtdG9vbHMvY29ubi1hdWRpdC5zaCBzdGFydApmaQpleGVjIC9iaW4vYmFzaCAvcnVuL2JsLXRvb2xzL2NvbGxlY3Quc2gKSgpjaG1vZCAwNzU1IC91c3IvbG9jYWwvc2Jpbi9iYXNlbGluZS1qb2Iuc2gKY2F0ID4gL2V0Yy9zeXN0ZW1kL3N5c3RlbS9iYXNlbGluZS1hdWRpdC5zZXJ2aWNlIDw8J1UnCltVbml0XQpEZXNjcmlwdGlvbj1CYXNlbGluZSBjb25uZWN0aW9uIGF1ZGl0IChnb2xkZW4gc2V0KSwgYmVmb3JlIHRoZSBuZXR3b3JrCkRlZmF1bHREZXBlbmRlbmNpZXM9bm8KQWZ0ZXI9bG9jYWwtZnMudGFyZ2V0IHN5cy1rZXJuZWwtdHJhY2luZy5tb3VudCBzeXMta2VybmVsLWRlYnVnLm1vdW50CldhbnRzPXN5cy1rZXJuZWwtdHJhY2luZy5tb3VudCBzeXMta2VybmVsLWRlYnVnLm1vdW50IG5ldHdvcmstcHJlLnRhcmdldApCZWZvcmU9bmV0d29yay1wcmUudGFyZ2V0IHNodXRkb3duLnRhcmdldApDb25mbGljdHM9c2h1dGRvd24udGFyZ2V0CltTZXJ2aWNlXQpUeXBlPW9uZXNob3QKUmVtYWluQWZ0ZXJFeGl0PXllcwpUaW1lb3V0U3RhcnRTZWM9NjAKRXhlY1N0YXJ0PS91c3IvbG9jYWwvc2Jpbi9iYXNlbGluZS1qb2Iuc2ggYXVkaXQKW0luc3RhbGxdCldhbnRlZEJ5PW11bHRpLXVzZXIudGFyZ2V0ClUKY2F0ID4gL2V0Yy9zeXN0ZW1kL3N5c3RlbS9iYXNlbGluZS1qb2Iuc2VydmljZSA8PCdVJwpbVW5pdF0KRGVzY3JpcHRpb249QmFzZWxpbmUgY29sbGVjdGlvbiAoZ29sZGVuIHNldCksIGZyb20gdGhlIEJMVE9PTFMgQ0QKIyBCZWZvcmUgdGhlIG5ldHdvcmsgY29tZXMgdXAsIHNvIHRoZSBjb25uZWN0aW9uIGF1ZGl0IHNlZXMgYm9vdC10aW1lCiMgbG9va3VwcyAocG9sbGluYXRlLCBzbmFwZCk7IGFmdGVyIHRoZSB0cmFjaW5nIG1vdW50cyBicGZ0cmFjZSBuZWVkcy4KRGVmYXVsdERlcGVuZGVuY2llcz1ubwpBZnRlcj1sb2NhbC1mcy50YXJnZXQgc3lzLWtlcm5lbC10cmFjaW5nLm1vdW50IHN5cy1rZXJuZWwtZGVidWcubW91bnQgYmFzZWxpbmUtYXVkaXQuc2VydmljZQpXYW50cz1zeXMta2VybmVsLXRyYWNpbmcubW91bnQgc3lzLWtlcm5lbC1kZWJ1Zy5tb3VudCBuZXR3b3JrLXByZS50YXJnZXQKQmVmb3JlPW5ldHdvcmstcHJlLnRhcmdldCBzaHV0ZG93bi50YXJnZXQKQ29uZmxpY3RzPXNodXRkb3duLnRhcmdldApbU2VydmljZV0KVHlwZT1leGVjCkV4ZWNTdGFydD0vdXNyL2xvY2FsL3NiaW4vYmFzZWxpbmUtam9iLnNoCltJbnN0YWxsXQpXYW50ZWRCeT1tdWx0aS11c2VyLnRhcmdldApVCnN5c3RlbWN0bCBlbmFibGUgYmFzZWxpbmUtYXVkaXQuc2VydmljZSBiYXNlbGluZS1qb2Iuc2VydmljZQo= | base64 -d | chroot /target /bin/sh
+  shutdown: poweroff

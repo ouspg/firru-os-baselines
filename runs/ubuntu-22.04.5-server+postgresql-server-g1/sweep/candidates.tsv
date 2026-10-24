@@ -1,0 +1,15 @@
+console-getty.service	skip	deny-list
+debug-shell.service	skip	deny-list
+iscsid.service	test	disabled
+nftables.service	test	disabled
+pg_receivewal@.service	skip	template
+postgresql@.service	skip	template
+rsync.service	test	disabled
+serial-getty@.service	skip	template
+sysstat.service	test	disabled
+systemd-boot-check-no-failures.service	test	disabled
+systemd-network-generator.service	test	disabled
+systemd-sysext.service	test	disabled
+systemd-time-wait-sync.service	test	disabled
+upower.service	test	disabled
+uuidd.service	test	indirect

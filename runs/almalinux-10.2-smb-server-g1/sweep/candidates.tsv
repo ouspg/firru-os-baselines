@@ -1,0 +1,52 @@
+blk-availability.service	test	disabled
+chronyd-restricted.service	test	disabled
+chrony-wait.service	test	disabled
+console-getty.service	skip	deny-list
+debug-shell.service	skip	deny-list
+dnf-system-upgrade.service	skip	oneshot
+kvm_stat.service	test	disabled
+lvm-devices-import.service	skip	oneshot
+man-db-restart-cache-update.service	skip	oneshot
+microcode.service	skip	oneshot
+nftables.service	test	disabled
+nis-domainname.service	test	disabled
+nmb.service	test	disabled
+samba-bgqd.service	test	disabled
+selinux-check-proper-disable.service	skip	oneshot
+serial-getty@.service	skip	template
+smb.service	test	disabled
+sshd-keygen@.service	skip	template
+sshd@.service	skip	template
+sshd.socket	test	disabled
+ssh-host-keys-migration.service	test	disabled
+sssd-autofs.service	skip	refuses manual start
+sssd-autofs.socket	test	disabled
+sssd-kcm.service	test	indirect
+sssd-nss.service	skip	refuses manual start
+sssd-nss.socket	test	disabled
+sssd-pac.service	skip	refuses manual start
+sssd-pac.socket	test	disabled
+sssd-pam.service	skip	refuses manual start
+sssd-pam.socket	test	disabled
+sssd-ssh.service	skip	refuses manual start
+sssd-ssh.socket	test	disabled
+sssd-sudo.service	skip	refuses manual start
+sssd-sudo.socket	test	disabled
+systemd-boot-check-no-failures.service	test	disabled
+systemd-boot-update.service	test	disabled
+systemd-journald-audit.socket	test	disabled
+systemd-journald@.socket	skip	template
+systemd-pcrextend.socket	test	disabled
+systemd-pcrlock-file-system.service	test	disabled
+systemd-pcrlock-firmware-code.service	test	disabled
+systemd-pcrlock-firmware-config.service	test	disabled
+systemd-pcrlock-machine-id.service	test	disabled
+systemd-pcrlock-make-policy.service	test	disabled
+systemd-pcrlock-secureboot-authority.service	test	disabled
+systemd-pcrlock-secureboot-policy.service	test	disabled
+systemd-pcrlock.socket	test	disabled
+systemd-sysext.socket	test	disabled
+systemd-sysupdate-reboot.service	skip	oneshot
+systemd-sysupdate.service	test	indirect
+systemd-udev-load-credentials.service	test	disabled
+systemd-userdbd.service	test	indirect

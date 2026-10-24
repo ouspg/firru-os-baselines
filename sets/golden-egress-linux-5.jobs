@@ -1,0 +1,6 @@
+# Linux egress set 5: AlmaLinux and Fedora again with baseline-audit.service
+# (the audit attached before network-pre; g1 had it only from the job), so
+# their boot-time lookups have owners too. As set 1 otherwise.
+almalinux-9.8-server-egress-g2       ISO=AlmaLinux-9.8-x86_64-dvd.iso SCAN=1 PACKAGES=@^server-product-environment EGRESS=4
+fedora-44-server-egress-g2           ISO=Fedora-Everything-netinst-x86_64-44-1.7.iso SCAN=1 PACKAGES=@^server-product-environment EGRESS=4
+fedora-44-workstation-egress-g2      ISO=Fedora-Everything-netinst-x86_64-44-1.7.iso SCAN=1 PACKAGES=@^workstation-product-environment GRAPHICS=vnc MEMORY=6144 EGRESS=4

@@ -1,0 +1,38 @@
+# Runtime state: overlays, consoles, kept passwords, bases, downloads, ISO
+# indexes, run-list progress, test runs (scratch/). The
+# pipeline writes it to BL_STATE, by default here.
+work/
+
+# pueue's binaries, fetched into bin/ by bin/fetch-pueue.sh.
+bin/pueue
+bin/pueued
+bin/pueue-*
+bin/pueued-*
+
+# Images and installers: rebuilt from recipes, never committed.
+*.qcow2
+*.iso
+*.img
+
+# Run passwords, if a run keeps one for WinRM.
+*.pw
+
+# Laptop-local: a copy of desktop output (the desktop commits the runs
+# themselves) and a handoff note that refers to LS-private material. Private
+# notes live outside the checkout (~/firru-os-baselines-private/).
+windows-traffic/
+WINDOWS-HANDOFF.md
+
+# Attack Surface Analyzer: databases and single-run exports (every file on the
+# system) are release material, not git. Comparison exports (asa-vs-*/) are
+# committed gzipped (ASA's own name, *_summary.json.txt, plus .gz).
+*.sqlite
+runs/*/asa/*_summary.json.txt
+
+# The nmap pass's Zeek records (bl-zeek-slice.py): ~30 MB a run, counted in zeek/SLICE.
+runs/*/zeek/scan-conn.log.gz
+# Runs bl-linux.sh refused (no done, packages failed): kept aside for a look.
+runs/*.failed-*/
+
+# Python bytecode
+__pycache__/

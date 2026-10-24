@@ -1,0 +1,119 @@
+# loot-goad.yml -- run firru's collectors on every GOAD host and bring the
+# results back as OUT/<host>/{loot-host,conn-audit}/.
+#
+#   cd ~/GOAD && . ~/.goad/.venv/bin/activate
+#   ansible-playbook -i ad/GOAD/data/inventory -i workspace/<instance>/inventory \
+#       ~/firru-os-baselines/pipeline/goad/loot-goad.yml -e out=$HOME/goad-loot/<label>
+#
+# The collectors run on the host itself, as the scripts expect; WinRM is only
+# the transport, and GOAD has already opened it (ConfigureRemotingForAnsible),
+# so using it changes nothing that is measured.
+#
+#   -e audit=start   also start the WFP connection audit afterwards, so that
+#                    later activity (attack replays) is attributed to processes
+#   -e audit=export  export what the audit recorded since, without a new loot
+#   -e firru=PATH    firru checkout (default ~/firru)
+#   -e asa=1         also an Attack Surface Analyzer run, collected into a copy
+#                    of the stock run of the host's version and role and exported
+#                    against it (OUT/<host>/asa-vs-stock/). The Server 2016 hosts
+#                    (dc03, srv03) go against the 2019 runs until 2016 ones exist:
+#                    a cross-version diff, labelled as such in asa_stock below.
+#                    Needs work/asa/bin (the state directory) from pipeline/asa/build-asa.sh and the stock runs' asa/.
+
+- hosts: domain
+  gather_facts: false
+  vars:
+    firru: "{{ lookup('env', 'HOME') }}/firru"
+    audit: ""
+    remote: 'C:\firru'
+    asa: ""
+    baselines: "{{ lookup('env', 'HOME') }}/firru-os-baselines"
+    # GOAD host -> stock ASA run of the same version and role.
+    asa_stock:
+      dc01: win2019-std-desktop-dc-asa-r1
+      dc02: win2019-std-desktop-dc-asa-r1
+      srv02: win2019-std-desktop-asa-r1
+      # Server 2016 against 2019 stock: version differences are in the result.
+      dc03: win2019-std-desktop-dc-asa-r1
+      srv03: win2019-std-desktop-asa-r1
+  tasks:
+    - name: working directories
+      ansible.windows.win_file:
+        path: "{{ item }}"
+        state: directory
+      loop: ['{{ remote }}', '{{ remote }}\asa', 'C:\bl-asa']
+
+    - name: collectors
+      ansible.windows.win_copy:
+        src: "{{ firru }}/scripts/{{ item }}"
+        dest: '{{ remote }}\{{ item }}'
+      loop: [loot-host.ps1, conn-audit.ps1]
+
+    - name: clear earlier output
+      ansible.windows.win_file:
+        path: '{{ remote }}\out'
+        state: absent
+
+    - name: loot-host
+      ansible.windows.win_shell: >-
+        powershell -NoProfile -ExecutionPolicy Bypass -File {{ remote }}\loot-host.ps1
+        {{ remote }}\out\loot-host
+      when: audit != 'export'
+
+    - name: conn-audit export
+      ansible.windows.win_shell: >-
+        powershell -NoProfile -ExecutionPolicy Bypass -File {{ remote }}\conn-audit.ps1
+        Export {{ remote }}\out\conn-audit
+
+    - name: conn-audit start
+      ansible.windows.win_shell: >-
+        powershell -NoProfile -ExecutionPolicy Bypass -File {{ remote }}\conn-audit.ps1 Start
+      when: audit == 'start'
+      register: started
+      failed_when: started.rc != 0 and 'already started' not in started.stdout + started.stderr
+
+    - name: asa against stock
+      when: asa == '1' and inventory_hostname in asa_stock
+      block:
+        - name: asa binary, wrapper and the stock database
+          ansible.windows.win_copy:
+            src: "{{ item.src }}"
+            dest: "{{ item.dest }}"
+          loop:
+            - {src: "{{ baselines }}/work/asa/bin/win-x64/Asa.exe", dest: '{{ remote }}\asa\Asa.exe'}
+            - {src: "{{ baselines }}/pipeline/asa/loot-asa.ps1", dest: '{{ remote }}\asa\loot-asa.ps1'}
+            - {src: "{{ baselines }}/{{ asa_stock[inventory_hostname] }}/asa/asa.sqlite", dest: 'C:\bl-asa\asa.sqlite'}
+        - name: asa collect
+          ansible.windows.win_shell: >-
+            powershell -NoProfile -ExecutionPolicy Bypass -File {{ remote }}\asa\loot-asa.ps1
+            Collect -RunId goad-{{ inventory_hostname }} -Database C:\bl-asa\asa.sqlite
+        - name: asa export against stock
+          ansible.windows.win_shell: >-
+            powershell -NoProfile -ExecutionPolicy Bypass -File {{ remote }}\asa\loot-asa.ps1
+            Export -RunId goad-{{ inventory_hostname }} -Database C:\bl-asa\asa.sqlite
+            -Against {{ asa_stock[inventory_hostname] }} -OutDir {{ remote }}\out\asa-vs-stock
+
+    - name: pack
+      ansible.windows.win_shell: >-
+        Compress-Archive -Force -Path {{ remote }}\out\* -DestinationPath {{ remote }}\out.zip
+
+    - name: fetch
+      ansible.builtin.fetch:
+        src: '{{ remote }}\out.zip'
+        dest: "{{ out }}/{{ inventory_hostname }}.zip"
+        flat: true
+
+    - name: unpack
+      delegate_to: localhost
+      vars:
+        ansible_connection: local
+        ansible_python_interpreter: "{{ ansible_playbook_python }}"
+      block:
+        - ansible.builtin.file:
+            path: "{{ out }}/{{ inventory_hostname }}"
+            state: directory
+        # Not unarchive: Windows PowerShell 5.1's Compress-Archive writes
+        # backslash paths, unzip warns (rc 1) but extracts everything.
+        - ansible.builtin.command: unzip -o {{ out }}/{{ inventory_hostname }}.zip -d {{ out }}/{{ inventory_hostname }}
+          register: unzipped
+          failed_when: unzipped.rc > 1

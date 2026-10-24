@@ -1,0 +1,33 @@
+# Delta set 2: packages that declare their own ports (a firewalld service file
+# they ship, on Fedora; a ufw application profile, on Ubuntu), each unit they
+# ship enabled and started (ENABLE=1), to compare with what they declare.
+# Base: ubuntu-24.04.5-server-base1 (golden-delta-1.jobs).
+# firewalld service file shipped by the package (Fedora)
+ubuntu-24.04.5-server+wsdd-d1                    OVERLAY=ubuntu-24.04.5-server-base1 SCAN=1 PACKAGES=wsdd ENABLE=1
+ubuntu-24.04.5-server+munin-node-d1              OVERLAY=ubuntu-24.04.5-server-base1 SCAN=1 PACKAGES=munin-node ENABLE=1
+ubuntu-24.04.5-server+systemd-journal-remote-d1  OVERLAY=ubuntu-24.04.5-server-base1 SCAN=1 PACKAGES=systemd-journal-remote ENABLE=1
+ubuntu-24.04.5-server+glusterfs-server-d1        OVERLAY=ubuntu-24.04.5-server-base1 SCAN=1 PACKAGES=glusterfs-server ENABLE=1
+ubuntu-24.04.5-server+ovn-central-d1             OVERLAY=ubuntu-24.04.5-server-base1 SCAN=1 PACKAGES=ovn-central ENABLE=1
+ubuntu-24.04.5-server+ovn-host-d1                OVERLAY=ubuntu-24.04.5-server-base1 SCAN=1 PACKAGES=ovn-host ENABLE=1
+ubuntu-24.04.5-server+owserver-d1                OVERLAY=ubuntu-24.04.5-server-base1 SCAN=1 PACKAGES=owserver ENABLE=1
+ubuntu-24.04.5-server+taskd-d1                   OVERLAY=ubuntu-24.04.5-server-base1 SCAN=1 PACKAGES=taskd ENABLE=1
+ubuntu-24.04.5-server+icecc-d1                   OVERLAY=ubuntu-24.04.5-server-base1 SCAN=1 PACKAGES=icecc ENABLE=1
+ubuntu-24.04.5-server+bacula-fd-d1               OVERLAY=ubuntu-24.04.5-server-base1 SCAN=1 PACKAGES=bacula-fd ENABLE=1
+ubuntu-24.04.5-server+bacula-sd-d1               OVERLAY=ubuntu-24.04.5-server-base1 SCAN=1 PACKAGES=bacula-sd ENABLE=1
+ubuntu-24.04.5-server+bacula-director-d1         OVERLAY=ubuntu-24.04.5-server-base1 SCAN=1 PACKAGES=bacula-director ENABLE=1
+# ufw application profile shipped by the package (Ubuntu)
+ubuntu-24.04.5-server+coturn-d1                  OVERLAY=ubuntu-24.04.5-server-base1 SCAN=1 PACKAGES=coturn ENABLE=1
+ubuntu-24.04.5-server+ejabberd-d1                OVERLAY=ubuntu-24.04.5-server-base1 SCAN=1 PACKAGES=ejabberd ENABLE=1
+ubuntu-24.04.5-server+epoptes-d1                 OVERLAY=ubuntu-24.04.5-server-base1 SCAN=1 PACKAGES=epoptes ENABLE=1
+ubuntu-24.04.5-server+iperf3-d1                  OVERLAY=ubuntu-24.04.5-server-base1 SCAN=1 PACKAGES=iperf3 ENABLE=1
+ubuntu-24.04.5-server+knot-d1                    OVERLAY=ubuntu-24.04.5-server-base1 SCAN=1 PACKAGES=knot ENABLE=1
+ubuntu-24.04.5-server+lighttpd-d1                OVERLAY=ubuntu-24.04.5-server-base1 SCAN=1 PACKAGES=lighttpd ENABLE=1
+ubuntu-24.04.5-server+nginx-d1                   OVERLAY=ubuntu-24.04.5-server-base1 SCAN=1 PACKAGES=nginx ENABLE=1
+ubuntu-24.04.5-server+quassel-core-d1            OVERLAY=ubuntu-24.04.5-server-base1 SCAN=1 PACKAGES=quassel-core ENABLE=1
+ubuntu-24.04.5-server+slapd-d1                   OVERLAY=ubuntu-24.04.5-server-base1 SCAN=1 PACKAGES=slapd ENABLE=1
+ubuntu-24.04.5-server+squid-d1                   OVERLAY=ubuntu-24.04.5-server-base1 SCAN=1 PACKAGES=squid ENABLE=1
+ubuntu-24.04.5-server+syncthing-d1               OVERLAY=ubuntu-24.04.5-server-base1 SCAN=1 PACKAGES=syncthing ENABLE=1
+# Rerun: xrdp-d1's install did not fit the apt cache on /run (fixed in bl-apt.sh)
+ubuntu-24.04.5-server+xrdp-d2                    OVERLAY=ubuntu-24.04.5-server-base1 SCAN=1 PACKAGES=xrdp REBOOT=1
+# Rerun: wsdd-d1's install never reached the mirror (first job after the restore) yet counted as done (fixed: bl-apt waits for it, set -e)
+ubuntu-24.04.5-server+wsdd-d2                    OVERLAY=ubuntu-24.04.5-server-base1 SCAN=1 PACKAGES=wsdd ENABLE=1

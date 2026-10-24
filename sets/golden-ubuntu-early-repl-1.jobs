@@ -1,0 +1,7 @@
+# The two early runs without a golden replacement (archive/early/): the
+# Ubuntu 24.04 desktop (minimal, as its installer offers) and the 24.04 cloud
+# image of 2026-10-17, booted as a cloud would boot it; and the cloud image's
+# egress, since cloud images are the ones that phone home.
+ubuntu-24.04.5-desktop-minimal-g1                ISO=ubuntu-24.04.5.1-desktop-amd64.iso SCAN=1 SNAPSHOT=20261015T000000Z PACKAGES= GRAPHICS=vnc MEMORY=6144
+ubuntu-24.04-server-cloudimg-g1                  ISO=ubuntu-24.04-server-cloudimg-amd64-20261017.img SCAN=1 SNAPSHOT=20261015T000000Z PACKAGES=
+ubuntu-24.04-server-cloudimg-egress-g1           ISO=ubuntu-24.04-server-cloudimg-amd64-20261017.img SCAN=1 SNAPSHOT=20261015T000000Z PACKAGES= EGRESS=4

@@ -1,0 +1,7 @@
+# Windows firewall emptied, then netsh advfirewall reset: does Windows' own
+# default come back to the stock rule set (the records' firewall)? What the
+# reset leaves out is the patch from an emptied firewall back to baseline. A
+# role that adds rules at install (IIS) is the case most likely to differ.
+win2022-std-desktop-public-fwreset-g2            FEATURES=FirewallEmpty,FirewallReset SCAN=1
+win2022-std-desktop-web-fwreset-g2               FEATURES=Web-Server,FirewallEmpty,FirewallReset SCAN=1
+win11-pro-26300-public-fwreset-g2                ISO=Windows11_Client_x64_en-us_26300_9457.iso OSINFO=win11 CLIENT=1 FEATURES=FirewallEmpty,FirewallReset SCAN=1

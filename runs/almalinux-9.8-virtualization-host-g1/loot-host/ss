@@ -1,0 +1,9 @@
+Netid State  Recv-Q Send-Q Local Address:Port Peer Address:PortProcess                                                                                                                   
+udp   UNCONN 0      0            0.0.0.0:111       0.0.0.0:*    users:(("rpcbind",pid=776,fd=5),("systemd",pid=1,fd=35)) ino:21184 sk:1 cgroup:/system.slice/rpcbind.socket <->          
+udp   UNCONN 0      0          127.0.0.1:323       0.0.0.0:*    users:(("chronyd",pid=854,fd=5))                         ino:23033 sk:2 cgroup:/system.slice/chronyd.service <->         
+udp   UNCONN 0      0               [::]:111          [::]:*    users:(("rpcbind",pid=776,fd=7),("systemd",pid=1,fd=37)) ino:21196 sk:3 cgroup:/system.slice/rpcbind.socket v6only:1 <-> 
+udp   UNCONN 0      0              [::1]:323          [::]:*    users:(("chronyd",pid=854,fd=6))                         ino:23034 sk:4 cgroup:/system.slice/chronyd.service v6only:1 <->
+tcp   LISTEN 0      4096         0.0.0.0:111       0.0.0.0:*    users:(("rpcbind",pid=776,fd=4),("systemd",pid=1,fd=34)) ino:16103 sk:5 cgroup:/system.slice/rpcbind.socket <->          
+tcp   LISTEN 0      128          0.0.0.0:22        0.0.0.0:*    users:(("sshd",pid=940,fd=7))                            ino:25187 sk:1001 cgroup:/system.slice/sshd.service <->         
+tcp   LISTEN 0      4096            [::]:111          [::]:*    users:(("rpcbind",pid=776,fd=6),("systemd",pid=1,fd=36)) ino:21190 sk:6 cgroup:/system.slice/rpcbind.socket v6only:1 <-> 
+tcp   LISTEN 0      128             [::]:22           [::]:*    users:(("sshd",pid=940,fd=8))                            ino:25189 sk:1002 cgroup:/system.slice/sshd.service v6only:1 <->

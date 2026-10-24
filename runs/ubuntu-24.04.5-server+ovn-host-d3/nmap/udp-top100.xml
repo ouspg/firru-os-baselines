@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE nmaprun>
+<?xml-stylesheet href="file:///usr/share/nmap/nmap.xsl" type="text/xsl"?>
+<!-- Nmap 7.92 scan initiated Tue Oct 20 09:30:10 2026 as: $HOME/.local/bin/nmap-raw -sU -&#45;privileged -&#45;top-ports 100 -T4 -Pn -n -&#45;max-retries 1 -oX $HOME/firru-os-baselines/work/linux/tmp.DEkt12H07l/nmap/udp-top100.xml 192.168.150.169 -->
+<nmaprun scanner="nmap" args="$HOME/.local/bin/nmap-raw -sU -&#45;privileged -&#45;top-ports 100 -T4 -Pn -n -&#45;max-retries 1 -oX $HOME/firru-os-baselines/work/linux/tmp.DEkt12H07l/nmap/udp-top100.xml 192.168.150.169" start="1792477810" startstr="Tue Oct 20 09:30:10 2026" version="7.92" xmloutputversion="1.05">
+<scaninfo type="udp" protocol="udp" numservices="100" services="7,9,17,19,49,53,67-69,80,88,111,120,123,135-139,158,161-162,177,427,443,445,497,500,514-515,518,520,593,623,626,631,996-999,1022-1023,1025-1030,1433-1434,1645-1646,1701,1718-1719,1812-1813,1900,2000,2048-2049,2222-2223,3283,3456,3703,4444,4500,5000,5060,5353,5632,9200,10000,17185,20031,30718,31337,32768-32769,32771,32815,33281,49152-49154,49156,49181-49182,49185-49186,49188,49190-49194,49200-49201,65024"/>
+<verbose level="0"/>
+<debugging level="0"/>
+<hosthint><status state="up" reason="arp-response" reason_ttl="0"/>
+<address addr="192.168.150.169" addrtype="ipv4"/>
+<address addr="52:54:00:90:B0:BE" addrtype="mac" vendor="QEMU virtual NIC"/>
+<hostnames>
+</hostnames>
+</hosthint>
+<host starttime="1792477810" endtime="1792477813"><status state="up" reason="arp-response" reason_ttl="0"/>
+<address addr="192.168.150.169" addrtype="ipv4"/>
+<address addr="52:54:00:90:B0:BE" addrtype="mac" vendor="QEMU virtual NIC"/>
+<hostnames>
+</hostnames>
+<ports><extraports state="open|filtered" count="91">
+<extrareasons reason="no-response" count="91" proto="udp" ports="7,9,17,19,49,53,67-69,80,88,111,120,123,136-138,158,161-162,177,427,445,497,500,514-515,518,520,593,623,626,631,996,998-999,1022-1023,1025-1028,1030,1433-1434,1645-1646,1701,1718-1719,1812-1813,1900,2048,2222,3283,3456,3703,4444,4500,5000,5060,5353,5632,9200,10000,17185,20031,30718,31337,32768-32769,32771,32815,33281,49152,49154,49156,49181-49182,49185-49186,49188,49190-49194,49200-49201,65024"/>
+</extraports>
+<port protocol="udp" portid="135"><state state="closed" reason="port-unreach" reason_ttl="64"/><service name="msrpc" method="table" conf="3"/></port>
+<port protocol="udp" portid="139"><state state="closed" reason="port-unreach" reason_ttl="64"/><service name="netbios-ssn" method="table" conf="3"/></port>
+<port protocol="udp" portid="443"><state state="closed" reason="port-unreach" reason_ttl="64"/><service name="https" method="table" conf="3"/></port>
+<port protocol="udp" portid="997"><state state="closed" reason="port-unreach" reason_ttl="64"/><service name="maitrd" method="table" conf="3"/></port>
+<port protocol="udp" portid="1029"><state state="closed" reason="port-unreach" reason_ttl="64"/><service name="solid-mux" method="table" conf="3"/></port>
+<port protocol="udp" portid="2000"><state state="closed" reason="port-unreach" reason_ttl="64"/><service name="cisco-sccp" method="table" conf="3"/></port>
+<port protocol="udp" portid="2049"><state state="closed" reason="port-unreach" reason_ttl="64"/><service name="nfs" method="table" conf="3"/></port>
+<port protocol="udp" portid="2223"><state state="closed" reason="port-unreach" reason_ttl="64"/><service name="rockwell-csp2" method="table" conf="3"/></port>
+<port protocol="udp" portid="49153"><state state="closed" reason="port-unreach" reason_ttl="64"/><service name="unknown" method="table" conf="3"/></port>
+</ports>
+<times srtt="145" rttvar="407" to="100000"/>
+</host>
+<runstats><finished time="1792477813" timestr="Tue Oct 20 09:30:13 2026" summary="Nmap done at Tue Oct 20 09:30:13 2026; 1 IP address (1 host up) scanned in 3.11 seconds" elapsed="3.11" exit="success"/><hosts up="1" down="0" total="1"/>
+</runstats>
+</nmaprun>

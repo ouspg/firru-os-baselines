@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE nmaprun>
+<?xml-stylesheet href="file:///usr/share/nmap/nmap.xsl" type="text/xsl"?>
+<!-- Nmap 7.92 scan initiated Fri Oct 23 21:21:22 2026 as: $HOME/.local/bin/nmap-raw -sT -sV -Pn -n -p 25,110,143,993,995 -oX $HOME/firru-os-baselines/work/linux/tmp.70mp8Cw61D/nmap/tcp-sv.xml 192.168.150.111 -->
+<nmaprun scanner="nmap" args="$HOME/.local/bin/nmap-raw -sT -sV -Pn -n -p 25,110,143,993,995 -oX $HOME/firru-os-baselines/work/linux/tmp.70mp8Cw61D/nmap/tcp-sv.xml 192.168.150.111" start="1792779682" startstr="Fri Oct 23 21:21:22 2026" version="7.92" xmloutputversion="1.05">
+<scaninfo type="connect" protocol="tcp" numservices="5" services="25,110,143,993,995"/>
+<verbose level="0"/>
+<debugging level="0"/>
+<host starttime="1792779683" endtime="1792779689"><status state="up" reason="user-set" reason_ttl="0"/>
+<address addr="192.168.150.111" addrtype="ipv4"/>
+<hostnames>
+</hostnames>
+<ports><port protocol="tcp" portid="25"><state state="open" reason="syn-ack" reason_ttl="0"/><service name="smtp" product="Postfix smtpd" hostname=" ubuntu-server" method="probed" conf="10"><cpe>cpe:/a:postfix:postfix</cpe></service></port>
+<port protocol="tcp" portid="110"><state state="open" reason="syn-ack" reason_ttl="0"/><service name="pop3" product="Dovecot pop3d" method="probed" conf="10"><cpe>cpe:/a:dovecot:dovecot</cpe></service></port>
+<port protocol="tcp" portid="143"><state state="open" reason="syn-ack" reason_ttl="0"/><service name="imap" product="Dovecot imapd" method="probed" conf="10"><cpe>cpe:/a:dovecot:dovecot</cpe></service></port>
+<port protocol="tcp" portid="993"><state state="open" reason="syn-ack" reason_ttl="0"/><service name="imap" product="Dovecot imapd" tunnel="ssl" method="probed" conf="10"><cpe>cpe:/a:dovecot:dovecot</cpe></service></port>
+<port protocol="tcp" portid="995"><state state="open" reason="syn-ack" reason_ttl="0"/><service name="pop3" product="Dovecot pop3d" tunnel="ssl" method="probed" conf="10"><cpe>cpe:/a:dovecot:dovecot</cpe></service></port>
+</ports>
+<times srtt="169" rttvar="1623" to="100000"/>
+</host>
+<runstats><finished time="1792779689" timestr="Fri Oct 23 21:21:29 2026" summary="Nmap done at Fri Oct 23 21:21:29 2026; 1 IP address (1 host up) scanned in 6.28 seconds" elapsed="6.28" exit="success"/><hosts up="1" down="0" total="1"/>
+</runstats>
+</nmaprun>

@@ -1,0 +1,13 @@
+Netid State  Recv-Q Send-Q          Local Address:Port  Peer Address:PortProcess                                                                                                                      
+udp   UNCONN 0      0                  127.0.0.54:53         0.0.0.0:*    users:(("systemd-resolve",pid=586,fd=16)) uid:992 ino:6853 sk:1 cgroup:/system.slice/systemd-resolved.service <->           
+udp   UNCONN 0      0               127.0.0.53%lo:53         0.0.0.0:*    users:(("systemd-resolve",pid=586,fd=14)) uid:992 ino:6851 sk:2 cgroup:/system.slice/systemd-resolved.service <->           
+udp   UNCONN 0      0      192.168.150.169%enp1s0:68         0.0.0.0:*    users:(("systemd-network",pid=818,fd=22)) uid:998 ino:7735 sk:3 cgroup:/system.slice/systemd-networkd.service <->           
+udp   UNCONN 0      0                     0.0.0.0:111        0.0.0.0:*    users:(("rpcbind",pid=2623,fd=5),("systemd",pid=1,fd=77)) ino:18071 sk:1001 cgroup:/system.slice/rpcbind.socket <->         
+udp   UNCONN 0      0                     0.0.0.0:55555      0.0.0.0:*    users:(("glustereventsd",pid=3435,fd=8)) ino:21179 sk:1006 cgroup:/system.slice/glustereventsd.service <->                  
+udp   UNCONN 0      0                        [::]:111           [::]:*    users:(("rpcbind",pid=2623,fd=7),("systemd",pid=1,fd=90)) ino:18075 sk:1002 cgroup:/system.slice/rpcbind.socket v6only:1 <->
+udp   UNCONN 0      0                       [::1]:55555         [::]:*    users:(("glustereventsd",pid=3435,fd=9)) ino:21180 sk:1007 cgroup:/system.slice/glustereventsd.service v6only:1 <->         
+tcp   LISTEN 0      1024                  0.0.0.0:24007      0.0.0.0:*    users:(("glusterd",pid=3443,fd=10)) ino:21763 sk:1003 cgroup:/system.slice/glusterd.service <->                             
+tcp   LISTEN 0      4096            127.0.0.53%lo:53         0.0.0.0:*    users:(("systemd-resolve",pid=586,fd=15)) uid:992 ino:6852 sk:4 cgroup:/system.slice/systemd-resolved.service <->           
+tcp   LISTEN 0      4096                  0.0.0.0:111        0.0.0.0:*    users:(("rpcbind",pid=2623,fd=4),("systemd",pid=1,fd=76)) ino:18069 sk:1004 cgroup:/system.slice/rpcbind.socket <->         
+tcp   LISTEN 0      4096               127.0.0.54:53         0.0.0.0:*    users:(("systemd-resolve",pid=586,fd=17)) uid:992 ino:6854 sk:5 cgroup:/system.slice/systemd-resolved.service <->           
+tcp   LISTEN 0      4096                     [::]:111           [::]:*    users:(("rpcbind",pid=2623,fd=6),("systemd",pid=1,fd=78)) ino:18073 sk:1005 cgroup:/system.slice/rpcbind.socket v6only:1 <->

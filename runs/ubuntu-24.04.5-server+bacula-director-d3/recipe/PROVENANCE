@@ -1,0 +1,17 @@
+run_started=2026-10-20T07:27:31Z
+restored=2026-10-20T07:27:38Z
+run_finished=2026-10-20T07:42:20Z
+iso=ubuntu-24.04.5-live-server-amd64.iso iso_bytes=4080486400 iso_sha256=97f3d7ffb032c3eb3b23d2c8be9cc76e60c2c1f2c0146ba5ba9fe01cafae0fd8
+packages=bacula-director
+collector=loot-host.sh git_blob=73109cd3a29a32a4566579072ee69c4607d87495 sha256=feb424ebdc02575d63db16a237b70d125be17f6d54ea1886627129ad0466681d
+osquery=osquery-5.23.1_1.linux_x86_64.tar.gz 0f37a478a1dbda24b67c81551e32d734b392c5a2f5deb156bf1c41ca204cfa67
+mode=delta base=ubuntu-24.04.5-server-base1 (recipe/base-PROVENANCE) base_disk_sha256=edc0acfd408365ebea46816ee0d9de3c53e8a732797ed47421d47cf0eb52cc0e base_state_sha256=5d9acc0b9f43d0ac34a043429c920ddbf7b27a6699973b9e19b864fc1d846785: the base's saved guest restored, the change run in it (recipe/change.sh, log delta/change.log), then settled dstable=120 s; before = delta/before, the base's collection; reboot=0
+source=the base's install (recipe/base-PROVENANCE); what the change installs from https://snapshot.ubuntu.com/ubuntu/20261015T000000Z/ through snapshot-proxy.py (recipe/snapshot-fetches.tsv), by bl-apt (recipe/bl-apt.sh): sources, lists and cache in /run, the stock ones untouched
+scan=1 settle=300 stable=600 maxwait=3600 window=3600
+memory_mib=4096 vcpus=2 osinfo=ubuntu24.04
+mac=52:54:00:90:b0:be bridge=virbr-bl network=bl-iso (isolated: no forward, no DNS, no gateway)
+hardware=virtio disk and nic, uefi without secure boot (the installer kernel is booted directly), no balloon, no guest agent; COM1 = console log, COM2 = host-to-guest control socket (scan done; a delta job's start and clock); the job's CD (BLJOB: this run's collector and the change) in the base's seed drive, inserted after the restore
+added_by_run=/usr/local/sbin/baseline-job.sh, baseline-job.service (recipe/stub.sh); /var/tmp/baseline; /run/bl-job, /run/bl-apt (tmpfs); /var/tmp/bl-apt (removed after the change)
+user_password=<random, never used> root=locked
+host=7.2.9-200.fc44.x86_64 qemu-kvm-core-10.2.2 libvirt-daemon-12.0.0 edk2-ovmf-20260812
+host_paths=the runner's home is written as $HOME in recipe/ and nmap/ (the files the host writes)

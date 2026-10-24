@@ -1,0 +1,37 @@
+blk-availability.service	skip	oneshot
+chronyd-restricted.service	test	disabled
+chrony-wait.service	skip	oneshot
+console-getty.service	skip	deny-list
+cpupower.service	skip	oneshot
+debug-shell.service	skip	deny-list
+dnf-system-upgrade.service	skip	oneshot
+kvm_stat.service	test	disabled
+lvm-devices-import.service	skip	oneshot
+man-db-restart-cache-update.service	skip	oneshot
+named-chroot.service	test	disabled
+named.service	test	disabled
+nftables.service	skip	oneshot
+rdisc.service	test	disabled
+rpmdb-rebuild.service	skip	oneshot
+selinux-check-proper-disable.service	skip	oneshot
+serial-getty@.service	skip	template
+sshd-keygen@.service	skip	template
+sshd.socket	test	disabled
+sssd-autofs.service	skip	refuses manual start
+sssd-autofs.socket	test	disabled
+sssd-kcm.service	test	indirect
+sssd-nss.service	skip	refuses manual start
+sssd-nss.socket	test	disabled
+sssd-pac.service	skip	refuses manual start
+sssd-pac.socket	test	disabled
+sssd-pam-priv.socket	test	disabled
+sssd-pam.service	skip	refuses manual start
+sssd-pam.socket	test	disabled
+sssd-ssh.service	skip	refuses manual start
+sssd-ssh.socket	test	disabled
+sssd-sudo.service	skip	refuses manual start
+sssd-sudo.socket	test	disabled
+systemd-boot-check-no-failures.service	skip	oneshot
+systemd-sysext.service	skip	oneshot
+systemd-sysupdate-reboot.service	skip	oneshot
+systemd-sysupdate.service	test	indirect

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE nmaprun>
+<?xml-stylesheet href="file:///usr/share/nmap/nmap.xsl" type="text/xsl"?>
+<!-- Nmap 7.92 scan initiated Fri Oct 23 19:27:34 2026 as: $HOME/.local/bin/nmap-raw -sT -sV -Pn -n -p 139,445 -oX $HOME/firru-os-baselines/work/linux/tmp.VF0eVq1KkC/nmap/tcp-sv.xml 192.168.150.150 -->
+<nmaprun scanner="nmap" args="$HOME/.local/bin/nmap-raw -sT -sV -Pn -n -p 139,445 -oX $HOME/firru-os-baselines/work/linux/tmp.VF0eVq1KkC/nmap/tcp-sv.xml 192.168.150.150" start="1792772854" startstr="Fri Oct 23 19:27:34 2026" version="7.92" xmloutputversion="1.05">
+<scaninfo type="connect" protocol="tcp" numservices="2" services="139,445"/>
+<verbose level="0"/>
+<debugging level="0"/>
+<host starttime="1792772854" endtime="1792772865"><status state="up" reason="user-set" reason_ttl="0"/>
+<address addr="192.168.150.150" addrtype="ipv4"/>
+<hostnames>
+</hostnames>
+<ports><port protocol="tcp" portid="139"><state state="open" reason="syn-ack" reason_ttl="0"/><service name="netbios-ssn" product="Samba smbd" version="4.6.2" method="probed" conf="10"><cpe>cpe:/a:samba:samba:4.6.2</cpe></service></port>
+<port protocol="tcp" portid="445"><state state="open" reason="syn-ack" reason_ttl="0"/><service name="netbios-ssn" product="Samba smbd" version="4.6.2" method="probed" conf="10"><cpe>cpe:/a:samba:samba:4.6.2</cpe></service></port>
+</ports>
+<times srtt="188" rttvar="3761" to="100000"/>
+</host>
+<runstats><finished time="1792772865" timestr="Fri Oct 23 19:27:45 2026" summary="Nmap done at Fri Oct 23 19:27:45 2026; 1 IP address (1 host up) scanned in 11.30 seconds" elapsed="11.30" exit="success"/><hosts up="1" down="0" total="1"/>
+</runstats>
+</nmaprun>

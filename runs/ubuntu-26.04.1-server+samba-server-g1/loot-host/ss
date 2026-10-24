@@ -1,0 +1,12 @@
+Netid State  Recv-Q Send-Q          Local Address:Port Peer Address:PortProcess                                                                                                             
+udp   UNCONN 0      0                  127.0.0.54:53        0.0.0.0:*    users:(("systemd-resolve",pid=658,fd=18))  uid:990 ino:8238 sk:1 cgroup:/system.slice/systemd-resolved.service <-> 
+udp   UNCONN 0      0               127.0.0.53%lo:53        0.0.0.0:*    users:(("systemd-resolve",pid=658,fd=16))  uid:990 ino:8236 sk:2 cgroup:/system.slice/systemd-resolved.service <-> 
+udp   UNCONN 0      0      192.168.150.119%enp1s0:68        0.0.0.0:*    users:(("systemd-network",pid=1126,fd=33)) uid:998 ino:14467 sk:3 cgroup:/system.slice/systemd-networkd.service <->
+udp   UNCONN 0      0                   127.0.0.1:323       0.0.0.0:*    users:(("chronyd",pid=1366,fd=4))          ino:16127 sk:6 cgroup:/system.slice/chrony.service <->                  
+udp   UNCONN 0      0                       [::1]:323          [::]:*    users:(("chronyd",pid=1366,fd=5))          ino:16128 sk:7 cgroup:/system.slice/chrony.service v6only:1 <->         
+tcp   LISTEN 0      4096            127.0.0.53%lo:53        0.0.0.0:*    users:(("systemd-resolve",pid=658,fd=17))  uid:990 ino:8237 sk:4 cgroup:/system.slice/systemd-resolved.service <-> 
+tcp   LISTEN 0      4096               127.0.0.54:53        0.0.0.0:*    users:(("systemd-resolve",pid=658,fd=19))  uid:990 ino:8239 sk:5 cgroup:/system.slice/systemd-resolved.service <-> 
+tcp   LISTEN 0      50                    0.0.0.0:445       0.0.0.0:*    users:(("smbd",pid=1515,fd=30))            ino:17646 sk:8 cgroup:/system.slice/smbd.service <->                    
+tcp   LISTEN 0      50                    0.0.0.0:139       0.0.0.0:*    users:(("smbd",pid=1515,fd=31))            ino:17647 sk:9 cgroup:/system.slice/smbd.service <->                    
+tcp   LISTEN 0      50                       [::]:445          [::]:*    users:(("smbd",pid=1515,fd=28))            ino:17644 sk:a cgroup:/system.slice/smbd.service v6only:1 <->           
+tcp   LISTEN 0      50                       [::]:139          [::]:*    users:(("smbd",pid=1515,fd=29))            ino:17645 sk:b cgroup:/system.slice/smbd.service v6only:1 <->           

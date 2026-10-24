@@ -1,0 +1,11 @@
+tcp 0.0.0.0:110 /system.slice/dovecot.service
+tcp 0.0.0.0:143 /system.slice/dovecot.service
+tcp 0.0.0.0:25 /system.slice/system-postfix.slice/postfix@-.service
+tcp 0.0.0.0:993 /system.slice/dovecot.service
+tcp 0.0.0.0:995 /system.slice/dovecot.service
+tcp [::]:110 /system.slice/dovecot.service
+tcp [::]:143 /system.slice/dovecot.service
+tcp [::]:25 /system.slice/system-postfix.slice/postfix@-.service
+tcp [::]:993 /system.slice/dovecot.service
+tcp [::]:995 /system.slice/dovecot.service
+udp 192.168.122.220%enp1s0:68 /system.slice/systemd-networkd.service

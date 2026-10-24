@@ -1,0 +1,10 @@
+# Proof runs for egress a stock install does not show on its own: one
+# triggered change each (a login, a first snap, a PPA, a keyserver, LXD) on a
+# saved stock Ubuntu guest with internet (an egress base), the connection
+# audit naming the owner.
+ubuntu-24.04.5-server-ebase1                     ISO=ubuntu-24.04.5-live-server-amd64.iso SCAN=1 SNAPSHOT=20261015T000000Z PACKAGES= BASE=1 EGRESS=1
+ubuntu-24.04.5-server+trigger-login-motd-p1      OVERLAY=ubuntu-24.04.5-server-ebase1 SCAN=0 CHANGEFILE=changes/login-motd.sh
+ubuntu-24.04.5-server+trigger-snap-install-p1    OVERLAY=ubuntu-24.04.5-server-ebase1 SCAN=0 CHANGEFILE=changes/snap-install.sh
+ubuntu-24.04.5-server+trigger-ppa-p1             OVERLAY=ubuntu-24.04.5-server-ebase1 SCAN=0 CHANGEFILE=changes/ppa.sh
+ubuntu-24.04.5-server+trigger-keyserver-p1       OVERLAY=ubuntu-24.04.5-server-ebase1 SCAN=0 CHANGEFILE=changes/keyserver.sh
+ubuntu-24.04.5-server+trigger-lxd-p1             OVERLAY=ubuntu-24.04.5-server-ebase1 SCAN=0 CHANGEFILE=changes/lxd.sh

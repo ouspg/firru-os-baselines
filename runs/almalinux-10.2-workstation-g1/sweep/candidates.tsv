@@ -1,0 +1,81 @@
+arp-ethers.service	test	disabled
+blk-availability.service	test	disabled
+brltty.service	test	disabled
+canberra-system-bootup.service	skip	oneshot
+canberra-system-shutdown-reboot.service	skip	oneshot
+canberra-system-shutdown.service	skip	oneshot
+chronyd-restricted.service	test	disabled
+chrony-wait.service	test	disabled
+console-getty.service	skip	deny-list
+cups-browsed.service	test	disabled
+dbus-daemon.service	test	disabled
+debug-shell.service	skip	deny-list
+dnf-system-upgrade.service	skip	oneshot
+dnsmasq.service	test	disabled
+foomaticrip-upgrade.service	skip	oneshot
+fsidd.service	test	disabled
+gnome-headless-session@.service	skip	template
+gnome-remote-desktop-configuration.service	test	disabled
+gnome-remote-desktop.service	test	disabled
+gssproxy.service	test	disabled
+hypervfcopyd.service	test	disabled
+iscsid.service	test	disabled
+iscsi-init.service	skip	oneshot
+iscsi.service	test	indirect
+iscsiuio.service	test	disabled
+kpatch.service	test	disabled
+kvm_stat.service	test	disabled
+ledmon.service	test	disabled
+low-memory-monitor.service	test	disabled
+lvm-devices-import.service	skip	oneshot
+man-db-restart-cache-update.service	skip	oneshot
+microcode.service	skip	oneshot
+nfs-blkmap.service	test	disabled
+nfs-server.service	test	disabled
+nftables.service	test	disabled
+nis-domainname.service	test	disabled
+nvmf-autoconnect.service	skip	oneshot
+psacct.service	test	disabled
+rpcbind.service	skip	tested via rpcbind.socket
+rpcbind.socket	test	disabled
+selinux-check-proper-disable.service	skip	oneshot
+serial-getty@.service	skip	template
+speech-dispatcherd.service	test	disabled
+spice-vdagentd.service	test	indirect
+sshd-keygen@.service	skip	template
+sshd@.service	skip	template
+sshd.socket	test	disabled
+ssh-host-keys-migration.service	test	disabled
+sssd-autofs.service	skip	refuses manual start
+sssd-autofs.socket	test	disabled
+sssd-kcm.service	test	indirect
+sssd-nss.service	skip	refuses manual start
+sssd-nss.socket	test	disabled
+sssd-pac.service	skip	refuses manual start
+sssd-pac.socket	test	disabled
+sssd-pam.service	skip	refuses manual start
+sssd-pam.socket	test	disabled
+sssd-ssh.service	skip	refuses manual start
+sssd-ssh.socket	test	disabled
+sssd-sudo.service	skip	refuses manual start
+sssd-sudo.socket	test	disabled
+systemd-boot-check-no-failures.service	test	disabled
+systemd-boot-update.service	test	disabled
+systemd-journald-audit.socket	test	disabled
+systemd-journald@.socket	skip	template
+systemd-pcrextend.socket	test	disabled
+systemd-pcrlock-file-system.service	test	disabled
+systemd-pcrlock-firmware-code.service	test	disabled
+systemd-pcrlock-firmware-config.service	test	disabled
+systemd-pcrlock-machine-id.service	test	disabled
+systemd-pcrlock-make-policy.service	test	disabled
+systemd-pcrlock-secureboot-authority.service	test	disabled
+systemd-pcrlock-secureboot-policy.service	test	disabled
+systemd-pcrlock.socket	test	disabled
+systemd-sysext.socket	test	disabled
+systemd-sysupdate-reboot.service	skip	oneshot
+systemd-sysupdate.service	test	indirect
+systemd-udev-load-credentials.service	test	disabled
+systemd-userdbd.service	test	indirect
+wpa_supplicant.service	test	disabled
+wsdd.service	test	disabled

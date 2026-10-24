@@ -1,0 +1,76 @@
+arp-ethers.service	skip	oneshot
+blk-availability.service	skip	oneshot
+brltty.service	test	disabled
+canberra-system-bootup.service	skip	oneshot
+canberra-system-shutdown-reboot.service	skip	oneshot
+canberra-system-shutdown.service	skip	oneshot
+chronyd-restricted.service	test	disabled
+chrony-wait.service	skip	oneshot
+cni-dhcp.service	skip	tested via cni-dhcp.socket
+cni-dhcp.socket	test	disabled
+cockpit.socket	test	disabled
+console-getty.service	skip	deny-list
+cpupower.service	skip	oneshot
+cups-browsed.service	test	disabled
+dbus-daemon.service	test	disabled
+debug-shell.service	skip	deny-list
+dnf-system-upgrade.service	skip	oneshot
+dnsmasq.service	test	disabled
+foomaticrip-upgrade.service	skip	oneshot
+iprdump.service	test	disabled
+iprinit.service	test	disabled
+iprupdate.service	test	disabled
+iscsid.service	test	disabled
+iscsi-init.service	skip	oneshot
+iscsi.service	skip	oneshot
+iscsiuio.service	test	disabled
+kpatch.service	skip	oneshot
+kvm_stat.service	test	disabled
+ledmon.service	test	disabled
+lvm-devices-import.service	skip	oneshot
+man-db-restart-cache-update.service	skip	oneshot
+netavark-dhcp-proxy.service	skip	tested via netavark-dhcp-proxy.socket
+netavark-dhcp-proxy.socket	test	disabled
+netavark-firewalld-reload.service	test	disabled
+netavark-nftables-reload.service	skip	oneshot
+nftables.service	skip	oneshot
+nvmf-autoconnect.service	skip	oneshot
+ostree-readonly-sysroot-migration.service	skip	oneshot
+ostree-state-overlay@.service	skip	template
+podman-auto-update.service	skip	oneshot
+podman-clean-transient.service	skip	oneshot
+podman-kube@.service	skip	template
+podman-restart.service	skip	oneshot
+podman.service	skip	tested via podman.socket
+podman.socket	test	disabled
+psacct.service	skip	oneshot
+rasdaemon.service	test	disabled
+ras-mc-ctl.service	skip	oneshot
+rdisc.service	test	disabled
+rpmdb-rebuild.service	skip	oneshot
+selinux-check-proper-disable.service	skip	oneshot
+serial-getty@.service	skip	template
+speech-dispatcherd.service	test	disabled
+spice-vdagentd.service	test	indirect
+sshd-keygen@.service	skip	template
+sshd.socket	test	disabled
+sssd-autofs.service	skip	refuses manual start
+sssd-autofs.socket	test	disabled
+sssd-kcm.service	test	indirect
+sssd-nss.service	skip	refuses manual start
+sssd-nss.socket	test	disabled
+sssd-pac.service	skip	refuses manual start
+sssd-pac.socket	test	disabled
+sssd-pam-priv.socket	test	disabled
+sssd-pam.service	skip	refuses manual start
+sssd-pam.socket	test	disabled
+sssd-ssh.service	skip	refuses manual start
+sssd-ssh.socket	test	disabled
+sssd-sudo.service	skip	refuses manual start
+sssd-sudo.socket	test	disabled
+systemd-boot-check-no-failures.service	skip	oneshot
+systemd-sysext.service	skip	oneshot
+systemd-sysupdate-reboot.service	skip	oneshot
+systemd-sysupdate.service	test	indirect
+tuned-ppd.service	test	disabled
+wpa_supplicant.service	test	disabled

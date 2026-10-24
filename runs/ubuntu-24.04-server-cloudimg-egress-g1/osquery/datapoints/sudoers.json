@@ -1,0 +1,11 @@
+[
+  {"header":"%admin","rule_details":"ALL=(ALL) ALL","source":"/etc/sudoers"},
+  {"header":"%sudo","rule_details":"ALL=(ALL:ALL) ALL","source":"/etc/sudoers"},
+  {"header":"@includedir","rule_details":"/etc/sudoers.d","source":"/etc/sudoers"},
+  {"header":"Defaults","rule_details":"env_reset","source":"/etc/sudoers"},
+  {"header":"Defaults","rule_details":"mail_badpass","source":"/etc/sudoers"},
+  {"header":"Defaults","rule_details":"secure_path=\"/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin\"","source":"/etc/sudoers"},
+  {"header":"Defaults","rule_details":"use_pty","source":"/etc/sudoers"},
+  {"header":"root","rule_details":"ALL=(ALL:ALL) ALL","source":"/etc/sudoers"},
+  {"header":"ubuntu","rule_details":"ALL=(ALL) NOPASSWD:ALL","source":"/etc/sudoers.d/90-cloud-init-users"}
+]

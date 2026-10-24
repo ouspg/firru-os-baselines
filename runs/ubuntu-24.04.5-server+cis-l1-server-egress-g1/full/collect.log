@@ -1,0 +1,109 @@
+BASELINE 2026-10-21T17:28:18Z up=5 start ubuntu-24.04.5-server-ebase1 mode=base
+BASELINE 2026-10-21T17:28:18Z up=5 listeners=0 stable=5s jobs=96
+BASELINE 2026-10-21T17:28:48Z up=35 listeners=3 stable=0s jobs=0
+BASELINE 2026-10-21T17:29:19Z up=65 listeners=3 stable=30s jobs=0
+BASELINE 2026-10-21T17:29:49Z up=95 listeners=3 stable=60s jobs=0
+BASELINE 2026-10-21T17:30:19Z up=125 listeners=3 stable=90s jobs=1
+BASELINE 2026-10-21T17:30:49Z up=155 listeners=3 stable=120s jobs=0
+BASELINE 2026-10-21T17:31:19Z up=185 listeners=3 stable=150s jobs=0
+BASELINE 2026-10-21T17:31:49Z up=215 listeners=3 stable=180s jobs=0
+BASELINE 2026-10-21T17:32:19Z up=245 listeners=3 stable=210s jobs=0
+BASELINE 2026-10-21T17:32:50Z up=275 listeners=3 stable=240s jobs=0
+BASELINE 2026-10-21T17:33:20Z up=305 listeners=3 stable=270s jobs=1
+BASELINE 2026-10-21T17:33:50Z up=335 listeners=3 stable=300s jobs=0
+BASELINE 2026-10-21T17:34:20Z up=365 listeners=3 stable=330s jobs=0
+BASELINE 2026-10-21T17:34:50Z up=396 listeners=3 stable=360s jobs=0
+BASELINE 2026-10-21T17:35:20Z up=426 listeners=3 stable=391s jobs=0
+BASELINE 2026-10-21T17:35:50Z up=456 listeners=3 stable=421s jobs=0
+BASELINE 2026-10-21T17:36:20Z up=486 listeners=3 stable=451s jobs=0
+BASELINE 2026-10-21T17:36:50Z up=516 listeners=3 stable=481s jobs=0
+BASELINE 2026-10-21T17:37:20Z up=546 listeners=3 stable=511s jobs=0
+BASELINE 2026-10-21T17:37:50Z up=576 listeners=3 stable=541s jobs=0
+BASELINE 2026-10-21T17:38:20Z up=606 listeners=3 stable=571s jobs=0
+BASELINE 2026-10-21T17:38:50Z up=636 settled: last listener change at up=35s, state=running
+BASELINE 2026-10-21T17:38:50Z up=636 loot-host
+BASELINE 2026-10-21T17:38:50Z up=636 extras
+BASELINE 2026-10-21T17:38:59Z up=645 osquery datapoints
+BASELINE 2026-10-21T17:39:05Z up=651 BASELINE-SCAN-READY ip=192.168.122.58
+BASELINE 2026-10-21T17:39:15Z up=661 BASELINE-SCAN-CLOSED reason=signal
+BASELINE 2026-10-21T17:39:15Z up=661 BASELINE-DELTA-READY
+BASELINE 2026-10-23T21:00:26Z up=673 start ubuntu-24.04.5-server+cis-l1-server-egress-g1 mode=job
+BASELINE 2026-10-23T21:00:29Z up=676 conn-audit: Connection audit on (firru-conn-audit, cgroup path); conn-audit.sh stop OUTDIR ends it.
+BASELINE 2026-10-23T21:00:29Z up=676 change: set -u;S=$BL_T/change.d/ubuntu2404-script-cis_level1_server.sh;[ -r "$S" ] || { echo "no $S (CHANGEDATA=cis-l1-server)"; exit 1; };export VARIANT HOSTIP APTMIRROR;mkdir -p /run/bl-shim;cat > /run/bl-shim/apt-get <<'A';PATH=${PATH#/run/bl-shim:} exec bash "$BL_T/bl-apt.sh" "$@";A;cat > /run/bl-shim/apt-cache <<'A';exec /usr/bin/apt-cache -o Dir::Etc::SourceList=/run/bl-apt/sources.list -o Dir::Etc::SourceParts=/nonexistent \;  -o Dir::State::Lists=/run/bl-apt/lists "$@";A;chmod +x /run/bl-shim/apt-get /run/bl-shim/apt-cache;bl-apt update                     # the lists the shim's apt-cache reads;sha256sum "$S";PATH=/run/bl-shim:$PATH bash "$S";echo "cis_rc=$?";rm -rf /run/bl-shim
+BASELINE 2026-10-23T21:01:28Z up=735 change rc=0
+BASELINE 2026-10-23T21:01:28Z up=735 listeners=3 stable=0s jobs=0
+BASELINE 2026-10-23T21:01:58Z up=765 listeners=3 stable=30s jobs=0
+BASELINE 2026-10-23T21:02:28Z up=795 listeners=3 stable=60s jobs=0
+BASELINE 2026-10-23T21:02:58Z up=825 listeners=3 stable=90s jobs=0
+BASELINE 2026-10-23T21:03:28Z up=855 listeners=3 stable=120s jobs=0
+BASELINE 2026-10-23T21:03:58Z up=885 listeners=3 stable=150s jobs=0
+BASELINE 2026-10-23T21:04:28Z up=915 listeners=3 stable=180s jobs=0
+BASELINE 2026-10-23T21:04:58Z up=945 listeners=3 stable=210s jobs=0
+BASELINE 2026-10-23T21:05:28Z up=975 listeners=3 stable=240s jobs=0
+BASELINE 2026-10-23T21:05:58Z up=1005 listeners=3 stable=270s jobs=0
+BASELINE 2026-10-23T21:06:29Z up=1035 settled: last listener change at up=735s, state=running
+BASELINE 2026-10-23T21:06:29Z up=1035 loot-host
+BASELINE 2026-10-23T21:06:29Z up=1036 extras
+BASELINE 2026-10-23T21:06:34Z up=1041 osquery datapoints
+BASELINE 2026-10-23T21:06:41Z up=1048 conn-audit: connection audit: 122 events -> /var/tmp/baseline/delta/after-change/conn-audit
+BASELINE 2026-10-23T21:06:41Z up=1048 reboot
+BASELINE 2026-10-23T21:06:55Z up=5 start ubuntu-24.04.5-server+cis-l1-server-egress-g1 mode=job
+BASELINE 2026-10-23T21:06:59Z up=8 conn-audit: Connection audit on (firru-conn-audit, cgroup path); conn-audit.sh stop OUTDIR ends it.
+BASELINE 2026-10-23T21:06:59Z up=8 listeners=3 stable=0s jobs=0
+BASELINE 2026-10-23T21:07:29Z up=38 listeners=3 stable=30s jobs=0
+BASELINE 2026-10-23T21:07:59Z up=69 listeners=3 stable=60s jobs=0
+BASELINE 2026-10-23T21:08:29Z up=99 listeners=3 stable=91s jobs=0
+BASELINE 2026-10-23T21:08:59Z up=129 listeners=3 stable=121s jobs=0
+BASELINE 2026-10-23T21:09:29Z up=159 listeners=3 stable=151s jobs=0
+BASELINE 2026-10-23T21:09:59Z up=189 listeners=3 stable=181s jobs=0
+BASELINE 2026-10-23T21:10:29Z up=219 listeners=3 stable=211s jobs=0
+BASELINE 2026-10-23T21:10:59Z up=249 listeners=3 stable=241s jobs=0
+BASELINE 2026-10-23T21:11:29Z up=279 listeners=3 stable=271s jobs=0
+BASELINE 2026-10-23T21:11:59Z up=309 listeners=3 stable=301s jobs=1
+BASELINE 2026-10-23T21:12:29Z up=339 listeners=3 stable=331s jobs=0
+BASELINE 2026-10-23T21:12:59Z up=369 listeners=3 stable=361s jobs=0
+BASELINE 2026-10-23T21:13:29Z up=399 listeners=3 stable=391s jobs=0
+BASELINE 2026-10-23T21:13:59Z up=429 listeners=3 stable=421s jobs=0
+BASELINE 2026-10-23T21:14:29Z up=459 listeners=3 stable=451s jobs=0
+BASELINE 2026-10-23T21:14:59Z up=489 listeners=3 stable=481s jobs=0
+BASELINE 2026-10-23T21:15:29Z up=519 listeners=3 stable=511s jobs=0
+BASELINE 2026-10-23T21:15:59Z up=549 listeners=3 stable=541s jobs=0
+BASELINE 2026-10-23T21:16:30Z up=579 listeners=3 stable=571s jobs=0
+BASELINE 2026-10-23T21:17:00Z up=609 settled: last listener change at up=8s, state=running
+BASELINE 2026-10-23T21:17:00Z up=609 loot-host
+BASELINE 2026-10-23T21:17:00Z up=610 extras
+BASELINE 2026-10-23T21:17:10Z up=620 osquery datapoints
+BASELINE 2026-10-23T21:17:17Z up=627 BASELINE-SCAN-READY ip=192.168.122.57
+BASELINE 2026-10-23T21:17:25Z up=635 BASELINE-SCAN-CLOSED reason=signal
+BASELINE 2026-10-23T21:17:25Z up=635 egress: 4 h, timer sweep
+BASELINE 2026-10-23T21:26:11Z up=1161 egress: hold until 2026-10-24T01:17:25Z
+BASELINE 2026-10-23T21:36:11Z up=1761 egress: holding, listeners=3
+BASELINE 2026-10-23T21:46:11Z up=2361 egress: holding, listeners=3
+BASELINE 2026-10-23T21:56:11Z up=2961 egress: holding, listeners=3
+BASELINE 2026-10-23T22:06:11Z up=3561 egress: holding, listeners=3
+BASELINE 2026-10-23T22:16:11Z up=4161 egress: holding, listeners=3
+BASELINE 2026-10-23T22:26:11Z up=4761 egress: holding, listeners=3
+BASELINE 2026-10-23T22:36:12Z up=5361 egress: holding, listeners=3
+BASELINE 2026-10-23T22:46:12Z up=5961 egress: holding, listeners=3
+BASELINE 2026-10-23T22:56:12Z up=6561 egress: holding, listeners=3
+BASELINE 2026-10-23T23:06:12Z up=7161 egress: holding, listeners=3
+BASELINE 2026-10-23T23:16:12Z up=7761 egress: holding, listeners=3
+BASELINE 2026-10-23T23:26:12Z up=8362 egress: holding, listeners=3
+BASELINE 2026-10-23T23:36:12Z up=8962 egress: holding, listeners=3
+BASELINE 2026-10-23T23:46:12Z up=9562 egress: holding, listeners=3
+BASELINE 2026-10-23T23:56:12Z up=10162 egress: holding, listeners=3
+BASELINE 2026-10-24T00:06:12Z up=10762 egress: holding, listeners=3
+BASELINE 2026-10-24T00:16:12Z up=11362 egress: holding, listeners=3
+BASELINE 2026-10-24T00:26:12Z up=11962 egress: holding, listeners=3
+BASELINE 2026-10-24T00:36:12Z up=12562 egress: holding, listeners=3
+BASELINE 2026-10-24T00:46:12Z up=13162 egress: holding, listeners=3
+BASELINE 2026-10-24T00:56:12Z up=13762 egress: holding, listeners=3
+BASELINE 2026-10-24T01:06:12Z up=14362 egress: holding, listeners=3
+BASELINE 2026-10-24T01:16:12Z up=14962 egress: holding, listeners=3
+BASELINE 2026-10-24T01:26:12Z up=15562 egress: holding, listeners=3
+BASELINE 2026-10-24T01:26:12Z up=15562 loot-host
+BASELINE 2026-10-24T01:26:13Z up=15563 extras
+BASELINE 2026-10-24T01:26:18Z up=15567 osquery datapoints
+BASELINE 2026-10-24T01:26:23Z up=15573 sweep
+BASELINE 2026-10-24T01:27:40Z up=15650 conn-audit: connection audit: 103 events -> /var/tmp/baseline/conn-audit
+BASELINE 2026-10-24T01:27:41Z up=15650 done

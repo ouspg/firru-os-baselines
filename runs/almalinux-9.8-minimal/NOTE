@@ -1,0 +1,7 @@
+Sweep side effect: starting sshd.socket stopped sshd.service (Conflicts=), and
+the sweep of this run did not restart it, so sweep/listeners.after is empty.
+No later unit produced a listener, so the one-enable-away results are
+unaffected. sweep.sh now restarts displaced units and records them
+("displaced"); recipe/sweep.sh is the version that produced this run.
+recipe/ks.cfg was added by hand after the run (bl-run.sh copied the Ubuntu
+autoinstall.yaml at the time).

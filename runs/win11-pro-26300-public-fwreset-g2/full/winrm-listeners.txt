@@ -1,0 +1,11 @@
+winrm.cmd : WSManFault
+At C:\bl-tools\collect.ps1:388 char:33
++ ...  'winrm-listeners.txt' (& winrm enumerate winrm/config/listener 2>&1)
++                             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (WSManFault:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+    Message = The client cannot connect to the destination specified in the request. Verify that the service on the destination is running and is accepting requests. Consult the logs and documentation for the WS-Management service running on the destination, most commonly IIS or WinRM. If the destination is the WinRM service, run the following command on the destination to analyze and configure the WinRM service: "winrm quickconfig". 
+
+Error number:  -2144108526 0x80338012
+The client cannot connect to the destination specified in the request. Verify that the service on the destination is running and is accepting requests. Consult the logs and documentation for the WS-Management service running on the destination, most commonly IIS or WinRM. If the destination is the WinRM service, run the following command on the destination to analyze and configure the WinRM service: "winrm quickconfig". 

@@ -1,0 +1,22 @@
+run_started=2026-10-20T03:20:27Z
+run_finished=2026-10-20T03:54:54Z
+iso=17763.3650.221105-1748.rs5_release_svc_refresh_SERVER_EVAL_x64FRE_en-us.iso
+iso_bytes=5652088832
+iso_sha256=6dae072e7f78f4ccab74a45341de0d6e2d45c39be25f1f5920a2ab4f51d7bcbb
+wim_index_1=ServerStandardEval | Server Core | 10.0.17763.3650 | Windows Server 2019 Standard Evaluation
+wim_index_2=ServerStandardEval | Server | 10.0.17763.3650 | Windows Server 2019 Standard Evaluation (Desktop Experience)
+wim_index_3=ServerDatacenterEval | Server Core | 10.0.17763.3650 | Windows Server 2019 Datacenter Evaluation
+wim_index_4=ServerDatacenterEval | Server | 10.0.17763.3650 | Windows Server 2019 Datacenter Evaluation (Desktop Experience)
+installed_index=2
+collector=loot-host.ps1 git_blob=3177b6d78c321a89671da4e487142ccbf93e3634 sha256=4579a2cbf4391cca11c83d5b6f2dc839bb3f2f5590c3d34bc53c31e174737050
+collector=conn-audit.ps1 git_blob=a3b065b5815d779d88c9fc6d88ffe9511cb06aed sha256=9111596414397735987afdf5437689dfb1d62226c07991e213f5943590b76290
+profile=Public scan=1 window=3600 settle=300 stable=600 maxwait=3600
+memory_mib=4096 vcpus=2 osinfo=win2k19
+mac=52:54:00:aa:de:7e bridge=virbr-bl egress_hours=0
+features=OpenSSH (installed after settling, then reboot; see full/features.log)
+network=bl-iso (isolated: no forward, no DNS, no gateway) internet=no
+hardware=sata disk, e1000e nic, uefi secure-boot, tpm-crb, no balloon, no guest agent, COM2 = host-to-guest control socket (scan done)
+admin_password=<random, never used>
+logon=none (no AutoLogon, no FirstLogonCommands)
+host=7.2.9-200.fc44.x86_64 qemu-kvm-core-10.2.2 libvirt-daemon-12.0.0 edk2-ovmf-20260812
+host_paths=the runner's home is written as $HOME in recipe/ and nmap/ (the files the host writes)

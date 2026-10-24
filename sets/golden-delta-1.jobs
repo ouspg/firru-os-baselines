@@ -1,0 +1,7 @@
+# Delta set 1 (bl-linux.sh BASE=1 / OVERLAY=): one saved stock Ubuntu server,
+# changes made in it as an administrator would. One worker: the base first.
+# REBOOT=1 runs check the method against the full-install -g1 runs.
+ubuntu-24.04.5-server-base1                 ISO=ubuntu-24.04.5-live-server-amd64.iso SCAN=1 SNAPSHOT=20261015T000000Z PACKAGES= BASE=1
+ubuntu-24.04.5-server+strongswan-d1         OVERLAY=ubuntu-24.04.5-server-base1 SCAN=1 PACKAGES=strongswan
+ubuntu-24.04.5-server+caddy-d1              OVERLAY=ubuntu-24.04.5-server-base1 SCAN=1 PACKAGES=caddy REBOOT=1
+ubuntu-24.04.5-server+xrdp-d1               OVERLAY=ubuntu-24.04.5-server-base1 SCAN=1 PACKAGES=xrdp REBOOT=1

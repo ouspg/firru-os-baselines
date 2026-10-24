@@ -1,0 +1,22 @@
+Set-Service : Service sshd was not found on computer '.'.
+At C:\bl-tools\collect.ps1:206 char:24
++ ...        $flog.Add((& { Set-Service sshd -StartupType Automatic; Start- ...
++                           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : ObjectNotFound: (.:String) [Set-Service], InvalidOperationException
+    + FullyQualifiedErrorId : InvalidOperationException,Microsoft.PowerShell.Commands.SetServiceCommand
+ 
+Start-Service : Cannot find any service with service name 'sshd'.
+At C:\bl-tools\collect.ps1:206 char:65
++ ... { Set-Service sshd -StartupType Automatic; Start-Service sshd; Get-Se ...
++                                                ~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : ObjectNotFound: (sshd:String) [Start-Service], ServiceCommandException
+    + FullyQualifiedErrorId : NoServiceFoundForGivenName,Microsoft.PowerShell.Commands.StartServiceCommand
+ 
+Get-Service : Cannot find any service with service name 'sshd'.
+At C:\bl-tools\collect.ps1:206 char:85
++ ...  -StartupType Automatic; Start-Service sshd; Get-Service sshd | Forma ...
++                                                  ~~~~~~~~~~~~~~~~
+    + CategoryInfo          : ObjectNotFound: (sshd:String) [Get-Service], ServiceCommandException
+    + FullyQualifiedErrorId : NoServiceFoundForGivenName,Microsoft.PowerShell.Commands.GetServiceCommand
+ 
+

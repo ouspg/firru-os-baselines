@@ -1,0 +1,6 @@
+tcp 0.0.0.0:111 /system.slice/rpcbind.socket
+tcp 0.0.0.0:22 /system.slice/sshd.service
+tcp [::]:111 /system.slice/rpcbind.socket
+tcp [::]:22 /system.slice/sshd.service
+udp 0.0.0.0:111 /system.slice/rpcbind.socket
+udp [::]:111 /system.slice/rpcbind.socket

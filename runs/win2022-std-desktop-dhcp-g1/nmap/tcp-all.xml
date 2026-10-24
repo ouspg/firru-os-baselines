@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE nmaprun>
+<?xml-stylesheet href="file:///usr/share/nmap/nmap.xsl" type="text/xsl"?>
+<!-- Nmap 7.92 scan initiated Sun Oct 18 14:56:57 2026 as: ~/.local/bin/nmap-raw -sT -p- -T4 -Pn -n -&#45;max-retries 1 -&#45;min-rate 1500 -oX ~/firru-os-baselines/work/win/nmap-win2022-std-desktop-dhcp-g1/tcp-all.xml 192.168.150.149 -->
+<nmaprun scanner="nmap" args="~/.local/bin/nmap-raw -sT -p- -T4 -Pn -n -&#45;max-retries 1 -&#45;min-rate 1500 -oX ~/firru-os-baselines/work/win/nmap-win2022-std-desktop-dhcp-g1/tcp-all.xml 192.168.150.149" start="1792324617" startstr="Sun Oct 18 14:56:57 2026" version="7.92" xmloutputversion="1.05">
+<scaninfo type="connect" protocol="tcp" numservices="65535" services="1-65535"/>
+<verbose level="0"/>
+<debugging level="0"/>
+<host starttime="1792324617" endtime="1792324696"><status state="up" reason="user-set" reason_ttl="0"/>
+<address addr="192.168.150.149" addrtype="ipv4"/>
+<hostnames>
+</hostnames>
+<ports><extraports state="filtered" count="65530">
+<extrareasons reason="no-response" count="65530" proto="tcp" ports="1-134,136-444,446-5984,5986-49668,49671-65535"/>
+</extraports>
+<port protocol="tcp" portid="135"><state state="open" reason="syn-ack" reason_ttl="0"/><service name="msrpc" method="table" conf="3"/></port>
+<port protocol="tcp" portid="445"><state state="open" reason="syn-ack" reason_ttl="0"/><service name="microsoft-ds" method="table" conf="3"/></port>
+<port protocol="tcp" portid="5985"><state state="open" reason="syn-ack" reason_ttl="0"/><service name="wsman" method="table" conf="3"/></port>
+<port protocol="tcp" portid="49669"><state state="open" reason="syn-ack" reason_ttl="0"/></port>
+<port protocol="tcp" portid="49670"><state state="open" reason="syn-ack" reason_ttl="0"/></port>
+</ports>
+<times srtt="221" rttvar="27" to="100000"/>
+</host>
+<runstats><finished time="1792324696" timestr="Sun Oct 18 14:58:16 2026" summary="Nmap done at Sun Oct 18 14:58:16 2026; 1 IP address (1 host up) scanned in 79.01 seconds" elapsed="79.01" exit="success"/><hosts up="1" down="0" total="1"/>
+</runstats>
+</nmaprun>

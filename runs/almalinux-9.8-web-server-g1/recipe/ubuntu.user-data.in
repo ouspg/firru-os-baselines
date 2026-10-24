@@ -1,0 +1,70 @@
+#cloud-config
+# Ubuntu golden set (bl-linux.sh): the server ISO, packages from
+# snapshot.ubuntu.com at one fixed timestamp through the host's proxy (the
+# guest reaches nothing else). The stock sources are put back before the
+# first boot, so the installed system points at the archive as usual.
+autoinstall:
+  version: 1
+  refresh-installer:
+    update: false
+  source:
+    id: ubuntu-server
+  apt:
+    geoip: false
+    preserve_sources_list: false
+    mirror-selection:
+      primary:
+      - uri: @MIRROR@
+    fallback: abort
+  identity:
+    hostname: baseline-ubuntu
+    username: ubuntu
+    password: '@PWHASH@'
+  ssh:
+    install-server: @SSH@
+  # Subiquity installs offline (ignoring the mirror) when there is no default
+  # route, and the isolated bridge has none. The installer alone gets one, to
+  # the host, which forwards nothing; the late-commands put back the netplan
+  # file Subiquity writes for a plain DHCP install.
+  network:
+    version: 2
+    ethernets:
+      bl:
+        match:
+          name: "en*"
+        dhcp4: true
+        routes:
+        - to: default
+          via: @HOSTIP@
+  storage:
+    layout:
+      name: lvm
+  packages: [@PACKAGES@]
+  late-commands:
+  - |
+    cat > /target/etc/apt/sources.list.d/ubuntu.sources <<'S'
+    Types: deb
+    URIs: http://archive.ubuntu.com/ubuntu/
+    Suites: noble noble-updates noble-backports
+    Components: main restricted universe multiverse
+    Signed-By: /usr/share/keyrings/ubuntu-archive-keyring.gpg
+
+    Types: deb
+    URIs: http://security.ubuntu.com/ubuntu/
+    Suites: noble-security
+    Components: main restricted universe multiverse
+    Signed-By: /usr/share/keyrings/ubuntu-archive-keyring.gpg
+    S
+  - rm -f /target/var/lib/apt/lists/192.168.150.1*
+  - |
+    nic=$(ls /sys/class/net | grep '^en' | head -1)
+    printf "# This is the network config written by 'subiquity'\nnetwork:\n  ethernets:\n    %s:\n      dhcp4: true\n  version: 2\n" "$nic" > /target/etc/netplan/50-cloud-init.yaml
+    chmod 600 /target/etc/netplan/50-cloud-init.yaml
+    # cloud-init re-renders netplan on first boot from the installer's copy
+    # of the network section: that copy gets the same DHCP-only config.
+    for f in $(grep -l '@HOSTIP@' /target/etc/cloud/cloud.cfg.d/* 2>/dev/null); do
+      echo "bl: route scrubbed from $f"
+      printf "network:\n  ethernets:\n    %s:\n      dhcp4: true\n  version: 2\n" "$nic" > "$f"
+    done
+  - echo @STUB64@ | base64 -d | chroot /target /bin/sh
+  shutdown: poweroff

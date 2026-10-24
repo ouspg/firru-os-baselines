@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE nmaprun>
+<?xml-stylesheet href="file:///usr/share/nmap/nmap.xsl" type="text/xsl"?>
+<!-- Nmap 7.92 scan initiated Tue Oct 20 09:11:41 2026 as: $HOME/.local/bin/nmap-raw -sT -sV -Pn -n -p 19531,19532 -oX $HOME/firru-os-baselines/work/linux/tmp.DqoRITyz5G/nmap/tcp-sv.xml 192.168.150.169 -->
+<nmaprun scanner="nmap" args="$HOME/.local/bin/nmap-raw -sT -sV -Pn -n -p 19531,19532 -oX $HOME/firru-os-baselines/work/linux/tmp.DqoRITyz5G/nmap/tcp-sv.xml 192.168.150.169" start="1792476701" startstr="Tue Oct 20 09:11:41 2026" version="7.92" xmloutputversion="1.05">
+<scaninfo type="connect" protocol="tcp" numservices="2" services="19531-19532"/>
+<verbose level="0"/>
+<debugging level="0"/>
+<host starttime="1792476701" endtime="1792476712"><status state="up" reason="user-set" reason_ttl="0"/>
+<address addr="192.168.150.169" addrtype="ipv4"/>
+<hostnames>
+</hostnames>
+<ports><port protocol="tcp" portid="19531"><state state="open" reason="syn-ack" reason_ttl="0"/><service name="unknown" servicefp="SF-Port19531-TCP:V=7.92%I=7%D=10/20%Time=6AD70628%P=x86_64-redhat-linux-gnu%r(GetRequest,F1,&quot;HTTP/1\.1\x20301\x20Moved\x20Permanently\r\nDate:\x20Tue,\x2020\x20Oct\x202026\x2006:11:52\x20GMT\r\nConnection:\x20close\r\nContent-Type:\x20text/html\r\nLocation:\x20/browse\r\nContent-Length:\x2087\r\n\r\n&lt;html&gt;&lt;body&gt;Please\x20continue\x20to\x20the\x20&lt;a\x20href=\&quot;/browse\&quot;&gt;journal\x20browser&lt;/a&gt;\.&lt;/body&gt;&lt;/html&gt;&quot;)%r(HTTPOptions,99,&quot;HTTP/1\.1\x20406\x20Not\x20Acceptable\r\nDate:\x20Tue,\x2020\x20Oct\x202026\x2006:11:52\x20GMT\r\nConnection:\x20close\r\nContent-Type:\x20text/plain\r\nContent-Length:\x2020\r\n\r\nUnsupported\x20method\.\n&quot;)%r(RTSPRequest,D8,&quot;HTTP/1\.1\x20400\x20Bad\x20Request\r\nDate:\x20Tue,\x2020\x20Oct\x202026\x2006:11:52\x20GMT\r\nConnection:\x20close\r\nContent-Length:\x20111\r\n\r\n&lt;html&gt;&lt;head&gt;&lt;title&gt;Request\x20malformed&lt;/title&gt;&lt;/head&gt;&lt;body&gt;HTTP\x20request\x20is\x20syntactically\x20incorrect\.&lt;/body&gt;&lt;/html&gt;&quot;)%r(FourOhFourRequest,8B,&quot;HTTP/1\.1\x20404\x20Not\x20Found\r\nDate:\x20Tue,\x2020\x20Oct\x202026\x2006:11:52\x20GMT\r\nConnection:\x20close\r\nContent-Type:\x20text/plain\r\nContent-Length:\x2011\r\n\r\nNot\x20found\.\n&quot;)%r(SIPOptions,D8,&quot;HTTP/1\.1\x20400\x20Bad\x20Request\r\nDate:\x20Tue,\x2020\x20Oct\x202026\x2006:11:52\x20GMT\r\nConnection:\x20close\r\nContent-Length:\x20111\r\n\r\n&lt;html&gt;&lt;head&gt;&lt;title&gt;Request\x20malformed&lt;/title&gt;&lt;/head&gt;&lt;body&gt;HTTP\x20request\x20is\x20syntactically\x20incorrect\.&lt;/body&gt;&lt;/html&gt;&quot;);" method="table" conf="3"/></port>
+<port protocol="tcp" portid="19532"><state state="closed" reason="conn-refused" reason_ttl="0"/></port>
+</ports>
+<times srtt="236" rttvar="3771" to="100000"/>
+</host>
+<runstats><finished time="1792476712" timestr="Tue Oct 20 09:11:52 2026" summary="Nmap done at Tue Oct 20 09:11:52 2026; 1 IP address (1 host up) scanned in 11.31 seconds" elapsed="11.31" exit="success"/><hosts up="1" down="0" total="1"/>
+</runstats>
+</nmaprun>

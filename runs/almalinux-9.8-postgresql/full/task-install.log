@@ -1,0 +1,58 @@
+AlmaLinux 9 - AppStream                          14 MB/s |  28 MB     00:01    
+AlmaLinux 9 - BaseOS                             18 MB/s |  43 MB     00:02    
+AlmaLinux 9 - Extras                             69 kB/s |  33 kB     00:00    
+Last metadata expiration check: 0:00:01 ago on Thu 01 Oct 2026 09:10:35 PM UTC.
+Dependencies resolved.
+================================================================================
+ Package                     Arch       Version             Repository     Size
+================================================================================
+Installing:
+ postgresql-server           x86_64     13.23-6.el9_8       appstream     5.7 M
+Installing dependencies:
+ libicu                      x86_64     67.1-10.el9_6       baseos        9.6 M
+ postgresql                  x86_64     13.23-6.el9_8       appstream     1.6 M
+ postgresql-private-libs     x86_64     13.23-6.el9_8       appstream     139 k
+
+Transaction Summary
+================================================================================
+Install  4 Packages
+
+Total download size: 17 M
+Installed size: 62 M
+Downloading Packages:
+(1/4): postgresql-private-libs-13.23-6.el9_8.x8 1.1 MB/s | 139 kB     00:00    
+(2/4): postgresql-13.23-6.el9_8.x86_64.rpm      6.2 MB/s | 1.6 MB     00:00    
+(3/4): postgresql-server-13.23-6.el9_8.x86_64.r  15 MB/s | 5.7 MB     00:00    
+(4/4): libicu-67.1-10.el9_6.x86_64.rpm          7.0 MB/s | 9.6 MB     00:01    
+--------------------------------------------------------------------------------
+Total                                           7.3 MB/s |  17 MB     00:02     
+AlmaLinux 9 - AppStream                         3.0 MB/s | 3.1 kB     00:00    
+Importing GPG key 0xB86B3716:
+ Userid     : "AlmaLinux OS 9 <packager@almalinux.org>"
+ Fingerprint: BF18 AC28 7617 8908 D6E7 1267 D36C B86C B86B 3716
+ From       : /etc/pki/rpm-gpg/RPM-GPG-KEY-AlmaLinux-9
+Key imported successfully
+Running transaction check
+Transaction check succeeded.
+Running transaction test
+Transaction test succeeded.
+Running transaction
+  Preparing        :                                                        1/1 
+  Installing       : postgresql-private-libs-13.23-6.el9_8.x86_64           1/4 
+  Installing       : postgresql-13.23-6.el9_8.x86_64                        2/4 
+  Installing       : libicu-67.1-10.el9_6.x86_64                            3/4 
+  Running scriptlet: postgresql-server-13.23-6.el9_8.x86_64                 4/4 
+  Installing       : postgresql-server-13.23-6.el9_8.x86_64                 4/4 
+  Running scriptlet: postgresql-server-13.23-6.el9_8.x86_64                 4/4 
+  Verifying        : postgresql-13.23-6.el9_8.x86_64                        1/4 
+  Verifying        : postgresql-private-libs-13.23-6.el9_8.x86_64           2/4 
+  Verifying        : postgresql-server-13.23-6.el9_8.x86_64                 3/4 
+  Verifying        : libicu-67.1-10.el9_6.x86_64                            4/4 
+
+Installed:
+  libicu-67.1-10.el9_6.x86_64                                                   
+  postgresql-13.23-6.el9_8.x86_64                                               
+  postgresql-private-libs-13.23-6.el9_8.x86_64                                  
+  postgresql-server-13.23-6.el9_8.x86_64                                        
+
+Complete!

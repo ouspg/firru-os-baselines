@@ -1,0 +1,16 @@
+Netid State  Recv-Q Send-Q          Local Address:Port Peer Address:PortProcess                                                                                                           
+udp   UNCONN 0      0                  127.0.0.54:53        0.0.0.0:*    users:(("systemd-resolve",pid=592,fd=16)) uid:992 ino:7258 sk:1 cgroup:/system.slice/systemd-resolved.service <->
+udp   UNCONN 0      0               127.0.0.53%lo:53        0.0.0.0:*    users:(("systemd-resolve",pid=592,fd=14)) uid:992 ino:7256 sk:2 cgroup:/system.slice/systemd-resolved.service <->
+udp   UNCONN 0      0      192.168.150.117%enp1s0:68        0.0.0.0:*    users:(("systemd-network",pid=819,fd=22)) uid:998 ino:8807 sk:3 cgroup:/system.slice/systemd-networkd.service <->
+udp   UNCONN 0      0             192.168.150.255:137       0.0.0.0:*    users:(("nmbd",pid=925,fd=16)) ino:9820 sk:1001 cgroup:/system.slice/nmbd.service <->                            
+udp   UNCONN 0      0             192.168.150.117:137       0.0.0.0:*    users:(("nmbd",pid=925,fd=15)) ino:9819 sk:1002 cgroup:/system.slice/nmbd.service <->                            
+udp   UNCONN 0      0                     0.0.0.0:137       0.0.0.0:*    users:(("nmbd",pid=925,fd=13)) ino:9807 sk:1003 cgroup:/system.slice/nmbd.service <->                            
+udp   UNCONN 0      0             192.168.150.255:138       0.0.0.0:*    users:(("nmbd",pid=925,fd=18)) ino:9822 sk:1004 cgroup:/system.slice/nmbd.service <->                            
+udp   UNCONN 0      0             192.168.150.117:138       0.0.0.0:*    users:(("nmbd",pid=925,fd=17)) ino:9821 sk:1005 cgroup:/system.slice/nmbd.service <->                            
+udp   UNCONN 0      0                     0.0.0.0:138       0.0.0.0:*    users:(("nmbd",pid=925,fd=14)) ino:9808 sk:1006 cgroup:/system.slice/nmbd.service <->                            
+tcp   LISTEN 0      4096               127.0.0.54:53        0.0.0.0:*    users:(("systemd-resolve",pid=592,fd=17)) uid:992 ino:7259 sk:4 cgroup:/system.slice/systemd-resolved.service <->
+tcp   LISTEN 0      50                    0.0.0.0:445       0.0.0.0:*    users:(("smbd",pid=1074,fd=31)) ino:10877 sk:1007 cgroup:/system.slice/smbd.service <->                          
+tcp   LISTEN 0      50                    0.0.0.0:139       0.0.0.0:*    users:(("smbd",pid=1074,fd=32)) ino:10878 sk:1008 cgroup:/system.slice/smbd.service <->                          
+tcp   LISTEN 0      4096            127.0.0.53%lo:53        0.0.0.0:*    users:(("systemd-resolve",pid=592,fd=15)) uid:992 ino:7257 sk:5 cgroup:/system.slice/systemd-resolved.service <->
+tcp   LISTEN 0      50                       [::]:445          [::]:*    users:(("smbd",pid=1074,fd=29)) ino:10875 sk:1009 cgroup:/system.slice/smbd.service v6only:1 <->                 
+tcp   LISTEN 0      50                       [::]:139          [::]:*    users:(("smbd",pid=1074,fd=30)) ino:10876 sk:100a cgroup:/system.slice/smbd.service v6only:1 <->                 

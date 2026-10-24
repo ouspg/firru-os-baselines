@@ -1,0 +1,19 @@
+# Fedora golden set 1 (2026-10-19): Fedora 44 as released, from the netinst ISO
+# and the frozen Everything tree (pipeline/linux/bl-linux.sh). Roles on the
+# smallest environment (custom-environment: Fedora 44 has no minimal one), as
+# the AlmaLinux roles sit on minimal. Fedora Server ships Cockpit already.
+# NAME ENV=VALUE ... ; run by bin/run-list.sh.
+
+fedora-44-minimal-g1         ISO=Fedora-Everything-netinst-x86_64-44-1.7.iso SCAN=1 PACKAGES=@^custom-environment
+fedora-44-server-g1          ISO=Fedora-Everything-netinst-x86_64-44-1.7.iso SCAN=1 PACKAGES=@^server-product-environment
+fedora-44-workstation-g1     ISO=Fedora-Everything-netinst-x86_64-44-1.7.iso SCAN=1 PACKAGES=@^workstation-product-environment GRAPHICS=vnc MEMORY=6144
+fedora-44-kde-g1             ISO=Fedora-Everything-netinst-x86_64-44-1.7.iso SCAN=1 PACKAGES=@^kde-desktop-environment GRAPHICS=vnc MEMORY=6144
+fedora-44-web-server-g1      ISO=Fedora-Everything-netinst-x86_64-44-1.7.iso SCAN=1 PACKAGES=@^custom-environment;@web-server
+fedora-44-dns-server-g1      ISO=Fedora-Everything-netinst-x86_64-44-1.7.iso SCAN=1 PACKAGES=@^custom-environment;@dns-server
+fedora-44-mail-server-g1     ISO=Fedora-Everything-netinst-x86_64-44-1.7.iso SCAN=1 PACKAGES=@^custom-environment;@mail-server
+fedora-44-smb-server-g1      ISO=Fedora-Everything-netinst-x86_64-44-1.7.iso SCAN=1 PACKAGES=@^custom-environment;@smb-server
+fedora-44-ftp-server-g1      ISO=Fedora-Everything-netinst-x86_64-44-1.7.iso SCAN=1 PACKAGES=@^custom-environment;@ftp-server
+fedora-44-mariadb-g1         ISO=Fedora-Everything-netinst-x86_64-44-1.7.iso SCAN=1 PACKAGES=@^custom-environment;@mysql
+fedora-44-postgresql-g1      ISO=Fedora-Everything-netinst-x86_64-44-1.7.iso SCAN=1 PACKAGES=@^custom-environment;@sql-server
+fedora-44-virtualization-g1  ISO=Fedora-Everything-netinst-x86_64-44-1.7.iso SCAN=1 PACKAGES=@^custom-environment;@virtualization
+fedora-44-printing-g1        ISO=Fedora-Everything-netinst-x86_64-44-1.7.iso SCAN=1 PACKAGES=@^custom-environment;@printing

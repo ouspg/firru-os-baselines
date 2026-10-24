@@ -1,0 +1,43 @@
+BASELINE 2026-10-19T17:05:30Z up=9 start ubuntu-24.04.5-server-base1 mode=base
+BASELINE 2026-10-19T17:05:31Z up=9 listeners=3 stable=0s jobs=25
+BASELINE 2026-10-19T17:06:01Z up=40 listeners=3 stable=31s jobs=7
+BASELINE 2026-10-19T17:06:31Z up=70 listeners=3 stable=61s jobs=0
+BASELINE 2026-10-19T17:07:01Z up=100 listeners=3 stable=91s jobs=0
+BASELINE 2026-10-19T17:07:31Z up=130 listeners=3 stable=121s jobs=0
+BASELINE 2026-10-19T17:08:01Z up=160 listeners=3 stable=151s jobs=0
+BASELINE 2026-10-19T17:08:31Z up=190 listeners=3 stable=181s jobs=0
+BASELINE 2026-10-19T17:09:01Z up=220 listeners=3 stable=211s jobs=0
+BASELINE 2026-10-19T17:09:31Z up=250 listeners=3 stable=241s jobs=0
+BASELINE 2026-10-19T17:10:01Z up=280 listeners=3 stable=271s jobs=1
+BASELINE 2026-10-19T17:10:31Z up=310 listeners=3 stable=301s jobs=1
+BASELINE 2026-10-19T17:11:01Z up=340 listeners=3 stable=331s jobs=0
+BASELINE 2026-10-19T17:11:31Z up=370 listeners=3 stable=361s jobs=0
+BASELINE 2026-10-19T17:12:01Z up=400 listeners=3 stable=391s jobs=0
+BASELINE 2026-10-19T17:12:31Z up=430 listeners=3 stable=421s jobs=0
+BASELINE 2026-10-19T17:13:01Z up=460 listeners=3 stable=451s jobs=0
+BASELINE 2026-10-19T17:13:31Z up=490 listeners=3 stable=481s jobs=0
+BASELINE 2026-10-19T17:14:01Z up=520 listeners=3 stable=511s jobs=0
+BASELINE 2026-10-19T17:14:31Z up=550 listeners=3 stable=541s jobs=0
+BASELINE 2026-10-19T17:15:01Z up=580 listeners=3 stable=571s jobs=0
+BASELINE 2026-10-19T17:15:31Z up=610 settled: last listener change at up=9s, state=running
+BASELINE 2026-10-19T17:15:31Z up=610 loot-host
+BASELINE 2026-10-19T17:15:31Z up=610 extras
+BASELINE 2026-10-19T17:15:41Z up=620 osquery datapoints
+BASELINE 2026-10-19T17:15:47Z up=626 BASELINE-SCAN-READY ip=192.168.150.169
+BASELINE 2026-10-19T17:15:57Z up=636 BASELINE-SCAN-CLOSED reason=signal
+BASELINE 2026-10-19T17:15:57Z up=636 BASELINE-DELTA-READY
+BASELINE 2026-10-19T21:01:43Z up=651 start ubuntu-24.04.5-server+bacula-fd-d1 mode=job
+BASELINE 2026-10-19T21:01:43Z up=651 change: set -e;bl-apt install -y bacula-fd;for p in bacula-fd; do dpkg -L $p; done | grep -E '/lib/systemd/system/[^/@]+[.](socket|service)$' |;  xargs -rn1 basename | sort -u | xargs -r systemctl enable --now
+BASELINE 2026-10-19T21:02:43Z up=711 change rc=0
+BASELINE 2026-10-19T21:02:43Z up=711 listeners=4 stable=0s jobs=2
+BASELINE 2026-10-19T21:03:13Z up=741 listeners=4 stable=30s jobs=0
+BASELINE 2026-10-19T21:03:43Z up=772 listeners=4 stable=61s jobs=0
+BASELINE 2026-10-19T21:04:13Z up=802 listeners=4 stable=91s jobs=0
+BASELINE 2026-10-19T21:04:43Z up=832 settled: last listener change at up=711s, state=running
+BASELINE 2026-10-19T21:04:43Z up=832 loot-host
+BASELINE 2026-10-19T21:04:44Z up=832 extras
+BASELINE 2026-10-19T21:04:48Z up=837 osquery datapoints
+BASELINE 2026-10-19T21:04:55Z up=843 BASELINE-SCAN-READY ip=192.168.150.169
+BASELINE 2026-10-19T21:05:05Z up=853 BASELINE-SCAN-CLOSED reason=signal
+BASELINE 2026-10-19T21:05:05Z up=853 sweep
+BASELINE 2026-10-19T21:07:00Z up=968 done

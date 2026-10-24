@@ -1,0 +1,115 @@
+#cloud-config
+# Ubuntu golden set (bl-linux.sh): the server or desktop ISO, packages from
+# snapshot.ubuntu.com at one fixed timestamp through the host's proxy (the
+# guest reaches nothing else). The stock sources are put back before the
+# first boot, so the installed system points at the archive as usual.
+autoinstall:
+  version: 1
+  refresh-installer:
+    update: false
+  source:
+    id: ubuntu-server
+  apt:
+    geoip: false
+    preserve_sources_list: false
+    primary:
+    - arches: [default]
+      uri: http://192.168.150.1:3142/ubuntu-22.04.5-server+mail-server-g1/ubuntu
+    # The security pocket too: by default it goes to security.ubuntu.com,
+    # which the guest cannot reach.
+    security:
+    - arches: [default]
+      uri: http://192.168.150.1:3142/ubuntu-22.04.5-server+mail-server-g1/ubuntu
+    # Retries with backoff for the installer's own apt too (an egress run
+    # fetches from snapshot.ubuntu.com directly, which answers 503 under load).
+    # curtin writes this into the target; a late-command removes it again.
+    conf: |
+      Acquire::Retries "20";
+      Acquire::Retries::Delay::Maximum "60";
+  identity:
+    hostname: baseline-ubuntu
+    username: ubuntu
+    password: '<random hash, never used>'
+  ssh:
+    install-server: false
+  # Subiquity installs offline (ignoring the mirror) when there is no default
+  # route, and the isolated bridge has none. The installer alone gets one, to
+  # the host, which forwards nothing; the late-commands put back the netplan
+  # file Subiquity writes for a plain DHCP install.
+  network:
+    version: 2
+    ethernets:
+      bl:
+        match:
+          name: "en*"
+        dhcp4: true
+        routes:
+        - to: default
+          via: 192.168.150.1
+  # Each ISO's default layout: LVM on the server, a plain partition on the
+  # desktop.
+  storage:
+    layout:
+      name: lvm
+  # Retries with apt's backoff: an egress run fetches from snapshot.ubuntu.com
+  # directly, which answers 503 when several runs download at once.
+  # The variant's packages go in with plain apt-get in the target, while its
+  # apt still points at the snapshot proxy (the next command restores the
+  # stock sources): Subiquity's own packages list fails on tasks
+  # (lamp-server^), apt-get resolves them as an administrator's apt would.
+  packages: []
+  late-commands:
+  - |
+    [ -z "mail-server^" ] || { curtin in-target --target=/target -- sh -c 'apt-get -o Acquire::Retries=20 update && DEBIAN_FRONTEND=noninteractive apt-get -o Acquire::Retries=20 -o Acquire::Retries::Delay::Maximum=60 install -y mail-server^' > /target/var/log/bl-packages.log 2>&1; echo "bl_packages_rc=$?" >> /target/var/log/bl-packages.log; }; true
+  # The release's stock sources: deb822 since 24.04, sources.list before.
+  - |
+    if [ jammy = jammy ]; then
+    cat > /target/etc/apt/sources.list <<'S'
+    deb http://archive.ubuntu.com/ubuntu/ jammy main restricted universe multiverse
+    deb http://archive.ubuntu.com/ubuntu/ jammy-updates main restricted universe multiverse
+    deb http://archive.ubuntu.com/ubuntu/ jammy-backports main restricted universe multiverse
+    deb http://security.ubuntu.com/ubuntu/ jammy-security main restricted universe multiverse
+    S
+    else
+    cat > /target/etc/apt/sources.list.d/ubuntu.sources <<'S'
+    Types: deb
+    URIs: http://archive.ubuntu.com/ubuntu/
+    Suites: jammy jammy-updates jammy-backports
+    Components: main restricted universe multiverse
+    Signed-By: /usr/share/keyrings/ubuntu-archive-keyring.gpg
+
+    Types: deb
+    URIs: http://security.ubuntu.com/ubuntu/
+    Suites: jammy-security
+    Components: main restricted universe multiverse
+    Signed-By: /usr/share/keyrings/ubuntu-archive-keyring.gpg
+    S
+    fi
+  - rm -f /target/var/lib/apt/lists/192.168.150.1*
+  - rm -f /target/etc/apt/apt.conf.d/94curtin-config
+  # The server: the netplan file Subiquity writes for a plain DHCP install.
+  # The desktop: NetworkManager as its stock netplan says, without the
+  # installer's route.
+  - |
+    nic=$(ls /sys/class/net | grep '^en' | head -1)
+    if [ server = desktop ]; then
+    for f in $(grep -l '192.168.150.1' /target/etc/netplan/* 2>/dev/null); do echo "bl: removed $f"; rm -f "$f"; done
+    [ -e /target/etc/netplan/01-network-manager-all.yaml ] || { printf "# Let NetworkManager manage all devices on this system\nnetwork:\n  version: 2\n  renderer: NetworkManager\n" > /target/etc/netplan/01-network-manager-all.yaml; chmod 600 /target/etc/netplan/01-network-manager-all.yaml; }
+    else
+    # The file the installer wrote with its route (26.04: 00-installer-config.yaml)
+    # becomes plain DHCP under its own name; with none (22.04, 24.04: cloud-init
+    # renders it at first boot), the 50-cloud-init.yaml those releases have.
+    files=$(grep -l '192.168.150.1' /target/etc/netplan/* 2>/dev/null); [ -n "$files" ] || files=/target/etc/netplan/50-cloud-init.yaml
+    for f in $files; do
+    printf "# This is the network config written by 'subiquity'\nnetwork:\n  ethernets:\n    %s:\n      dhcp4: true\n  version: 2\n" "$nic" > "$f"
+    chmod 600 "$f"; echo "bl: DHCP-only $f"
+    done
+    fi
+    # cloud-init re-renders netplan on first boot from the installer's copy
+    # of the network section: that copy gets the same DHCP-only config.
+    for f in $(grep -l '192.168.150.1' /target/etc/cloud/cloud.cfg.d/* 2>/dev/null); do
+      echo "bl: route scrubbed from $f"
+      printf "network:\n  ethernets:\n    %s:\n      dhcp4: true\n  version: 2\n" "$nic" > "$f"
+    done
+  - echo IyBUaGUgYm9vdCBob29rIGEgYmFzZWxpbmUgaW5zdGFsbCBsZWF2ZXMgaW4gdGhlIGd1ZXN0LCB3cml0dGVuIGJ5IHRoZQojIGluc3RhbGxlciAoa2lja3N0YXJ0ICVwb3N0LCBhdXRvaW5zdGFsbCBsYXRlLWNvbW1hbmRzLCBwcmVzZWVkIGxhdGVfY29tbWFuZCk6CiMgdGhlIG9ubHkgZmlsZSBhbmQgdW5pdHMgYSBydW4gYWRkcyB0byB0aGUgc3lzdGVtLiBBdCBldmVyeSBib290CiMgaXQgbW91bnRzIHRoZSBCTFRPT0xTIENELCBpZiBwcmVzZW50LCBhbmQgcnVucyBpdHMgY29sbGVjdC5zaCBvbmNlOyBiZWZvcmUKIyB0aGF0LCBiYXNlbGluZS1hdWRpdC5zZXJ2aWNlIHN0YXJ0cyB0aGUgY29ubmVjdGlvbiBhdWRpdCBmcm9tIHRoZSBDRCBhbmQKIyBob2xkcyB0aGUgbmV0d29yayBiYWNrIHVudGlsIGl0cyBwcm9iZXMgYXJlIGF0dGFjaGVkIChhIGZldyBzZWNvbmRzKSwgc28KIyBib290LXRpbWUgbG9va3VwcyAocG9sbGluYXRlLCBzbmFwZCkgYXJlIHNlZW4gdG9vLgpta2RpciAtcCAvdXNyL2xvY2FsL3NiaW4KY2F0ID4gL3Vzci9sb2NhbC9zYmluL2Jhc2VsaW5lLWpvYi5zaCA8PCdKJwojIS9iaW4vc2gKIyBiYXNlbGluZS1qb2Iuc2ggW2F1ZGl0XQpbIC1lIC92YXIvdG1wL2Jhc2VsaW5lL2RvbmUgXSAmJiBleGl0IDAKbWtkaXIgLXAgL3J1bi9ibC10b29scwojIFVuZGVyIFNFTGludXggdGhlIENEJ3MgZmlsZXMgYXJlIGlzbzk2NjBfdCwgd2hpY2ggYSBzZXJ2aWNlIG1heSBub3QgZXhlY3V0ZQojIChicGZ0cmFjZSBmb3IgdGhlIGNvbm5lY3Rpb24gYXVkaXQpOiBtb3VudGVkIGFzIGJpbl90LCBsaWtlIGFueSBzeXN0ZW0gYmluYXJ5LgpvPXJvOyBbIC1lIC9zeXMvZnMvc2VsaW51eC9lbmZvcmNlIF0gJiYgbz1ybyxjb250ZXh0PXN5c3RlbV91Om9iamVjdF9yOmJpbl90OnMwCiMgRWFybHkgaW4gYm9vdCAoYmVsb3cpIHRoZSBkcml2ZSBjYW4gYmUgbGF0ZTogdXAgdG8gMzAgcy4KaT0wOyB1bnRpbCBtb3VudHBvaW50IC1xIC9ydW4vYmwtdG9vbHMgfHwgbW91bnQgLW8gJG8gTEFCRUw9QkxUT09MUyAvcnVuL2JsLXRvb2xzIDI+L2Rldi9udWxsOyBkbwogIGk9JCgoaSsxKSk7IFsgJGkgLWx0IDE1IF0gfHwgZXhpdCAwOyBzbGVlcCAyOyBkb25lCmlmIFsgIiR7MTotfSIgPSBhdWRpdCBdOyB0aGVuCiAgWyAtZSAvcnVuL2JsLXRvb2xzL2JwZnRyYWNlIF0gJiYgWyAtZSAvcnVuL2JsLXRvb2xzL2Nvbm4tYXVkaXQuc2ggXSB8fCBleGl0IDAKICBQQVRIPS9ydW4vYmwtdG9vbHM6JFBBVEggZXhlYyAvYmluL2Jhc2ggL3J1bi9ibC10b29scy9jb25uLWF1ZGl0LnNoIHN0YXJ0CmZpCmV4ZWMgL2Jpbi9iYXNoIC9ydW4vYmwtdG9vbHMvY29sbGVjdC5zaApKCmNobW9kIDA3NTUgL3Vzci9sb2NhbC9zYmluL2Jhc2VsaW5lLWpvYi5zaApjYXQgPiAvZXRjL3N5c3RlbWQvc3lzdGVtL2Jhc2VsaW5lLWF1ZGl0LnNlcnZpY2UgPDwnVScKW1VuaXRdCkRlc2NyaXB0aW9uPUJhc2VsaW5lIGNvbm5lY3Rpb24gYXVkaXQgKGdvbGRlbiBzZXQpLCBiZWZvcmUgdGhlIG5ldHdvcmsKRGVmYXVsdERlcGVuZGVuY2llcz1ubwpBZnRlcj1sb2NhbC1mcy50YXJnZXQgc3lzLWtlcm5lbC10cmFjaW5nLm1vdW50IHN5cy1rZXJuZWwtZGVidWcubW91bnQKV2FudHM9c3lzLWtlcm5lbC10cmFjaW5nLm1vdW50IHN5cy1rZXJuZWwtZGVidWcubW91bnQgbmV0d29yay1wcmUudGFyZ2V0CkJlZm9yZT1uZXR3b3JrLXByZS50YXJnZXQgc2h1dGRvd24udGFyZ2V0CkNvbmZsaWN0cz1zaHV0ZG93bi50YXJnZXQKW1NlcnZpY2VdClR5cGU9b25lc2hvdApSZW1haW5BZnRlckV4aXQ9eWVzClRpbWVvdXRTdGFydFNlYz02MApFeGVjU3RhcnQ9L3Vzci9sb2NhbC9zYmluL2Jhc2VsaW5lLWpvYi5zaCBhdWRpdApbSW5zdGFsbF0KV2FudGVkQnk9bXVsdGktdXNlci50YXJnZXQKVQpjYXQgPiAvZXRjL3N5c3RlbWQvc3lzdGVtL2Jhc2VsaW5lLWpvYi5zZXJ2aWNlIDw8J1UnCltVbml0XQpEZXNjcmlwdGlvbj1CYXNlbGluZSBjb2xsZWN0aW9uIChnb2xkZW4gc2V0KSwgZnJvbSB0aGUgQkxUT09MUyBDRAojIEJlZm9yZSB0aGUgbmV0d29yayBjb21lcyB1cCwgc28gdGhlIGNvbm5lY3Rpb24gYXVkaXQgc2VlcyBib290LXRpbWUKIyBsb29rdXBzIChwb2xsaW5hdGUsIHNuYXBkKTsgYWZ0ZXIgdGhlIHRyYWNpbmcgbW91bnRzIGJwZnRyYWNlIG5lZWRzLgpEZWZhdWx0RGVwZW5kZW5jaWVzPW5vCkFmdGVyPWxvY2FsLWZzLnRhcmdldCBzeXMta2VybmVsLXRyYWNpbmcubW91bnQgc3lzLWtlcm5lbC1kZWJ1Zy5tb3VudCBiYXNlbGluZS1hdWRpdC5zZXJ2aWNlCldhbnRzPXN5cy1rZXJuZWwtdHJhY2luZy5tb3VudCBzeXMta2VybmVsLWRlYnVnLm1vdW50IG5ldHdvcmstcHJlLnRhcmdldApCZWZvcmU9bmV0d29yay1wcmUudGFyZ2V0IHNodXRkb3duLnRhcmdldApDb25mbGljdHM9c2h1dGRvd24udGFyZ2V0CltTZXJ2aWNlXQpUeXBlPWV4ZWMKRXhlY1N0YXJ0PS91c3IvbG9jYWwvc2Jpbi9iYXNlbGluZS1qb2Iuc2gKW0luc3RhbGxdCldhbnRlZEJ5PW11bHRpLXVzZXIudGFyZ2V0ClUKc3lzdGVtY3RsIGVuYWJsZSBiYXNlbGluZS1hdWRpdC5zZXJ2aWNlIGJhc2VsaW5lLWpvYi5zZXJ2aWNlCg== | base64 -d | chroot /target /bin/sh
+  shutdown: poweroff

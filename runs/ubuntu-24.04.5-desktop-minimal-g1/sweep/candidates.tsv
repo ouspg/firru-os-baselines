@@ -1,0 +1,47 @@
+brltty.service	test	disabled
+console-getty.service	skip	deny-list
+debug-shell.service	skip	deny-list
+nftables.service	test	disabled
+openvpn-client@.service	skip	template
+openvpn-server@.service	skip	template
+openvpn@.service	skip	template
+rsync.service	test	disabled
+rtkit-daemon.service	test	disabled
+saned.socket	test	disabled
+saned@.service	skip	template
+serial-getty@.service	skip	template
+snap.mesa-2404.component-monitor.service	test	disabled
+speech-dispatcherd.service	test	disabled
+spice-vdagentd.service	test	indirect
+sssd-autofs.service	skip	refuses manual start
+sssd-nss.service	skip	refuses manual start
+sssd-pac.service	skip	refuses manual start
+sssd-pam.service	skip	refuses manual start
+sssd-ssh.service	skip	refuses manual start
+sssd-sudo.service	skip	refuses manual start
+systemd-boot-check-no-failures.service	test	disabled
+systemd-confext.service	test	disabled
+systemd-journald-audit.socket	test	disabled
+systemd-network-generator.service	test	disabled
+systemd-networkd-wait-online.service	test	disabled
+systemd-networkd-wait-online@.service	skip	template
+systemd-networkd.service	skip	tested via systemd-networkd.socket
+systemd-networkd.socket	test	disabled
+systemd-pcrextend.socket	test	disabled
+systemd-pcrlock-file-system.service	test	disabled
+systemd-pcrlock-firmware-code.service	test	disabled
+systemd-pcrlock-firmware-config.service	test	disabled
+systemd-pcrlock-machine-id.service	test	disabled
+systemd-pcrlock-make-policy.service	test	disabled
+systemd-pcrlock-secureboot-authority.service	test	disabled
+systemd-pcrlock-secureboot-policy.service	test	disabled
+systemd-sysext.service	skip	tested via systemd-sysext.socket
+systemd-sysext.socket	test	disabled
+systemd-sysupdate-reboot.service	skip	oneshot
+systemd-sysupdate.service	test	indirect
+systemd-time-wait-sync.service	test	disabled
+upower.service	test	disabled
+uuidd.service	test	indirect
+wpa_supplicant-nl80211@.service	skip	template
+wpa_supplicant-wired@.service	skip	template
+wpa_supplicant@.service	skip	template

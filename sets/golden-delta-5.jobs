@@ -1,0 +1,7 @@
+# Delta runs with the connection audit (conn-audit/): who connects where, per
+# unit, for the egress records. -d4 = -d3 plus the audit. owserver with
+# REBOOT=1: which binding wins after a boot (socket vs owfs.conf localhost).
+ubuntu-24.04.5-server+squid-d4                   OVERLAY=ubuntu-24.04.5-server-base1  SCAN=1  PACKAGES=squid                   ENABLE=1
+ubuntu-24.04.5-server+ejabberd-d4                OVERLAY=ubuntu-24.04.5-server-base1  SCAN=1  PACKAGES=ejabberd                ENABLE=1
+ubuntu-24.04.5-server+bacula-director-d4         OVERLAY=ubuntu-24.04.5-server-base1  SCAN=1  PACKAGES=bacula-director         ENABLE=1
+ubuntu-24.04.5-server+owserver-d4                OVERLAY=ubuntu-24.04.5-server-base1  SCAN=1  PACKAGES=owserver                ENABLE=1  REBOOT=1

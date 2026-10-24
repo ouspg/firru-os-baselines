@@ -1,0 +1,11 @@
+tcp 0.0.0.0:139 /system.slice/smbd.service
+tcp 0.0.0.0:445 /system.slice/smbd.service
+tcp [::]:139 /system.slice/smbd.service
+tcp [::]:445 /system.slice/smbd.service
+udp 0.0.0.0:137 /system.slice/nmbd.service
+udp 0.0.0.0:138 /system.slice/nmbd.service
+udp 192.168.150.150%enp1s0:68 /system.slice/systemd-networkd.service
+udp 192.168.150.150:137 /system.slice/nmbd.service
+udp 192.168.150.150:138 /system.slice/nmbd.service
+udp 192.168.150.255:137 /system.slice/nmbd.service
+udp 192.168.150.255:138 /system.slice/nmbd.service

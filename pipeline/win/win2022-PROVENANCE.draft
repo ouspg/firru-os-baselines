@@ -1,0 +1,15 @@
+# host-side facts for the first win2022 run (domain win2022-baseline), collected 2026-10-15
+iso: SERVER_EVAL_x64FRE_en-us.iso (5044094976 bytes, downloaded 2026-10-08)
+iso_sha256: 3e4fa6d8507b554856fc9ca6079cc402df11a8b79344871669f0251535255325
+wim_images: 1 StdEval Core, 2 StdEval Desktop, 3 DcEval Core, 4 DcEval Desktop; all build 10.0.20348.587
+installed_index: 2 (ServerStandardEval, InstallationType=Server = Desktop Experience)
+ubr_at_collect: 587 (no Windows Update applied; hotfixes KB5010523, KB5011497, KB5008882 are the ones baked into the ISO, 2022-03-03)
+firmware: efi
+vcpu: 2
+memory: 4194304 KiB (4 GiB)  # above SvcHostSplitThreshold 3.5 GiB
+disk: sata qcow2
+nic: e1000e on libvirt 'default' (NAT, so INTERNET ACCESS = yes)
+guest_agent: none (no virtio-serial channel)
+install_method: manual, interactive (Edge launched; Network Discovery turned on) -> run1 is a collector test, NOT a baseline
+network_profile: Private, network discovery on (FDResPub, WSD 3702/5357 listening)
+uptime_at_collect: 6d23h (not a fresh boot)

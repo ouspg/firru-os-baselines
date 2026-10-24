@@ -1,0 +1,9 @@
+Netid State  Recv-Q Send-Q          Local Address:Port Peer Address:PortProcess                                                                                                             
+udp   UNCONN 0      0                  127.0.0.54:53        0.0.0.0:*    users:(("systemd-resolve",pid=663,fd=18))  uid:990 ino:7795 sk:1 cgroup:/system.slice/systemd-resolved.service <-> 
+udp   UNCONN 0      0               127.0.0.53%lo:53        0.0.0.0:*    users:(("systemd-resolve",pid=663,fd=16))  uid:990 ino:7793 sk:2 cgroup:/system.slice/systemd-resolved.service <-> 
+udp   UNCONN 0      0      192.168.150.192%enp1s0:68        0.0.0.0:*    users:(("systemd-network",pid=1131,fd=33)) uid:998 ino:14315 sk:3 cgroup:/system.slice/systemd-networkd.service <->
+udp   UNCONN 0      0                   127.0.0.1:323       0.0.0.0:*    users:(("chronyd",pid=1366,fd=4))          ino:16742 sk:1001 cgroup:/system.slice/chrony.service <->               
+udp   UNCONN 0      0                       [::1]:323          [::]:*    users:(("chronyd",pid=1366,fd=5))          ino:16743 sk:1002 cgroup:/system.slice/chrony.service v6only:1 <->      
+tcp   LISTEN 0      4096            127.0.0.53%lo:53        0.0.0.0:*    users:(("systemd-resolve",pid=663,fd=17))  uid:990 ino:7794 sk:4 cgroup:/system.slice/systemd-resolved.service <-> 
+tcp   LISTEN 0      4096               127.0.0.54:53        0.0.0.0:*    users:(("systemd-resolve",pid=663,fd=19))  uid:990 ino:7796 sk:5 cgroup:/system.slice/systemd-resolved.service <-> 
+tcp   LISTEN 0      200                 127.0.0.1:5432      0.0.0.0:*    users:(("postgres",pid=1392,fd=6))         uid:104 ino:16977 sk:1003 cgroup:/system.slice/system-postgresql.slice/postgresql@18-main.service <->

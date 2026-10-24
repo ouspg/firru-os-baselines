@@ -1,0 +1,10 @@
+tcp *:1883 /system.slice/ejabberd.service
+tcp *:4369 /system.slice/epmd.socket
+tcp *:5222 /system.slice/ejabberd.service
+tcp *:5223 /system.slice/ejabberd.service
+tcp *:5269 /system.slice/ejabberd.service
+tcp *:5280 /system.slice/ejabberd.service
+tcp *:5443 /system.slice/ejabberd.service
+tcp 0.0.0.0:43591 /system.slice/ejabberd.service
+udp *:3478 /system.slice/ejabberd.service
+udp 192.168.150.169%enp1s0:68 /system.slice/systemd-networkd.service

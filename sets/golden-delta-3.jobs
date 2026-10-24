@@ -1,0 +1,5 @@
+# Delta set 3: reruns of set 2. Base: ubuntu-24.04.5-server-base1.
+# slapd-d1 failed on a phased update (fixed in bl-apt.sh); wsdd's daemon is
+# in wsdd-server on Ubuntu (wsdd-d2 installed only the script).
+ubuntu-24.04.5-server+slapd-d2                   OVERLAY=ubuntu-24.04.5-server-base1 SCAN=1 PACKAGES=slapd ENABLE=1
+ubuntu-24.04.5-server+wsdd-server-d1             OVERLAY=ubuntu-24.04.5-server-base1 SCAN=1 PACKAGES=wsdd-server ENABLE=1

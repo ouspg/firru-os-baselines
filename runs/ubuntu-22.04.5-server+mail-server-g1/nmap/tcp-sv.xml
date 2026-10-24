@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE nmaprun>
+<?xml-stylesheet href="file:///usr/share/nmap/nmap.xsl" type="text/xsl"?>
+<!-- Nmap 7.92 scan initiated Fri Oct 23 18:59:31 2026 as: $HOME/.local/bin/nmap-raw -sT -sV -Pn -n -p 25,110,143,993,995 -oX $HOME/firru-os-baselines/work/linux/tmp.MnKmAoGjEb/nmap/tcp-sv.xml 192.168.150.142 -->
+<nmaprun scanner="nmap" args="$HOME/.local/bin/nmap-raw -sT -sV -Pn -n -p 25,110,143,993,995 -oX $HOME/firru-os-baselines/work/linux/tmp.MnKmAoGjEb/nmap/tcp-sv.xml 192.168.150.142" start="1792771171" startstr="Fri Oct 23 18:59:31 2026" version="7.92" xmloutputversion="1.05">
+<scaninfo type="connect" protocol="tcp" numservices="5" services="25,110,143,993,995"/>
+<verbose level="0"/>
+<debugging level="0"/>
+<host starttime="1792771171" endtime="1792771183"><status state="up" reason="user-set" reason_ttl="0"/>
+<address addr="192.168.150.142" addrtype="ipv4"/>
+<hostnames>
+</hostnames>
+<ports><port protocol="tcp" portid="25"><state state="open" reason="syn-ack" reason_ttl="0"/><service name="smtp" product="Postfix smtpd" hostname=" ubuntu-server" method="probed" conf="10"><cpe>cpe:/a:postfix:postfix</cpe></service></port>
+<port protocol="tcp" portid="110"><state state="open" reason="syn-ack" reason_ttl="0"/><service name="pop3" product="Dovecot pop3d" method="probed" conf="10"><cpe>cpe:/a:dovecot:dovecot</cpe></service></port>
+<port protocol="tcp" portid="143"><state state="open" reason="syn-ack" reason_ttl="0"/><service name="imap" product="Dovecot imapd" extrainfo="Ubuntu" ostype="Linux" method="probed" conf="10"><cpe>cpe:/a:dovecot:dovecot</cpe><cpe>cpe:/o:linux:linux_kernel</cpe></service></port>
+<port protocol="tcp" portid="993"><state state="open" reason="syn-ack" reason_ttl="0"/><service name="imap" product="Dovecot imapd" extrainfo="Ubuntu" ostype="Linux" tunnel="ssl" method="probed" conf="10"><cpe>cpe:/a:dovecot:dovecot</cpe><cpe>cpe:/o:linux:linux_kernel</cpe></service></port>
+<port protocol="tcp" portid="995"><state state="open" reason="syn-ack" reason_ttl="0"/><service name="pop3" product="Dovecot pop3d" tunnel="ssl" method="probed" conf="10"><cpe>cpe:/a:dovecot:dovecot</cpe></service></port>
+</ports>
+<times srtt="194" rttvar="1633" to="100000"/>
+</host>
+<runstats><finished time="1792771183" timestr="Fri Oct 23 18:59:43 2026" summary="Nmap done at Fri Oct 23 18:59:43 2026; 1 IP address (1 host up) scanned in 12.31 seconds" elapsed="12.31" exit="success"/><hosts up="1" down="0" total="1"/>
+</runstats>
+</nmaprun>

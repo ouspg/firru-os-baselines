@@ -1,0 +1,19 @@
+#cloud-config
+autoinstall:
+  version: 1
+  source:
+    id: ubuntu-server
+  identity:
+    hostname: baseline-server
+    username: ubuntu
+    password: <random hash, never used>
+  ssh:
+    install-server: false
+  storage:
+    layout:
+      name: lvm
+  late-commands:
+  - printf '[Unit]\nDescription=Baseline job (runs /usr/local/sbin/baseline-job.sh if present)\n[Timer]\nOnBootSec=120\n[Install]\nWantedBy=timers.target\n' > /target/etc/systemd/system/baseline-job.timer
+  - printf '[Unit]\nDescription=Baseline job\nConditionPathExists=/usr/local/sbin/baseline-job.sh\n[Service]\nType=oneshot\nExecStart=/usr/local/sbin/baseline-job.sh\n' > /target/etc/systemd/system/baseline-job.service
+  - curtin in-target -- systemctl enable baseline-job.timer
+  shutdown: poweroff

@@ -1,0 +1,10 @@
+/run/initctl                 systemd-initctl.socket          systemd-initctl.service
+/run/systemd/fsck.progress   systemd-fsckd.socket            systemd-fsckd.service
+/run/systemd/journal/dev-log systemd-journald-dev-log.socket systemd-journald.service
+/run/systemd/journal/socket  systemd-journald.socket         systemd-journald.service
+/run/systemd/journal/stdout  systemd-journald.socket         systemd-journald.service
+/run/systemd/journal/syslog  syslog.socket                   syslog.service
+/run/udev/control            systemd-udevd-control.socket    systemd-udevd.service
+audit 1                      systemd-journald-audit.socket   systemd-journald.service
+kobject-uevent 1             systemd-udevd-kernel.socket     systemd-udevd.service
+route 1361                   systemd-networkd.socket         systemd-networkd.service

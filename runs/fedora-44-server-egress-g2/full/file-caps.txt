@@ -1,0 +1,8 @@
+/usr/bin/arping cap_net_raw=p
+/usr/bin/clockdiff cap_net_raw=p
+/usr/bin/mtr-packet cap_net_raw=ep
+/usr/bin/newgidmap cap_setgid=ep
+/usr/bin/newuidmap cap_setuid=ep
+/usr/libexec/sssd/krb5_child cap_dac_read_search,cap_setgid,cap_setuid=p
+/usr/libexec/sssd/ldap_child cap_dac_read_search=p
+/usr/libexec/sssd/sssd_pam cap_dac_read_search=p

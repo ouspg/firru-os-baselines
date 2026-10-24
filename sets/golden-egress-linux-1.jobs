@@ -1,0 +1,9 @@
+# Linux egress set 1: on the NAT bridge (internet), packages pinned at the
+# source, the connection audit on, each timer's unit started once, then held
+# to 4 h and collected again (bl-linux.sh EGRESS). Bundles mix packages that
+# do not fight over a port; the audit attributes each lookup and connection to
+# its unit, so a bundle splits back into packages. AlmaLinux and Fedora wait
+# for the connection audit to run under SELinux.
+ubuntu-24.04.5-server-egress-g1                  ISO=ubuntu-24.04.5-live-server-amd64.iso SCAN=1 SNAPSHOT=20261015T000000Z PACKAGES= EGRESS=4
+ubuntu-24.04.5-server+bundle-a-egress-g1         ISO=ubuntu-24.04.5-live-server-amd64.iso SCAN=1 SNAPSHOT=20261015T000000Z PACKAGES=nginx,squid,ejabberd,coturn,munin-node,prometheus-node-exporter,syncthing,glusterfs-server,owserver,wsdd-server EGRESS=4
+ubuntu-24.04.5-server+bundle-b-egress-g1         ISO=ubuntu-24.04.5-live-server-amd64.iso SCAN=1 SNAPSHOT=20261015T000000Z PACKAGES=bacula-director,slapd,knot,icecc,iperf3,quassel-core,epoptes,xrdp,docker.io,strongswan EGRESS=4

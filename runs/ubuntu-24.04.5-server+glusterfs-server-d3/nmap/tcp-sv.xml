@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE nmaprun>
+<?xml-stylesheet href="file:///usr/share/nmap/nmap.xsl" type="text/xsl"?>
+<!-- Nmap 7.92 scan initiated Tue Oct 20 09:17:56 2026 as: $HOME/.local/bin/nmap-raw -sT -sV -Pn -n -p 111,24007 -oX $HOME/firru-os-baselines/work/linux/tmp.VqT58jJNQl/nmap/tcp-sv.xml 192.168.150.169 -->
+<nmaprun scanner="nmap" args="$HOME/.local/bin/nmap-raw -sT -sV -Pn -n -p 111,24007 -oX $HOME/firru-os-baselines/work/linux/tmp.VqT58jJNQl/nmap/tcp-sv.xml 192.168.150.169" start="1792477076" startstr="Tue Oct 20 09:17:56 2026" version="7.92" xmloutputversion="1.05">
+<scaninfo type="connect" protocol="tcp" numservices="2" services="111,24007"/>
+<verbose level="0"/>
+<debugging level="0"/>
+<host starttime="1792477076" endtime="1792477087"><status state="up" reason="user-set" reason_ttl="0"/>
+<address addr="192.168.150.169" addrtype="ipv4"/>
+<hostnames>
+</hostnames>
+<ports><port protocol="tcp" portid="111"><state state="open" reason="syn-ack" reason_ttl="0"/><service name="rpcbind" version="2-4" extrainfo="RPC #100000" method="probed" conf="10"/></port>
+<port protocol="tcp" portid="24007"><state state="open" reason="syn-ack" reason_ttl="0"/><service name="rpcbind" method="probed" conf="10"/></port>
+</ports>
+<times srtt="257" rttvar="3766" to="100000"/>
+</host>
+<runstats><finished time="1792477087" timestr="Tue Oct 20 09:18:07 2026" summary="Nmap done at Tue Oct 20 09:18:07 2026; 1 IP address (1 host up) scanned in 11.45 seconds" elapsed="11.45" exit="success"/><hosts up="1" down="0" total="1"/>
+</runstats>
+</nmaprun>

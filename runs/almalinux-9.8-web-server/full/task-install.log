@@ -1,0 +1,122 @@
+AlmaLinux 9 - AppStream                          13 MB/s |  28 MB     00:02    
+AlmaLinux 9 - BaseOS                             19 MB/s |  43 MB     00:02    
+AlmaLinux 9 - Extras                             60 kB/s |  33 kB     00:00    
+Dependencies resolved.
+================================================================================
+ Package                  Arch      Version                  Repository    Size
+================================================================================
+Installing group/module packages:
+ httpd                    x86_64    2.4.62-13.el9_8.6        appstream     46 k
+ httpd-manual             noarch    2.4.62-13.el9_8.6        appstream    2.2 M
+ mod_fcgid                x86_64    2.3.9-28.el9             appstream     74 k
+ mod_ssl                  x86_64    1:2.4.62-13.el9_8.6      appstream    111 k
+Installing dependencies:
+ almalinux-logos-httpd    noarch    90.7-1.el9               appstream     18 k
+ apr                      x86_64    1.7.0-12.el9_3           appstream    122 k
+ apr-util                 x86_64    1.6.1-23.el9_8.1         appstream     94 k
+ apr-util-bdb             x86_64    1.6.1-23.el9_8.1         appstream     12 k
+ httpd-core               x86_64    2.4.62-13.el9_8.6        appstream    1.4 M
+ httpd-filesystem         noarch    2.4.62-13.el9_8.6        appstream     13 k
+ httpd-tools              x86_64    2.4.62-13.el9_8.6        appstream     79 k
+ mailcap                  noarch    2.1.49-5.el9             baseos        32 k
+ sscg                     x86_64    4.0.3-2.el9              appstream     49 k
+Installing weak dependencies:
+ apr-util-openssl         x86_64    1.6.1-23.el9_8.1         appstream     14 k
+ mod_http2                x86_64    2.0.26-6.el9_8.2         appstream    163 k
+ mod_lua                  x86_64    2.4.62-13.el9_8.6        appstream     60 k
+Installing Groups:
+ Basic Web Server                                                              
+
+Transaction Summary
+================================================================================
+Install  16 Packages
+
+Total download size: 4.5 M
+Installed size: 14 M
+Downloading Packages:
+(1/16): almalinux-logos-httpd-90.7-1.el9.noarch 262 kB/s |  18 kB     00:00    
+(2/16): apr-util-bdb-1.6.1-23.el9_8.1.x86_64.rp 509 kB/s |  12 kB     00:00    
+(3/16): apr-util-1.6.1-23.el9_8.1.x86_64.rpm    931 kB/s |  94 kB     00:00    
+(4/16): apr-1.7.0-12.el9_3.x86_64.rpm           1.0 MB/s | 122 kB     00:00    
+(5/16): apr-util-openssl-1.6.1-23.el9_8.1.x86_6 453 kB/s |  14 kB     00:00    
+(6/16): httpd-2.4.62-13.el9_8.6.x86_64.rpm      1.6 MB/s |  46 kB     00:00    
+(7/16): httpd-filesystem-2.4.62-13.el9_8.6.noar 657 kB/s |  13 kB     00:00    
+(8/16): httpd-tools-2.4.62-13.el9_8.6.x86_64.rp 2.9 MB/s |  79 kB     00:00    
+(9/16): mod_fcgid-2.3.9-28.el9.x86_64.rpm       2.7 MB/s |  74 kB     00:00    
+(10/16): httpd-manual-2.4.62-13.el9_8.6.noarch.  16 MB/s | 2.2 MB     00:00    
+(11/16): httpd-core-2.4.62-13.el9_8.6.x86_64.rp 8.2 MB/s | 1.4 MB     00:00    
+(12/16): mod_lua-2.4.62-13.el9_8.6.x86_64.rpm   2.4 MB/s |  60 kB     00:00    
+(13/16): mod_ssl-2.4.62-13.el9_8.6.x86_64.rpm   4.3 MB/s | 111 kB     00:00    
+(14/16): sscg-4.0.3-2.el9.x86_64.rpm            2.1 MB/s |  49 kB     00:00    
+(15/16): mailcap-2.1.49-5.el9.noarch.rpm        1.4 MB/s |  32 kB     00:00    
+(16/16): mod_http2-2.0.26-6.el9_8.2.x86_64.rpm  1.1 MB/s | 163 kB     00:00    
+--------------------------------------------------------------------------------
+Total                                           3.9 MB/s | 4.5 MB     00:01     
+AlmaLinux 9 - AppStream                         3.0 MB/s | 3.1 kB     00:00    
+Importing GPG key 0xB86B3716:
+ Userid     : "AlmaLinux OS 9 <packager@almalinux.org>"
+ Fingerprint: BF18 AC28 7617 8908 D6E7 1267 D36C B86C B86B 3716
+ From       : /etc/pki/rpm-gpg/RPM-GPG-KEY-AlmaLinux-9
+Key imported successfully
+Running transaction check
+Transaction check succeeded.
+Running transaction test
+Transaction test succeeded.
+Running transaction
+  Preparing        :                                                        1/1 
+  Installing       : apr-1.7.0-12.el9_3.x86_64                             1/16 
+  Installing       : apr-util-bdb-1.6.1-23.el9_8.1.x86_64                  2/16 
+  Installing       : apr-util-openssl-1.6.1-23.el9_8.1.x86_64              3/16 
+  Installing       : apr-util-1.6.1-23.el9_8.1.x86_64                      4/16 
+  Running scriptlet: httpd-filesystem-2.4.62-13.el9_8.6.noarch             5/16 
+  Installing       : httpd-filesystem-2.4.62-13.el9_8.6.noarch             5/16 
+  Installing       : httpd-tools-2.4.62-13.el9_8.6.x86_64                  6/16 
+  Installing       : mailcap-2.1.49-5.el9.noarch                           7/16 
+  Installing       : httpd-core-2.4.62-13.el9_8.6.x86_64                   8/16 
+  Installing       : mod_lua-2.4.62-13.el9_8.6.x86_64                      9/16 
+  Installing       : sscg-4.0.3-2.el9.x86_64                              10/16 
+  Installing       : almalinux-logos-httpd-90.7-1.el9.noarch              11/16 
+  Installing       : mod_http2-2.0.26-6.el9_8.2.x86_64                    12/16 
+  Installing       : httpd-2.4.62-13.el9_8.6.x86_64                       13/16 
+  Running scriptlet: httpd-2.4.62-13.el9_8.6.x86_64                       13/16 
+  Installing       : mod_ssl-1:2.4.62-13.el9_8.6.x86_64                   14/16 
+  Installing       : httpd-manual-2.4.62-13.el9_8.6.noarch                15/16 
+  Installing       : mod_fcgid-2.3.9-28.el9.x86_64                        16/16 
+  Running scriptlet: httpd-2.4.62-13.el9_8.6.x86_64                       16/16 
+  Running scriptlet: mod_fcgid-2.3.9-28.el9.x86_64                        16/16 
+  Verifying        : almalinux-logos-httpd-90.7-1.el9.noarch               1/16 
+  Verifying        : apr-1.7.0-12.el9_3.x86_64                             2/16 
+  Verifying        : apr-util-1.6.1-23.el9_8.1.x86_64                      3/16 
+  Verifying        : apr-util-bdb-1.6.1-23.el9_8.1.x86_64                  4/16 
+  Verifying        : apr-util-openssl-1.6.1-23.el9_8.1.x86_64              5/16 
+  Verifying        : httpd-2.4.62-13.el9_8.6.x86_64                        6/16 
+  Verifying        : httpd-core-2.4.62-13.el9_8.6.x86_64                   7/16 
+  Verifying        : httpd-filesystem-2.4.62-13.el9_8.6.noarch             8/16 
+  Verifying        : httpd-manual-2.4.62-13.el9_8.6.noarch                 9/16 
+  Verifying        : httpd-tools-2.4.62-13.el9_8.6.x86_64                 10/16 
+  Verifying        : mod_fcgid-2.3.9-28.el9.x86_64                        11/16 
+  Verifying        : mod_http2-2.0.26-6.el9_8.2.x86_64                    12/16 
+  Verifying        : mod_lua-2.4.62-13.el9_8.6.x86_64                     13/16 
+  Verifying        : mod_ssl-1:2.4.62-13.el9_8.6.x86_64                   14/16 
+  Verifying        : sscg-4.0.3-2.el9.x86_64                              15/16 
+  Verifying        : mailcap-2.1.49-5.el9.noarch                          16/16 
+
+Installed:
+  almalinux-logos-httpd-90.7-1.el9.noarch                                       
+  apr-1.7.0-12.el9_3.x86_64                                                     
+  apr-util-1.6.1-23.el9_8.1.x86_64                                              
+  apr-util-bdb-1.6.1-23.el9_8.1.x86_64                                          
+  apr-util-openssl-1.6.1-23.el9_8.1.x86_64                                      
+  httpd-2.4.62-13.el9_8.6.x86_64                                                
+  httpd-core-2.4.62-13.el9_8.6.x86_64                                           
+  httpd-filesystem-2.4.62-13.el9_8.6.noarch                                     
+  httpd-manual-2.4.62-13.el9_8.6.noarch                                         
+  httpd-tools-2.4.62-13.el9_8.6.x86_64                                          
+  mailcap-2.1.49-5.el9.noarch                                                   
+  mod_fcgid-2.3.9-28.el9.x86_64                                                 
+  mod_http2-2.0.26-6.el9_8.2.x86_64                                             
+  mod_lua-2.4.62-13.el9_8.6.x86_64                                              
+  mod_ssl-1:2.4.62-13.el9_8.6.x86_64                                            
+  sscg-4.0.3-2.el9.x86_64                                                       
+
+Complete!

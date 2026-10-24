@@ -1,0 +1,24 @@
+# What export/export-public.sh exports: git pathspecs, ! excludes.
+# The runs: the newest golden set of each family; earlier sets and the
+# narrower runs (-rN) stay here. Windows set 1 predates the runner account
+# (host paths) and has two runs that are not DCs: set 2 replaces it.
+runs/almalinux-*-g1/**
+runs/ubuntu-*-g1/**
+runs/fedora-*-g1/**
+runs/win*-g2/**
+README.md
+# Not the egress group file: from egress data to groups is firru 2.0, held for now.
+# The pipeline.
+pipeline/win/**
+pipeline/linux/**
+pipeline/osquery/**
+pipeline/asa/**
+pipeline/scan.sh
+pipeline/sweep.sh
+bin/run-list.sh
+bin/run-one.sh
+sets/golden-*.jobs
+analysis/layers.yml
+analysis/fw-baseline.py
+export/public.list
+!pipeline/win/*.draft

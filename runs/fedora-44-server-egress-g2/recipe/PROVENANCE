@@ -1,0 +1,19 @@
+run_started=2026-10-22T08:16:06Z
+installed=2026-10-22T08:23:39Z
+run_finished=2026-10-22T12:48:49Z
+iso=Fedora-Everything-netinst-x86_64-44-1.7.iso iso_bytes=1217329152 iso_sha256=bd285201494dd0ba09b54d05ac707de1401668b8512a573edb5922dcf9d7067e
+packages=@^server-product-environment
+collector=loot-host.sh git_blob=0644db1e3ca410879728c311c38d8744fb5da2ce sha256=617975bbbea1b5e8f2f47f548d3a67c9a8d35e7d73cdbe61925862bffd19f12d
+collector=conn-audit.sh git_blob=72be48e8ea432da284073c3c777a1f048e65abb5 sha256=4df07405dabd73188dc8c771327db12315fe474a02d8841c60447d8146ea2203
+osquery=osquery-5.23.1_1.linux_x86_64.tar.gz 0f37a478a1dbda24b67c81551e32d734b392c5a2f5deb156bf1c41ca204cfa67
+bpftrace=bpftrace-0.26.1 (static release binary) 17ded991241f8c6c56bf907aab948ef172404ed2a5ea2f0e11f73a7652f3dcc0
+source=the netinst ISO (installer only), packages from https://dl.fedoraproject.org/pub/fedora/linux/releases/44/Everything/x86_64/os/ directly (the release as released, no updates); the fetches are in zeek/
+egress_hours=4 (after the scan: each timer's unit started once, egress/timer-sweep.tsv; then held, and collected again into egress/)
+scan=1 settle=300 stable=600 maxwait=3600 window=3600
+memory_mib=4096 vcpus=2 osinfo=fedora43
+mac=52:54:00:71:f9:ac bridge=virbr0 network=libvirt default (NAT) internet=yes
+hardware=virtio disk and nic, uefi without secure boot (the installer kernel is booted directly), no balloon, no guest agent; COM1 = console log, COM2 = host-to-guest control socket (scan done; a delta job's start and clock)
+added_by_run=/usr/local/sbin/baseline-job.sh, baseline-job.service (recipe/stub.sh); /var/tmp/baseline; /var/lib/firru, baseline-audit.service and the transient firru-conn-audit.service (connection audit, bpftrace from the CD; holds network-pre.target until its probes are attached)
+user_password=<random, never used> root=locked
+host=7.2.9-200.fc44.x86_64 qemu-kvm-core-10.2.2 libvirt-daemon-12.0.0 edk2-ovmf-20260812
+host_paths=the runner's home is written as $HOME in recipe/ and nmap/ (the files the host writes)

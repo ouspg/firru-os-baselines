@@ -1,0 +1,28 @@
+[Unit]
+Description=Zeek on baseline bridge %i
+After=libvirtd.service virtnetworkd.service network-online.target
+
+[Service]
+# StateDirectory creates /var/lib/bl-zeek/%i before WorkingDirectory is
+# entered; an ExecStartPre mkdir runs only after it, so a new bridge's first
+# start failed (200/CHDIR) and only the restart got through.
+StateDirectory=bl-zeek/%i
+WorkingDirectory=/var/lib/bl-zeek/%i
+# Zeek from one pinned image (image.env, written by install.sh), the same on
+# every runner: root podman on the host's network, capture capabilities
+# only. No SELinux relabelling: the directory is shared with bl-dnscap@.
+# The host's local time: Zeek names rotated files in it, and
+# bl-zeek-slice.py picks the hours near a run by those names.
+EnvironmentFile=/etc/bl-zeek/image.env
+ExecStartPre=-/usr/bin/podman rm -f -i bl-zeek-%i
+ExecStart=/usr/bin/podman run --rm --name bl-zeek-%i --net=host \
+  --cap-drop=all --cap-add=NET_RAW --cap-add=NET_ADMIN --security-opt label=disable \
+  -v /var/lib/bl-zeek/%i:/work -v /etc/bl-zeek:/etc/bl-zeek:ro -v /etc/localtime:/etc/localtime:ro -w /work \
+  ${ZEEK_IMAGE} zeek -i %i /etc/bl-zeek/bl.zeek
+ExecStop=/usr/bin/podman stop -t 10 bl-zeek-%i
+# The bridge exists only while its libvirt network is up.
+Restart=always
+RestartSec=15
+
+[Install]
+WantedBy=multi-user.target

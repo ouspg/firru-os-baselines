@@ -1,0 +1,7 @@
+image: noble-server-cloudimg-amd64.img (cloud-images.ubuntu.com), build_name=server serial=20260323
+image_sha256_prefix: d158b7801bc462f8
+method: qemu-img overlay (base read-only) + virt-install --import --cloud-init user-data (qemu:///session, user-mode net, 2 vCPU, 2 GiB)
+collection: transient timer 90 s after cloud-final; firru scripts/loot-host.sh unmodified -> loot-host/; extras -> full/
+collected: 2026-10-01T10:52:03Z
+sweep: run 2 (same image/serial). sweep/ produced by the sweep.sh version BEFORE condition_met was added; recipe/sweep.sh is the newer version.
+reproducibility: run1 vs run2 identical listeners (pids ignored), packages, unit-file states.

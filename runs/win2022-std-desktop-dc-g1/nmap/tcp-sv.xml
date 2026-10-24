@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE nmaprun>
+<?xml-stylesheet href="file:///usr/share/nmap/nmap.xsl" type="text/xsl"?>
+<!-- Nmap 7.92 scan initiated Sun Oct 18 11:00:48 2026 as: ~/.local/bin/nmap-raw -sT -sV -Pn -n -p 53,135,139,445,5985,49664,49668,49669 -oX ~/firru-os-baselines/work/win/nmap-win2022-std-desktop-dc-g1/tcp-sv.xml 192.168.150.139 -->
+<nmaprun scanner="nmap" args="~/.local/bin/nmap-raw -sT -sV -Pn -n -p 53,135,139,445,5985,49664,49668,49669 -oX ~/firru-os-baselines/work/win/nmap-win2022-std-desktop-dc-g1/tcp-sv.xml 192.168.150.139" start="1792310448" startstr="Sun Oct 18 11:00:48 2026" version="7.92" xmloutputversion="1.05">
+<scaninfo type="connect" protocol="tcp" numservices="8" services="53,135,139,445,5985,49664,49668-49669"/>
+<verbose level="0"/>
+<debugging level="0"/>
+<host starttime="1792310448" endtime="1792310502"><status state="up" reason="user-set" reason_ttl="0"/>
+<address addr="192.168.150.139" addrtype="ipv4"/>
+<hostnames>
+</hostnames>
+<ports><port protocol="tcp" portid="53"><state state="open" reason="syn-ack" reason_ttl="0"/><service name="domain" product="Simple DNS Plus" ostype="Windows" method="probed" conf="10"><cpe>cpe:/a:jh_software:simple_dns_plus</cpe><cpe>cpe:/o:microsoft:windows</cpe></service></port>
+<port protocol="tcp" portid="135"><state state="open" reason="syn-ack" reason_ttl="0"/><service name="msrpc" product="Microsoft Windows RPC" ostype="Windows" method="probed" conf="10"><cpe>cpe:/o:microsoft:windows</cpe></service></port>
+<port protocol="tcp" portid="139"><state state="open" reason="syn-ack" reason_ttl="0"/><service name="netbios-ssn" product="Microsoft Windows netbios-ssn" ostype="Windows" method="probed" conf="10"><cpe>cpe:/o:microsoft:windows</cpe></service></port>
+<port protocol="tcp" portid="445"><state state="open" reason="syn-ack" reason_ttl="0"/><service name="microsoft-ds" method="table" conf="3"/></port>
+<port protocol="tcp" portid="5985"><state state="open" reason="syn-ack" reason_ttl="0"/><service name="http" product="Microsoft HTTPAPI httpd" version="2.0" extrainfo="SSDP/UPnP" ostype="Windows" method="probed" conf="10"><cpe>cpe:/o:microsoft:windows</cpe></service></port>
+<port protocol="tcp" portid="49664"><state state="open" reason="syn-ack" reason_ttl="0"/><service name="msrpc" product="Microsoft Windows RPC" ostype="Windows" method="probed" conf="10"><cpe>cpe:/o:microsoft:windows</cpe></service></port>
+<port protocol="tcp" portid="49668"><state state="open" reason="syn-ack" reason_ttl="0"/><service name="msrpc" product="Microsoft Windows RPC" ostype="Windows" method="probed" conf="10"><cpe>cpe:/o:microsoft:windows</cpe></service></port>
+<port protocol="tcp" portid="49669"><state state="open" reason="syn-ack" reason_ttl="0"/><service name="msrpc" product="Microsoft Windows RPC" ostype="Windows" method="probed" conf="10"><cpe>cpe:/o:microsoft:windows</cpe></service></port>
+</ports>
+<times srtt="378" rttvar="724" to="100000"/>
+</host>
+<runstats><finished time="1792310502" timestr="Sun Oct 18 11:01:42 2026" summary="Nmap done at Sun Oct 18 11:01:42 2026; 1 IP address (1 host up) scanned in 53.85 seconds" elapsed="53.85" exit="success"/><hosts up="1" down="0" total="1"/>
+</runstats>
+</nmaprun>

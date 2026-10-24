@@ -1,0 +1,7 @@
+tcp 10.0.2.15:53 /system.slice/named.service
+tcp [fe80::5054:ff:feaa:aee3]%enp1s0:53 /system.slice/named.service
+tcp [fec0::5054:ff:feaa:aee3]:53 /system.slice/named.service
+udp 10.0.2.15%enp1s0:68 /system.slice/systemd-networkd.service
+udp 10.0.2.15:53 /system.slice/named.service
+udp [fe80::5054:ff:feaa:aee3]%enp1s0:53 /system.slice/named.service
+udp [fec0::5054:ff:feaa:aee3]:53 /system.slice/named.service

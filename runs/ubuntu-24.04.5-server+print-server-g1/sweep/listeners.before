@@ -1,0 +1,5 @@
+udp 0.0.0.0:41483 /system.slice/avahi-daemon.service
+udp 0.0.0.0:5353 /system.slice/avahi-daemon.service
+udp 192.168.150.181%enp1s0:68 /system.slice/systemd-networkd.service
+udp [::]:48967 /system.slice/avahi-daemon.service
+udp [::]:5353 /system.slice/avahi-daemon.service

@@ -1,0 +1,10 @@
+Netid State  Recv-Q Send-Q Local Address:Port Peer Address:PortProcess                                                                                                              
+udp   UNCONN 0      0            0.0.0.0:5353      0.0.0.0:*    users:(("avahi-daemon",pid=1173,fd=12)) uid:70 ino:10609 sk:1 cgroup:/system.slice/avahi-daemon.service <->         
+udp   UNCONN 0      0          127.0.0.1:323       0.0.0.0:*    users:(("chronyd",pid=1174,fd=4))       ino:10641 sk:2 cgroup:/system.slice/chronyd.service <->                     
+udp   UNCONN 0      0               [::]:5353         [::]:*    users:(("avahi-daemon",pid=1173,fd=13)) uid:70 ino:10610 sk:3 cgroup:/system.slice/avahi-daemon.service v6only:1 <->
+udp   UNCONN 0      0              [::1]:323          [::]:*    users:(("chronyd",pid=1174,fd=5))       ino:10642 sk:4 cgroup:/system.slice/chronyd.service v6only:1 <->            
+tcp   LISTEN 0      4096       127.0.0.1:631       0.0.0.0:*    users:(("cupsd",pid=1403,fd=8))         ino:12206 sk:6 cgroup:/system.slice/cups.service <->                        
+tcp   LISTEN 0      128          0.0.0.0:22        0.0.0.0:*    users:(("sshd",pid=1405,fd=7))          ino:12176 sk:7 cgroup:/system.slice/sshd.service <->                        
+tcp   LISTEN 0      4096           [::1]:631          [::]:*    users:(("cupsd",pid=1403,fd=7))         ino:12205 sk:8 cgroup:/system.slice/cups.service v6only:1 <->               
+tcp   LISTEN 0      4096               *:9090            *:*    users:(("systemd",pid=1,fd=80))         ino:9988 sk:5 cgroup:/system.slice/cockpit.socket v6only:0 <->              
+tcp   LISTEN 0      128             [::]:22           [::]:*    users:(("sshd",pid=1405,fd=8))          ino:12195 sk:9 cgroup:/system.slice/sshd.service v6only:1 <->               

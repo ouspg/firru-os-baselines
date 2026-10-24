@@ -1,0 +1,9 @@
+# Golden set 3: domain members. One worker, in order: a kept 2022 DC first
+# (KEEP=1, the forest the members join; left running for them), then members
+# joined to it with ROLE=MEMBER JOIN=. Exchange on a member server is the
+# recommended topology and records Setup's moved dynamic range (loot-host
+# dynamicport.txt). Start after golden-2: its DC jobs would meet this DC.
+win2022-std-desktop-dc-g3k                       ROLE=DC KEEP=1 SCAN=1
+win2022-std-desktop-member-g3                    ROLE=MEMBER JOIN=win2022-std-desktop-dc-g3k SCAN=1
+win11-pro-26300-member-g3                        ISO=Windows11_Client_x64_en-us_26300_9457.iso OSINFO=win11 CLIENT=1 ROLE=MEMBER JOIN=win2022-std-desktop-dc-g3k SCAN=1
+win2022-std-desktop-member-exchange-g3           ROLE=MEMBER JOIN=win2022-std-desktop-dc-g3k FEATURES=Exchange SCAN=1 MEMORY=16384

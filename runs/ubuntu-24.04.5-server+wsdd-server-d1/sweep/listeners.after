@@ -1,0 +1,9 @@
+tcp 192.168.150.169:5357 /system.slice/wsdd-server.service
+tcp [fe80::5054:ff:fe90:b0be]%enp1s0:5357 /system.slice/wsdd-server.service
+udp *:55955 /system.slice/wsdd-server.service
+udp 0.0.0.0:43308 /system.slice/wsdd-server.service
+udp 192.168.150.169%enp1s0:68 /system.slice/systemd-networkd.service
+udp 192.168.150.169:3702 /system.slice/wsdd-server.service
+udp 239.255.255.250:3702 /system.slice/wsdd-server.service
+udp [fe80::5054:ff:fe90:b0be]%enp1s0:3702 /system.slice/wsdd-server.service
+udp [ff02::c]%enp1s0:3702 /system.slice/wsdd-server.service

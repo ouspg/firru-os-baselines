@@ -1,0 +1,15 @@
+apache-htcacheclean.service	test	disabled
+apache-htcacheclean@.service	skip	template
+apache2@.service	skip	template
+console-getty.service	skip	deny-list
+debug-shell.service	skip	deny-list
+iscsid.service	test	disabled
+nftables.service	test	disabled
+rsync.service	test	disabled
+serial-getty@.service	skip	template
+systemd-boot-check-no-failures.service	test	disabled
+systemd-network-generator.service	test	disabled
+systemd-sysext.service	test	disabled
+systemd-time-wait-sync.service	test	disabled
+upower.service	test	disabled
+uuidd.service	test	indirect

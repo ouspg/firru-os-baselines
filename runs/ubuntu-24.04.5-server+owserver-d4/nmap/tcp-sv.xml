@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE nmaprun>
+<?xml-stylesheet href="file:///usr/share/nmap/nmap.xsl" type="text/xsl"?>
+<!-- Nmap 7.92 scan initiated Wed Oct 21 10:24:50 2026 as: $HOME/.local/bin/nmap-raw -sT -sV -Pn -n -p 4304 -oX $HOME/firru-os-baselines/work/linux/tmp.adDAps69Ha/nmap/tcp-sv.xml 192.168.150.170 -->
+<nmaprun scanner="nmap" args="$HOME/.local/bin/nmap-raw -sT -sV -Pn -n -p 4304 -oX $HOME/firru-os-baselines/work/linux/tmp.adDAps69Ha/nmap/tcp-sv.xml 192.168.150.170" start="1792567490" startstr="Wed Oct 21 10:24:50 2026" version="7.92" xmloutputversion="1.05">
+<scaninfo type="connect" protocol="tcp" numservices="1" services="4304"/>
+<verbose level="0"/>
+<debugging level="0"/>
+<host starttime="1792567490" endtime="1792567574"><status state="up" reason="user-set" reason_ttl="0"/>
+<address addr="192.168.150.170" addrtype="ipv4"/>
+<hostnames>
+</hostnames>
+<ports><port protocol="tcp" portid="4304"><state state="open" reason="syn-ack" reason_ttl="0"/><service name="owserver" method="table" conf="3"/></port>
+</ports>
+<times srtt="314" rttvar="5000" to="100000"/>
+</host>
+<runstats><finished time="1792567574" timestr="Wed Oct 21 10:26:14 2026" summary="Nmap done at Wed Oct 21 10:26:14 2026; 1 IP address (1 host up) scanned in 83.85 seconds" elapsed="83.85" exit="success"/><hosts up="1" down="0" total="1"/>
+</runstats>
+</nmaprun>

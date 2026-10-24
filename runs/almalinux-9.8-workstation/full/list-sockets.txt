@@ -1,0 +1,25 @@
+/dev/rfkill                           systemd-rfkill.socket           systemd-rfkill.service
+/run/.heim_org.h5l.kcm-socket         sssd-kcm.socket                 sssd-kcm.service
+/run/avahi-daemon/socket              avahi-daemon.socket             avahi-daemon.service
+/run/cups/cups.sock                   cups.socket                     cups.service
+/run/dbus/system_bus_socket           dbus.socket                     dbus-broker.service
+/run/dmeventd-client                  dm-event.socket                 dm-event.service
+/run/dmeventd-server                  dm-event.socket                 dm-event.service
+/run/initctl                          systemd-initctl.socket          systemd-initctl.service
+/run/lvm/lvmpolld.socket              lvm2-lvmpolld.socket            lvm2-lvmpolld.service
+/run/multipathd.socket                multipathd.socket               multipathd.service
+/run/rpcbind.sock                     rpcbind.socket                  rpcbind.service
+/run/systemd/coredump                 systemd-coredump.socket         -
+/run/systemd/journal/dev-log          systemd-journald-dev-log.socket systemd-journald.service
+/run/systemd/journal/socket           systemd-journald.socket         systemd-journald.service
+/run/systemd/journal/stdout           systemd-journald.socket         systemd-journald.service
+/run/systemd/journal/syslog           syslog.socket                   syslog.service
+/run/udev/control                     systemd-udevd-control.socket    systemd-udevd.service
+0.0.0.0:111                           rpcbind.socket                  rpcbind.service
+0.0.0.0:111                           rpcbind.socket                  rpcbind.service
+@/org/kernel/linux/storage/multipathd multipathd.socket               multipathd.service
+@ISCSIADM_ABSTRACT_NAMESPACE          iscsid.socket                   iscsid.service
+@ISCSID_UIP_ABSTRACT_NAMESPACE        iscsiuio.socket                 iscsiuio.service
+[::]:111                              rpcbind.socket                  rpcbind.service
+[::]:111                              rpcbind.socket                  rpcbind.service
+kobject-uevent 1                      systemd-udevd-kernel.socket     systemd-udevd.service

@@ -1,0 +1,4 @@
+tcp *:3128 /system.slice/squid.service
+udp *:48997 /system.slice/squid.service
+udp 0.0.0.0:57758 /system.slice/squid.service
+udp 192.168.150.169%enp1s0:68 /system.slice/systemd-networkd.service

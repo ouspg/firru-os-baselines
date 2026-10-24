@@ -1,0 +1,9 @@
+tcp 0.0.0.0:22 /system.slice/sshd.service
+tcp 0.0.0.0:5355 /system.slice/systemd-resolved.service
+tcp [::]:22 /system.slice/sshd.service
+tcp [::]:5355 /system.slice/systemd-resolved.service
+tcp *:9090 /system.slice/cockpit.socket
+udp 0.0.0.0:5353 /system.slice/avahi-daemon.service
+udp 0.0.0.0:5355 /system.slice/systemd-resolved.service
+udp [::]:5353 /system.slice/avahi-daemon.service
+udp [::]:5355 /system.slice/systemd-resolved.service

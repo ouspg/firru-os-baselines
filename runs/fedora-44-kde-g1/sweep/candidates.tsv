@@ -1,0 +1,107 @@
+abrt-pstoreoops.service	test	disabled
+arp-ethers.service	test	disabled
+brltty.service	test	disabled
+canberra-system-bootup.service	skip	oneshot
+canberra-system-shutdown-reboot.service	skip	oneshot
+canberra-system-shutdown.service	skip	oneshot
+chronyd-restricted.service	test	disabled
+chrony-wait.service	test	disabled
+console-getty.service	skip	deny-list
+cpupower.service	test	disabled
+cups-browsed.service	test	disabled
+cups.service	test	disabled
+dbus-daemon.service	test	disabled
+debug-shell.service	skip	deny-list
+dnf5-offline-transaction.service	skip	oneshot
+dnsmasq.service	test	disabled
+drkonqi-coredump-processor@.service	skip	template
+fedora-third-party-refresh.service	test	disabled
+foomaticrip-upgrade.service	skip	oneshot
+fsidd.service	test	disabled
+gssproxy.service	test	disabled
+hypervfcopyd.service	test	disabled
+ipsec.service	test	disabled
+kvm_stat.service	test	disabled
+lastlog2-import.service	test	disabled
+man-db-restart-cache-update.service	skip	oneshot
+mariadb-extra.socket	test	disabled
+mariadb-extra@.socket	skip	template
+mariadb.service	skip	tested via mariadb.socket
+mariadb@.service	skip	template
+mariadb.socket	test	disabled
+mariadb@.socket	skip	template
+netavark-dhcp-proxy.service	skip	tested via netavark-dhcp-proxy.socket
+netavark-dhcp-proxy.socket	test	disabled
+netavark-firewalld-reload.service	test	disabled
+netavark-nftables-reload.service	skip	oneshot
+nfs-server.service	test	disabled
+nftables.service	test	disabled
+nis-domainname.service	test	disabled
+nmb.service	test	disabled
+o2cb.service	test	disabled
+ocfs2.service	test	disabled
+openvpn-client@.service	skip	template
+openvpn-server@.service	skip	template
+pcscd.service	test	indirect
+podman-auto-update.service	skip	oneshot
+podman-clean-transient.service	skip	oneshot
+podman-kube@.service	skip	template
+podman-restart.service	test	disabled
+podman.service	skip	tested via podman.socket
+podman.socket	test	disabled
+polkit-agent-helper.socket	test	disabled
+psacct.service	test	disabled
+rpcbind.service	skip	tested via rpcbind.socket
+rpcbind.socket	test	disabled
+samba-bgqd.service	test	disabled
+selinux-check-proper-disable.service	skip	oneshot
+serial-getty@.service	skip	template
+smb.service	test	disabled
+speech-dispatcherd.service	test	disabled
+sshd-keygen@.service	skip	template
+sshd@.service	skip	template
+sshd.socket	test	disabled
+ssh-host-keys-migration.service	test	disabled
+sssd-autofs.service	skip	refuses manual start
+sssd-autofs.socket	test	disabled
+sssd-kcm.service	test	indirect
+sssd-nss.service	skip	refuses manual start
+sssd-nss.socket	test	disabled
+sssd-pac.service	skip	refuses manual start
+sssd-pac.socket	test	disabled
+sssd-pam.service	skip	refuses manual start
+sssd-pam.socket	test	disabled
+sssd-ssh.service	skip	refuses manual start
+sssd-ssh.socket	test	disabled
+sssd-sudo.service	skip	refuses manual start
+sssd-sudo.socket	test	disabled
+systemd-boot-check-no-failures.service	test	disabled
+systemd-boot-update.service	test	disabled
+systemd-factory-reset.socket	test	disabled
+systemd-homed-firstboot.service	test	disabled
+systemd-journald@.socket	skip	template
+systemd-networkd-resolve-hook.socket	test	disabled
+systemd-networkd.service	skip	tested via systemd-networkd.socket
+systemd-networkd.socket	test	disabled
+systemd-networkd-varlink.socket	test	disabled
+systemd-networkd-wait-online.service	test	disabled
+systemd-networkd-wait-online@.service	skip	template
+systemd-pcrextend.socket	test	disabled
+systemd-pcrlock-file-system.service	test	disabled
+systemd-pcrlock-firmware-code.service	test	disabled
+systemd-pcrlock-firmware-config.service	test	disabled
+systemd-pcrlock-machine-id.service	test	disabled
+systemd-pcrlock-make-policy.service	test	disabled
+systemd-pcrlock-secureboot-authority.service	test	disabled
+systemd-pcrlock-secureboot-policy.service	test	disabled
+systemd-sysext.socket	test	disabled
+systemd-sysupdate-reboot.service	skip	oneshot
+systemd-sysupdate.service	test	indirect
+systemd-timesyncd.service	test	disabled
+systemd-time-wait-sync.service	test	disabled
+systemd-udev-load-credentials.service	test	disabled
+systemd-userdbd.service	test	indirect
+systemd-userdb-load-credentials.service	test	disabled
+vpnc@.service	skip	template
+wpa_supplicant.service	test	disabled
+zvbid.service	test	disabled

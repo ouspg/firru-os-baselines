@@ -1,0 +1,26 @@
+# Fedora golden set (bl-linux.sh): the Everything tree of the release as
+# released (dl.fedoraproject.org releases/, which never changes) through the
+# host's proxy, the only thing the guest reaches; no updates. The variant's
+# packages chosen at install time as an administrator would. firewalld and
+# SELinux at their defaults; the repo files on the installed system are stock.
+text
+url --url=@MIRROR@
+lang en_US.UTF-8
+keyboard us
+timezone UTC --utc
+network --bootproto=dhcp --activate --hostname=baseline-fedora
+rootpw --lock
+user --name=fedora --iscrypted --password='@PWHASH@'
+zerombr
+clearpart --all --initlabel
+autopart
+bootloader
+poweroff
+
+%packages
+@PACKAGES@
+%end
+
+%post
+@STUB@
+%end

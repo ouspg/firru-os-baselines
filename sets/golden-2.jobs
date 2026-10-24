@@ -1,0 +1,59 @@
+# Golden set 2 (2026-10-19): set 1 again from the runner account, with the
+# collectors' copies and content ids in each recipe, $HOME for host paths,
+# HTTP.sys tables in loot-host, DC promotion checked, DC-role jobs one at a
+# time, and Exchange SE on a 2022 DC. Replaces set 1 (whose win2022 dc and ca
+# runs were not DCs). Not here: the internet-connected ssh-egress run.
+# NAME ENV=VALUE ... ; run by bin/run-list.sh.
+
+# First, so its ~3 h start early (DC-role jobs run one at a time).
+win2022-std-desktop-dc-exchange-g2 ROLE=DC FEATURES=Exchange SCAN=1 MEMORY=16384
+
+win2019-std-desktop-public-g2 ISO=17763.3650.221105-1748.rs5_release_svc_refresh_SERVER_EVAL_x64FRE_en-us.iso OSINFO=win2k19 SCAN=1
+win2022-std-desktop-public-g2 SCAN=1
+win2025-std-desktop-public-g2 ISO=26100.32230.260111-0550.lt_release_svc_refresh_SERVER_EVAL_x64FRE_en-us.iso OSINFO=win2k25 SCAN=1
+win11-pro-26300-public-g2 ISO=Windows11_Client_x64_en-us_26300_9457.iso OSINFO=win11 CLIENT=1 SCAN=1
+win2019-std-desktop-dc-g2 ISO=17763.3650.221105-1748.rs5_release_svc_refresh_SERVER_EVAL_x64FRE_en-us.iso OSINFO=win2k19 ROLE=DC SCAN=1
+win2022-std-desktop-dc-g2 ROLE=DC SCAN=1
+win2025-std-desktop-dc-g2 ISO=26100.32230.260111-0550.lt_release_svc_refresh_SERVER_EVAL_x64FRE_en-us.iso OSINFO=win2k25 ROLE=DC SCAN=1
+win2019-std-desktop-web-g2 ISO=17763.3650.221105-1748.rs5_release_svc_refresh_SERVER_EVAL_x64FRE_en-us.iso OSINFO=win2k19 FEATURES=Web-Server SCAN=1
+win2022-std-desktop-web-g2 FEATURES=Web-Server SCAN=1
+win2025-std-desktop-web-g2 ISO=26100.32230.260111-0550.lt_release_svc_refresh_SERVER_EVAL_x64FRE_en-us.iso OSINFO=win2k25 FEATURES=Web-Server SCAN=1
+win2019-std-desktop-ftp-g2 ISO=17763.3650.221105-1748.rs5_release_svc_refresh_SERVER_EVAL_x64FRE_en-us.iso OSINFO=win2k19 FEATURES=Web-Server,Web-Ftp-Server SCAN=1
+win2022-std-desktop-ftp-g2 FEATURES=Web-Server,Web-Ftp-Server SCAN=1
+win2025-std-desktop-ftp-g2 ISO=26100.32230.260111-0550.lt_release_svc_refresh_SERVER_EVAL_x64FRE_en-us.iso OSINFO=win2k25 FEATURES=Web-Server,Web-Ftp-Server SCAN=1
+win2019-std-desktop-file-g2 ISO=17763.3650.221105-1748.rs5_release_svc_refresh_SERVER_EVAL_x64FRE_en-us.iso OSINFO=win2k19 FEATURES=FS-FileServer SCAN=1
+win2022-std-desktop-file-g2 FEATURES=FS-FileServer SCAN=1
+win2025-std-desktop-file-g2 ISO=26100.32230.260111-0550.lt_release_svc_refresh_SERVER_EVAL_x64FRE_en-us.iso OSINFO=win2k25 FEATURES=FS-FileServer SCAN=1
+win2019-std-desktop-smb1-g2 ISO=17763.3650.221105-1748.rs5_release_svc_refresh_SERVER_EVAL_x64FRE_en-us.iso OSINFO=win2k19 FEATURES=FS-FileServer,FS-SMB1 SCAN=1
+win2022-std-desktop-smb1-g2 FEATURES=FS-FileServer,FS-SMB1 SCAN=1
+win2025-std-desktop-smb1-g2 ISO=26100.32230.260111-0550.lt_release_svc_refresh_SERVER_EVAL_x64FRE_en-us.iso OSINFO=win2k25 FEATURES=FS-FileServer,FS-SMB1 SCAN=1
+win2019-std-desktop-dns-g2 ISO=17763.3650.221105-1748.rs5_release_svc_refresh_SERVER_EVAL_x64FRE_en-us.iso OSINFO=win2k19 FEATURES=DNS SCAN=1
+win2022-std-desktop-dns-g2 FEATURES=DNS SCAN=1
+win2025-std-desktop-dns-g2 ISO=26100.32230.260111-0550.lt_release_svc_refresh_SERVER_EVAL_x64FRE_en-us.iso OSINFO=win2k25 FEATURES=DNS SCAN=1
+win2019-std-desktop-dhcp-g2 ISO=17763.3650.221105-1748.rs5_release_svc_refresh_SERVER_EVAL_x64FRE_en-us.iso OSINFO=win2k19 FEATURES=DHCP SCAN=1
+win2022-std-desktop-dhcp-g2 FEATURES=DHCP SCAN=1
+win2025-std-desktop-dhcp-g2 ISO=26100.32230.260111-0550.lt_release_svc_refresh_SERVER_EVAL_x64FRE_en-us.iso OSINFO=win2k25 FEATURES=DHCP SCAN=1
+win2019-std-desktop-print-g2 ISO=17763.3650.221105-1748.rs5_release_svc_refresh_SERVER_EVAL_x64FRE_en-us.iso OSINFO=win2k19 FEATURES=Print-Server SCAN=1
+win2022-std-desktop-print-g2 FEATURES=Print-Server SCAN=1
+win2025-std-desktop-print-g2 ISO=26100.32230.260111-0550.lt_release_svc_refresh_SERVER_EVAL_x64FRE_en-us.iso OSINFO=win2k25 FEATURES=Print-Server SCAN=1
+win2019-std-desktop-rds-g2 ISO=17763.3650.221105-1748.rs5_release_svc_refresh_SERVER_EVAL_x64FRE_en-us.iso OSINFO=win2k19 FEATURES=RDS-RD-Server SCAN=1
+win2022-std-desktop-rds-g2 FEATURES=RDS-RD-Server SCAN=1
+win2025-std-desktop-rds-g2 ISO=26100.32230.260111-0550.lt_release_svc_refresh_SERVER_EVAL_x64FRE_en-us.iso OSINFO=win2k25 FEATURES=RDS-RD-Server SCAN=1
+win2019-std-desktop-nps-g2 ISO=17763.3650.221105-1748.rs5_release_svc_refresh_SERVER_EVAL_x64FRE_en-us.iso OSINFO=win2k19 FEATURES=NPAS SCAN=1
+win2022-std-desktop-nps-g2 FEATURES=NPAS SCAN=1
+win2025-std-desktop-nps-g2 ISO=26100.32230.260111-0550.lt_release_svc_refresh_SERVER_EVAL_x64FRE_en-us.iso OSINFO=win2k25 FEATURES=NPAS SCAN=1
+win2019-std-desktop-ca-g2 ISO=17763.3650.221105-1748.rs5_release_svc_refresh_SERVER_EVAL_x64FRE_en-us.iso OSINFO=win2k19 ROLE=DC FEATURES=ADCS-Cert-Authority,ADCS-Web-Enrollment SCAN=1
+win2022-std-desktop-ca-g2 ROLE=DC FEATURES=ADCS-Cert-Authority,ADCS-Web-Enrollment SCAN=1
+win2025-std-desktop-ca-g2 ISO=26100.32230.260111-0550.lt_release_svc_refresh_SERVER_EVAL_x64FRE_en-us.iso OSINFO=win2k25 ROLE=DC FEATURES=ADCS-Cert-Authority,ADCS-Web-Enrollment SCAN=1
+win2019-std-desktop-sshfod-offline-g2 ISO=17763.3650.221105-1748.rs5_release_svc_refresh_SERVER_EVAL_x64FRE_en-us.iso OSINFO=win2k19 FEATURES=OpenSSH SCAN=1
+win2022-std-desktop-sshfod-offline-g2 FEATURES=OpenSSH SCAN=1
+win2025-std-desktop-ssh-g2 ISO=26100.32230.260111-0550.lt_release_svc_refresh_SERVER_EVAL_x64FRE_en-us.iso OSINFO=win2k25 FEATURES=OpenSSH SCAN=1
+win2019-std-desktop-rras-g2 ISO=17763.3650.221105-1748.rs5_release_svc_refresh_SERVER_EVAL_x64FRE_en-us.iso OSINFO=win2k19 FEATURES=RemoteAccess,DirectAccess-VPN,Routing SCAN=1
+win2022-std-desktop-rras-g2 FEATURES=RemoteAccess,DirectAccess-VPN,Routing SCAN=1
+win2025-std-desktop-rras-g2 ISO=26100.32230.260111-0550.lt_release_svc_refresh_SERVER_EVAL_x64FRE_en-us.iso OSINFO=win2k25 FEATURES=RemoteAccess,DirectAccess-VPN,Routing SCAN=1
+win2019-std-desktop-ssh-g2 ISO=17763.3650.221105-1748.rs5_release_svc_refresh_SERVER_EVAL_x64FRE_en-us.iso OSINFO=win2k19 FEATURES=OpenSSH-MSI SCAN=1
+win2022-std-desktop-ssh-g2 FEATURES=OpenSSH-MSI SCAN=1
+# Hyper-V (vmms.exe). Needs VT-x in the guest: nested KVM on the runner.
+win2022-std-desktop-hyperv-g2 FEATURES=Hyper-V SCAN=1 MEMORY=8192
+# Rerun: win2025-std-desktop-dhcp-g2 timed out with no BASELINE-SCAN-READY on the console
+win2025-std-desktop-dhcp-g2b ISO=26100.32230.260111-0550.lt_release_svc_refresh_SERVER_EVAL_x64FRE_en-us.iso OSINFO=win2k25 FEATURES=DHCP SCAN=1

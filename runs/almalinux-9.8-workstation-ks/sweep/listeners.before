@@ -1,0 +1,8 @@
+tcp 0.0.0.0:111 /system.slice/rpcbind.socket
+tcp 0.0.0.0:22 /system.slice/sshd.service
+tcp [::]:111 /system.slice/rpcbind.socket
+tcp [::]:22 /system.slice/sshd.service
+udp 0.0.0.0:111 /system.slice/rpcbind.socket
+udp 0.0.0.0:5353 /system.slice/avahi-daemon.service
+udp [::]:111 /system.slice/rpcbind.socket
+udp [::]:5353 /system.slice/avahi-daemon.service

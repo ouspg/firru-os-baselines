@@ -1,0 +1,18 @@
+Windows Server 2022 domain controllers have a default for the security setting named "Allow cryptography algorithms compatible with Windows NT 4.0" that prevents weaker cryptography algorithms when establishing security channel sessions.
+
+For more information about this setting, see Knowledge Base article 942564 (http://go.microsoft.com/fwlink/?LinkId=104751).
+
+
+Install-ADDSForest : Verification of prerequisites for Domain Controller promotion failed. The NetBIOS name BASELINE is already in use.
+
+At C:\bl-tools\collect.ps1:171 char:29
++ ... omote.log' (Install-ADDSForest -DomainName $cfg.DOMAIN -DomainNetbios ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (:) [Install-ADDSForest], TestFailedException
+    + FullyQualifiedErrorId : Test.VerifyDcPromoCore.DCPromo.General.32,Microsoft.DirectoryServices.Deployment.PowerSh    ell.Commands.InstallADDSForestCommand
+
+Message                                                                                                              Context                                   RebootRequired Status
+-------                                                                                                              -------                                   -------------- ------
+Verification of prerequisites for Domain Controller promotion failed. The NetBIOS name BASELINE is already in use... Test.VerifyDcPromoCore.DCPromo.General.32          False  Error
+
+

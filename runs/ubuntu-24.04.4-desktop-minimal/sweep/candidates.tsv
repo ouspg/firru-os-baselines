@@ -1,0 +1,46 @@
+brltty.service	test	disabled
+console-getty.service	skip	deny-list
+debug-shell.service	skip	deny-list
+nftables.service	skip	oneshot
+openvpn-client@.service	skip	template
+openvpn-server@.service	skip	template
+openvpn@.service	skip	template
+rsync.service	test	disabled
+rtkit-daemon.service	test	disabled
+saned.socket	test	disabled
+saned@.service	skip	template
+serial-getty@.service	skip	template
+speech-dispatcherd.service	test	disabled
+spice-vdagentd.service	test	indirect
+sssd-autofs.service	skip	refuses manual start
+sssd-nss.service	skip	refuses manual start
+sssd-pac.service	skip	refuses manual start
+sssd-pam.service	skip	refuses manual start
+sssd-ssh.service	skip	refuses manual start
+sssd-sudo.service	skip	refuses manual start
+systemd-boot-check-no-failures.service	skip	oneshot
+systemd-confext.service	skip	oneshot
+systemd-journald-audit.socket	test	disabled
+systemd-network-generator.service	skip	oneshot
+systemd-networkd-wait-online.service	skip	oneshot
+systemd-networkd-wait-online@.service	skip	template
+systemd-networkd.service	skip	tested via systemd-networkd.socket
+systemd-networkd.socket	test	disabled
+systemd-pcrextend.socket	test	disabled
+systemd-pcrlock-file-system.service	skip	oneshot
+systemd-pcrlock-firmware-code.service	skip	oneshot
+systemd-pcrlock-firmware-config.service	skip	oneshot
+systemd-pcrlock-machine-id.service	skip	oneshot
+systemd-pcrlock-make-policy.service	skip	oneshot
+systemd-pcrlock-secureboot-authority.service	skip	oneshot
+systemd-pcrlock-secureboot-policy.service	skip	oneshot
+systemd-sysext.service	skip	tested via systemd-sysext.socket
+systemd-sysext.socket	test	disabled
+systemd-sysupdate-reboot.service	skip	oneshot
+systemd-sysupdate.service	test	indirect
+systemd-time-wait-sync.service	skip	oneshot
+upower.service	test	disabled
+uuidd.service	test	indirect
+wpa_supplicant-nl80211@.service	skip	template
+wpa_supplicant-wired@.service	skip	template
+wpa_supplicant@.service	skip	template

@@ -1,0 +1,81 @@
+#cloud-config
+# Ubuntu golden set (bl-linux.sh): the server ISO, packages from
+# snapshot.ubuntu.com at one fixed timestamp through the host's proxy (the
+# guest reaches nothing else). The stock sources are put back before the
+# first boot, so the installed system points at the archive as usual.
+autoinstall:
+  version: 1
+  refresh-installer:
+    update: false
+  source:
+    id: ubuntu-server
+  apt:
+    geoip: false
+    preserve_sources_list: false
+    mirror-selection:
+      primary:
+      - uri: http://192.168.150.1:3142/ubuntu-24.04.5-server+openssh-server-g1/ubuntu
+    # The security pocket too: by default it goes to security.ubuntu.com,
+    # which the guest cannot reach.
+    security:
+    - arches: [default]
+      uri: http://192.168.150.1:3142/ubuntu-24.04.5-server+openssh-server-g1/ubuntu
+    fallback: abort
+  identity:
+    hostname: baseline-ubuntu
+    username: ubuntu
+    password: '<random hash, never used>'
+  ssh:
+    install-server: true
+  # Subiquity installs offline (ignoring the mirror) when there is no default
+  # route, and the isolated bridge has none. The installer alone gets one, to
+  # the host, which forwards nothing; the late-commands put back the netplan
+  # file Subiquity writes for a plain DHCP install.
+  network:
+    version: 2
+    ethernets:
+      bl:
+        match:
+          name: "en*"
+        dhcp4: true
+        routes:
+        - to: default
+          via: 192.168.150.1
+  storage:
+    layout:
+      name: lvm
+  # The variant's packages go in with plain apt-get in the target, while its
+  # apt still points at the snapshot proxy (the next command restores the
+  # stock sources): Subiquity's own packages list fails on tasks
+  # (lamp-server^), apt-get resolves them as an administrator's apt would.
+  packages: []
+  late-commands:
+  - |
+    [ -z "" ] || curtin in-target --target=/target -- sh -c 'apt-get -o Acquire::Retries=5 update && DEBIAN_FRONTEND=noninteractive apt-get -o Acquire::Retries=5 install -y ' > /target/var/log/bl-packages.log 2>&1; echo "bl_packages_rc=$?" >> /target/var/log/bl-packages.log; true
+  - |
+    cat > /target/etc/apt/sources.list.d/ubuntu.sources <<'S'
+    Types: deb
+    URIs: http://archive.ubuntu.com/ubuntu/
+    Suites: noble noble-updates noble-backports
+    Components: main restricted universe multiverse
+    Signed-By: /usr/share/keyrings/ubuntu-archive-keyring.gpg
+
+    Types: deb
+    URIs: http://security.ubuntu.com/ubuntu/
+    Suites: noble-security
+    Components: main restricted universe multiverse
+    Signed-By: /usr/share/keyrings/ubuntu-archive-keyring.gpg
+    S
+  - rm -f /target/var/lib/apt/lists/192.168.150.1*
+  - |
+    nic=$(ls /sys/class/net | grep '^en' | head -1)
+    printf "# This is the network config written by 'subiquity'\nnetwork:\n  ethernets:\n    %s:\n      dhcp4: true\n  version: 2\n" "$nic" > /target/etc/netplan/50-cloud-init.yaml
+    chmod 600 /target/etc/netplan/50-cloud-init.yaml
+    # cloud-init re-renders netplan on first boot from the installer's copy
+    # of the network section: that copy gets the same DHCP-only config.
+    for f in $(grep -l '192.168.150.1' /target/etc/cloud/cloud.cfg.d/* 2>/dev/null); do
+      echo "bl: route scrubbed from $f"
+      printf "network:\n  ethernets:\n    %s:\n      dhcp4: true\n  version: 2\n" "$nic" > "$f"
+    done
+  - echo IyBJbnN0YWxsZWQgYnkgdGhlIGluc3RhbGxlciAoa2lja3N0YXJ0ICVwb3N0LCBhdXRvaW5zdGFsbCBsYXRlLWNvbW1hbmRzKToKIyB0aGUgb25seSBmaWxlIGFuZCB1bml0IGEgZ29sZGVuLXNldCBydW4gYWRkcyB0byB0aGUgc3lzdGVtLiBBdCBldmVyeSBib290IGl0CiMgbW91bnRzIHRoZSBCTFRPT0xTIENELCBpZiBwcmVzZW50LCBhbmQgcnVucyBpdHMgY29sbGVjdC5zaCBvbmNlLgpta2RpciAtcCAvdXNyL2xvY2FsL3NiaW4KY2F0ID4gL3Vzci9sb2NhbC9zYmluL2Jhc2VsaW5lLWpvYi5zaCA8PCdKJwojIS9iaW4vc2gKWyAtZSAvdmFyL3RtcC9iYXNlbGluZS9kb25lIF0gJiYgZXhpdCAwCm1rZGlyIC1wIC9ydW4vYmwtdG9vbHMKbW91bnQgLW8gcm8gTEFCRUw9QkxUT09MUyAvcnVuL2JsLXRvb2xzIHx8IGV4aXQgMApleGVjIC9iaW4vYmFzaCAvcnVuL2JsLXRvb2xzL2NvbGxlY3Quc2gKSgpjaG1vZCAwNzU1IC91c3IvbG9jYWwvc2Jpbi9iYXNlbGluZS1qb2Iuc2gKY2F0ID4gL2V0Yy9zeXN0ZW1kL3N5c3RlbS9iYXNlbGluZS1qb2Iuc2VydmljZSA8PCdVJwpbVW5pdF0KRGVzY3JpcHRpb249QmFzZWxpbmUgY29sbGVjdGlvbiAoZ29sZGVuIHNldCksIGZyb20gdGhlIEJMVE9PTFMgQ0QKQWZ0ZXI9bG9jYWwtZnMudGFyZ2V0CltTZXJ2aWNlXQpUeXBlPWV4ZWMKRXhlY1N0YXJ0PS91c3IvbG9jYWwvc2Jpbi9iYXNlbGluZS1qb2Iuc2gKW0luc3RhbGxdCldhbnRlZEJ5PW11bHRpLXVzZXIudGFyZ2V0ClUKc3lzdGVtY3RsIGVuYWJsZSBiYXNlbGluZS1qb2Iuc2VydmljZQo= | base64 -d | chroot /target /bin/sh
+  shutdown: poweroff

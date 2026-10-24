@@ -1,0 +1,6 @@
+# CIS Level 1 Server on Ubuntu 24.04 (ComplianceAsCode 0.1.82's generated
+# remediation, CHANGEDATA=cis-l1-server in the state directory) as a delta on
+# the saved stock base, rebooted before collection; and the hardened host's
+# egress, on the egress base.
+ubuntu-24.04.5-server+cis-l1-server-g1           OVERLAY=ubuntu-24.04.5-server-base1 SCAN=1 CHANGEFILE=changes/cis-l1-server.sh CHANGEDATA=cis-l1-server REBOOT=1 DSTABLE=300
+ubuntu-24.04.5-server+cis-l1-server-egress-g1    OVERLAY=ubuntu-24.04.5-server-ebase1 SCAN=1 CHANGEFILE=changes/cis-l1-server.sh CHANGEDATA=cis-l1-server REBOOT=1 DSTABLE=300 EGRESS=4

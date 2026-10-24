@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE nmaprun>
+<?xml-stylesheet href="file:///usr/share/nmap/nmap.xsl" type="text/xsl"?>
+<!-- Nmap 7.92 scan initiated Mon Oct 19 13:02:56 2026 as: $HOME/.local/bin/nmap-raw -sT -sV -Pn -n -p 22 -oX $HOME/firru-os-baselines/work/linux/tmp.t9jAcOvXVC/nmap/tcp-sv.xml 192.168.150.198 -->
+<nmaprun scanner="nmap" args="$HOME/.local/bin/nmap-raw -sT -sV -Pn -n -p 22 -oX $HOME/firru-os-baselines/work/linux/tmp.t9jAcOvXVC/nmap/tcp-sv.xml 192.168.150.198" start="1792404176" startstr="Mon Oct 19 13:02:56 2026" version="7.92" xmloutputversion="1.05">
+<scaninfo type="connect" protocol="tcp" numservices="1" services="22"/>
+<verbose level="0"/>
+<debugging level="0"/>
+<host starttime="1792404177" endtime="1792404177"><status state="up" reason="user-set" reason_ttl="0"/>
+<address addr="192.168.150.198" addrtype="ipv4"/>
+<hostnames>
+</hostnames>
+<ports><port protocol="tcp" portid="22"><state state="open" reason="syn-ack" reason_ttl="0"/><service name="ssh" product="OpenSSH" version="10.2" extrainfo="protocol 2.0" method="probed" conf="10"><cpe>cpe:/a:openbsd:openssh:10.2</cpe></service></port>
+</ports>
+<times srtt="324" rttvar="5000" to="100000"/>
+</host>
+<runstats><finished time="1792404177" timestr="Mon Oct 19 13:02:57 2026" summary="Nmap done at Mon Oct 19 13:02:57 2026; 1 IP address (1 host up) scanned in 0.28 seconds" elapsed="0.28" exit="success"/><hosts up="1" down="0" total="1"/>
+</runstats>
+</nmaprun>

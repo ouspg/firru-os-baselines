@@ -1,0 +1,56 @@
+chronyd-restricted.service	test	disabled
+chrony-wait.service	test	disabled
+console-getty.service	skip	deny-list
+debug-shell.service	skip	deny-list
+dnf5-offline-transaction.service	skip	oneshot
+lastlog2-import.service	test	disabled
+man-db-restart-cache-update.service	skip	oneshot
+nftables.service	test	disabled
+nis-domainname.service	test	disabled
+polkit-agent-helper.socket	test	disabled
+selinux-check-proper-disable.service	skip	oneshot
+serial-getty@.service	skip	template
+sshd-keygen@.service	skip	template
+sshd@.service	skip	template
+sshd.socket	test	disabled
+ssh-host-keys-migration.service	test	disabled
+sssd-autofs.service	skip	refuses manual start
+sssd-autofs.socket	test	disabled
+sssd-kcm.service	test	indirect
+sssd-nss.service	skip	refuses manual start
+sssd-nss.socket	test	disabled
+sssd-pac.service	skip	refuses manual start
+sssd-pac.socket	test	disabled
+sssd-pam.service	skip	refuses manual start
+sssd-pam.socket	test	disabled
+sssd-ssh.service	skip	refuses manual start
+sssd-ssh.socket	test	disabled
+sssd-sudo.service	skip	refuses manual start
+sssd-sudo.socket	test	disabled
+systemd-boot-check-no-failures.service	test	disabled
+systemd-boot-update.service	test	disabled
+systemd-factory-reset.socket	test	disabled
+systemd-homed-firstboot.service	test	disabled
+systemd-journald@.socket	skip	template
+systemd-networkd-resolve-hook.socket	test	disabled
+systemd-networkd.service	skip	tested via systemd-networkd.socket
+systemd-networkd.socket	test	disabled
+systemd-networkd-varlink.socket	test	disabled
+systemd-networkd-wait-online.service	test	disabled
+systemd-networkd-wait-online@.service	skip	template
+systemd-pcrextend.socket	test	disabled
+systemd-pcrlock-file-system.service	test	disabled
+systemd-pcrlock-firmware-code.service	test	disabled
+systemd-pcrlock-firmware-config.service	test	disabled
+systemd-pcrlock-machine-id.service	test	disabled
+systemd-pcrlock-make-policy.service	test	disabled
+systemd-pcrlock-secureboot-authority.service	test	disabled
+systemd-pcrlock-secureboot-policy.service	test	disabled
+systemd-sysext.socket	test	disabled
+systemd-sysupdate-reboot.service	skip	oneshot
+systemd-sysupdate.service	test	indirect
+systemd-timesyncd.service	test	disabled
+systemd-time-wait-sync.service	test	disabled
+systemd-udev-load-credentials.service	test	disabled
+systemd-userdbd.service	test	indirect
+systemd-userdb-load-credentials.service	test	disabled

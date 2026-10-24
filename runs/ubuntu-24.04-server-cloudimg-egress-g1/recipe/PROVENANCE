@@ -1,0 +1,19 @@
+run_started=2026-10-23T19:14:10Z
+installed=2026-10-23T19:14:20Z
+run_finished=2026-10-23T23:36:08Z
+iso=ubuntu-24.04-server-cloudimg-amd64-20261017.img iso_bytes=621284352 iso_sha256=04e8f2461a16a44e78a370284471f29616cdd9baf1893df25807b71f985b6c94
+packages=
+collector=loot-host.sh git_blob=f05382575e751ee9a48a00e72ce9653fa5694c61 sha256=07c70ba8baea22b07aea03f5ea0b9bafa61b8018927660a986bb2ede61973479
+collector=conn-audit.sh git_blob=a69887c3ca7056cfd6eff622a62d3fa1097fb6f9 sha256=506f6e6ac6125670bf038017cfe8bb6b330cc46061dc0046ff866379e33ddf0a
+osquery=osquery-5.23.1_1.linux_x86_64.tar.gz 0f37a478a1dbda24b67c81551e32d734b392c5a2f5deb156bf1c41ca204cfa67
+bpftrace=bpftrace-0.26.1 (static release binary) 17ded991241f8c6c56bf907aab948ef172404ed2a5ea2f0e11f73a7652f3dcc0
+source=the cloud image itself (iso_sha256 above is the image's), read-only under a 20 GiB overlay; NoCloud seed: hostname, one fresh SSH key (private half discarded), meta-data instance-id; network by cloud-init's DHCP fallback; nothing installed, stock sources as the image has them; the stub written in by virt-customize before the first boot, which is the run's install and collection boot
+egress_hours=4 (after the scan: each timer's unit started once, egress/timer-sweep.tsv; then held, and collected again into egress/)
+scan=1 settle=300 stable=600 maxwait=3600 window=3600
+memory_mib=4096 vcpus=2 osinfo=ubuntu24.04
+mac=52:54:00:7b:a3:fd bridge=virbr0 network=libvirt default (NAT) internet=yes
+hardware=virtio disk and nic, uefi without secure boot (the installer kernel is booted directly), no balloon, no guest agent; COM1 = console log, COM2 = host-to-guest control socket (scan done; a delta job's start and clock)
+added_by_run=/usr/local/sbin/baseline-job.sh, baseline-job.service (recipe/stub.sh); /var/tmp/baseline; /var/lib/firru, baseline-audit.service and the transient firru-conn-audit.service (connection audit, bpftrace from the CD; holds network-pre.target until its probes are attached)
+user_password=<random, never used> root=locked
+host=7.2.9-200.fc44.x86_64 qemu-kvm-core-10.2.2 libvirt-daemon-12.0.0 edk2-ovmf-20260812
+host_paths=the runner's home is written as $HOME in recipe/ and nmap/ (the files the host writes)

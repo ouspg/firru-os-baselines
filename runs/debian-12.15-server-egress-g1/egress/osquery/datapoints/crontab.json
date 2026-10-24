@@ -1,0 +1,8 @@
+[
+  {"command":"root test -e /run/systemd/system || SERVICE_MODE=1 /sbin/e2scrub_all -A -r","day_of_month":"*","day_of_week":"*","hour":"3","minute":"10","month":"*","path":"/etc/cron.d/e2scrub_all"},
+  {"command":"root test -e /run/systemd/system || SERVICE_MODE=1 /usr/lib/x86_64-linux-gnu/e2fsprogs/e2scrub_all_cron","day_of_month":"*","day_of_week":"0","hour":"3","minute":"30","month":"*","path":"/etc/cron.d/e2scrub_all"},
+  {"command":"root cd / && run-parts --report /etc/cron.hourly","day_of_month":"*","day_of_week":"*","hour":"*","minute":"17","month":"*","path":"/etc/crontab"},
+  {"command":"root test -x /usr/sbin/anacron || { cd / && run-parts --report /etc/cron.daily; }","day_of_month":"*","day_of_week":"*","hour":"6","minute":"25","month":"*","path":"/etc/crontab"},
+  {"command":"root test -x /usr/sbin/anacron || { cd / && run-parts --report /etc/cron.monthly; }","day_of_month":"1","day_of_week":"*","hour":"6","minute":"52","month":"*","path":"/etc/crontab"},
+  {"command":"root test -x /usr/sbin/anacron || { cd / && run-parts --report /etc/cron.weekly; }","day_of_month":"*","day_of_week":"7","hour":"6","minute":"47","month":"*","path":"/etc/crontab"}
+]

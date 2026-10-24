@@ -1,0 +1,7 @@
+# Windows knob runs: stock Windows 11 with one admin switch each, so a host
+# with RDP or WinRM on is stock plus a layer, not unexplained listeners.
+win11-pro-26300-public-rdp-g2                    ISO=Windows11_Client_x64_en-us_26300_9457.iso OSINFO=win11 CLIENT=1 FEATURES=RDP SCAN=1
+win11-pro-26300-public-winrm-g2                  ISO=Windows11_Client_x64_en-us_26300_9457.iso OSINFO=win11 CLIENT=1 FEATURES=WinRM SCAN=1
+win11-pro-26300-public-openssh-g2                ISO=Windows11_Client_x64_en-us_26300_9457.iso OSINFO=win11 CLIENT=1 FEATURES=OpenSSH-MSI SCAN=1
+win11-pro-26300-public-fwoff-g2                  ISO=Windows11_Client_x64_en-us_26300_9457.iso OSINFO=win11 CLIENT=1 FEATURES=FirewallOff SCAN=1
+win2022-std-desktop-public-fwoff-g2              FEATURES=FirewallOff SCAN=1

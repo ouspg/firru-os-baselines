@@ -1,0 +1,5 @@
+# Linux egress set 2: AlmaLinux and Fedora (see golden-egress-linux-1.jobs),
+# now that the connection audit runs under SELinux (tools CD as bin_t).
+almalinux-9.8-server-egress-g1       ISO=AlmaLinux-9.8-x86_64-dvd.iso SCAN=1 PACKAGES=@^server-product-environment EGRESS=4
+fedora-44-server-egress-g1           ISO=Fedora-Everything-netinst-x86_64-44-1.7.iso SCAN=1 PACKAGES=@^server-product-environment EGRESS=4
+fedora-44-workstation-egress-g1      ISO=Fedora-Everything-netinst-x86_64-44-1.7.iso SCAN=1 PACKAGES=@^workstation-product-environment GRAPHICS=vnc MEMORY=6144 EGRESS=4

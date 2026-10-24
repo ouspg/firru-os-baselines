@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE nmaprun>
+<?xml-stylesheet href="file:///usr/share/nmap/nmap.xsl" type="text/xsl"?>
+<!-- Nmap 7.92 scan initiated Sun Oct 18 16:18:03 2026 as: ~/.local/bin/nmap-raw -sT -sV -Pn -n -p 135,445,3387,3389,5985 -oX ~/firru-os-baselines/work/win/nmap-win2019-std-desktop-rds-g1/tcp-sv.xml 192.168.150.187 -->
+<nmaprun scanner="nmap" args="~/.local/bin/nmap-raw -sT -sV -Pn -n -p 135,445,3387,3389,5985 -oX ~/firru-os-baselines/work/win/nmap-win2019-std-desktop-rds-g1/tcp-sv.xml 192.168.150.187" start="1792329483" startstr="Sun Oct 18 16:18:03 2026" version="7.92" xmloutputversion="1.05">
+<scaninfo type="connect" protocol="tcp" numservices="5" services="135,445,3387,3389,5985"/>
+<verbose level="0"/>
+<debugging level="0"/>
+<host starttime="1792329484" endtime="1792329495"><status state="up" reason="user-set" reason_ttl="0"/>
+<address addr="192.168.150.187" addrtype="ipv4"/>
+<hostnames>
+</hostnames>
+<ports><port protocol="tcp" portid="135"><state state="open" reason="syn-ack" reason_ttl="0"/><service name="msrpc" product="Microsoft Windows RPC" ostype="Windows" method="probed" conf="10"><cpe>cpe:/o:microsoft:windows</cpe></service></port>
+<port protocol="tcp" portid="445"><state state="open" reason="syn-ack" reason_ttl="0"/><service name="microsoft-ds" method="table" conf="3"/></port>
+<port protocol="tcp" portid="3387"><state state="open" reason="syn-ack" reason_ttl="0"/><service name="http" product="Microsoft HTTPAPI httpd" version="2.0" extrainfo="SSDP/UPnP" ostype="Windows" method="probed" conf="10"><cpe>cpe:/o:microsoft:windows</cpe></service></port>
+<port protocol="tcp" portid="3389"><state state="open" reason="syn-ack" reason_ttl="0"/><service name="ms-wbt-server" product="Microsoft Terminal Services" ostype="Windows" method="probed" conf="10"><cpe>cpe:/o:microsoft:windows</cpe></service></port>
+<port protocol="tcp" portid="5985"><state state="open" reason="syn-ack" reason_ttl="0"/><service name="http" product="Microsoft HTTPAPI httpd" version="2.0" extrainfo="SSDP/UPnP" ostype="Windows" method="probed" conf="10"><cpe>cpe:/o:microsoft:windows</cpe></service></port>
+</ports>
+<times srtt="258" rttvar="1673" to="100000"/>
+</host>
+<runstats><finished time="1792329495" timestr="Sun Oct 18 16:18:15 2026" summary="Nmap done at Sun Oct 18 16:18:15 2026; 1 IP address (1 host up) scanned in 11.27 seconds" elapsed="11.27" exit="success"/><hosts up="1" down="0" total="1"/>
+</runstats>
+</nmaprun>

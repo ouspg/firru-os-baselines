@@ -1,0 +1,5 @@
+tcp 192.168.150.191:53 /system.slice/named.service
+tcp [fe80::5054:ff:feb2:346]%enp1s0:53 /system.slice/named.service
+udp 192.168.150.191%enp1s0:68 /system.slice/systemd-networkd.service
+udp 192.168.150.191:53 /system.slice/named.service
+udp [fe80::5054:ff:feb2:346]%enp1s0:53 /system.slice/named.service

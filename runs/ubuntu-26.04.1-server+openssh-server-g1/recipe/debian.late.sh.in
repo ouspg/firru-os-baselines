@@ -1,0 +1,38 @@
+# Debian install's last step (preseed late_command: sh /bl-late.sh), from the
+# installer's environment with the target at /target. Rendered by
+# bl-linux.sh (@...@ filled in). Every step is logged to the target's
+# /var/log/bl-late.log; packages to /var/log/bl-packages.log.
+exec >> /target/var/log/bl-late.log 2>&1
+set -x
+date -u
+# The snapshot's security and updates pockets, which the installer could not
+# use (their Release files carry Valid-Until), and a full upgrade; apt ignores
+# Valid-Until for this one run.
+printf '%s\n' \
+  'deb http://@HOSTPORT@@PREFIX@/debian/@SNAPSHOT@ @SUITE@ main non-free-firmware' \
+  'deb http://@HOSTPORT@@PREFIX@/debian/@SNAPSHOT@ @SUITE@-updates main non-free-firmware' \
+  'deb http://@HOSTPORT@@PREFIX@/debian-security/@SNAPSHOT@ @SUITE@-security main non-free-firmware' \
+  > /target/etc/apt/sources.list
+in-target sh -c 'apt-get -o Acquire::Check-Valid-Until=false -o Acquire::Retries=20 update && DEBIAN_FRONTEND=noninteractive apt-get -o Acquire::Retries=20 -y full-upgrade' \
+  > /target/var/log/bl-packages.log 2>&1
+echo "bl_packages_rc=$?" >> /target/var/log/bl-packages.log
+# The stock sources.list, in the installer's own form.
+cat > /target/etc/apt/sources.list <<'S'
+deb http://deb.debian.org/debian/ @SUITE@ main non-free-firmware
+deb-src http://deb.debian.org/debian/ @SUITE@ main non-free-firmware
+
+deb http://security.debian.org/debian-security @SUITE@-security main non-free-firmware
+deb-src http://security.debian.org/debian-security @SUITE@-security main non-free-firmware
+
+# @SUITE@-updates, to get updates before a point release is made;
+# see https://www.debian.org/doc/manuals/debian-reference/ch02.en.html#_updates_and_backports
+deb http://deb.debian.org/debian/ @SUITE@-updates main non-free-firmware
+deb-src http://deb.debian.org/debian/ @SUITE@-updates main non-free-firmware
+S
+rm -f /target/var/lib/apt/lists/@LISTS@*
+# The stub: baseline-job.sh and its units.
+cp /bl-stub.sh /target/tmp/bl-stub.sh
+chroot /target /bin/sh /tmp/bl-stub.sh
+rm -f /target/tmp/bl-stub.sh
+date -u
+exit 0

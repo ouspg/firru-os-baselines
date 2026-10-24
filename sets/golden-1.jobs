@@ -1,0 +1,47 @@
+# Golden set 1 (2026-10-18): every Windows baseline with the settled collectors.
+# NAME ENV=VALUE ... ; run by bin/run-list.sh. SCAN=1 everywhere: nmap is the
+# ground truth the loot is checked against. No ASA this round.
+
+win2019-std-desktop-public-g1 ISO=17763.3650.221105-1748.rs5_release_svc_refresh_SERVER_EVAL_x64FRE_en-us.iso OSINFO=win2k19 SCAN=1
+win2022-std-desktop-public-g1 SCAN=1
+win2025-std-desktop-public-g1 ISO=26100.32230.260111-0550.lt_release_svc_refresh_SERVER_EVAL_x64FRE_en-us.iso OSINFO=win2k25 SCAN=1
+win11-pro-26300-public-g1 ISO=Windows11_Client_x64_en-us_26300_9457.iso OSINFO=win11 CLIENT=1 SCAN=1
+win2019-std-desktop-dc-g1 ISO=17763.3650.221105-1748.rs5_release_svc_refresh_SERVER_EVAL_x64FRE_en-us.iso OSINFO=win2k19 ROLE=DC SCAN=1
+win2022-std-desktop-dc-g1 ROLE=DC SCAN=1
+win2025-std-desktop-dc-g1 ISO=26100.32230.260111-0550.lt_release_svc_refresh_SERVER_EVAL_x64FRE_en-us.iso OSINFO=win2k25 ROLE=DC SCAN=1
+win2019-std-desktop-web-g1 ISO=17763.3650.221105-1748.rs5_release_svc_refresh_SERVER_EVAL_x64FRE_en-us.iso OSINFO=win2k19 FEATURES=Web-Server SCAN=1
+win2022-std-desktop-web-g1 FEATURES=Web-Server SCAN=1
+win2025-std-desktop-web-g1 ISO=26100.32230.260111-0550.lt_release_svc_refresh_SERVER_EVAL_x64FRE_en-us.iso OSINFO=win2k25 FEATURES=Web-Server SCAN=1
+win2019-std-desktop-ftp-g1 ISO=17763.3650.221105-1748.rs5_release_svc_refresh_SERVER_EVAL_x64FRE_en-us.iso OSINFO=win2k19 FEATURES=Web-Server,Web-Ftp-Server SCAN=1
+win2022-std-desktop-ftp-g1 FEATURES=Web-Server,Web-Ftp-Server SCAN=1
+win2025-std-desktop-ftp-g1 ISO=26100.32230.260111-0550.lt_release_svc_refresh_SERVER_EVAL_x64FRE_en-us.iso OSINFO=win2k25 FEATURES=Web-Server,Web-Ftp-Server SCAN=1
+win2019-std-desktop-file-g1 ISO=17763.3650.221105-1748.rs5_release_svc_refresh_SERVER_EVAL_x64FRE_en-us.iso OSINFO=win2k19 FEATURES=FS-FileServer SCAN=1
+win2022-std-desktop-file-g1 FEATURES=FS-FileServer SCAN=1
+win2025-std-desktop-file-g1 ISO=26100.32230.260111-0550.lt_release_svc_refresh_SERVER_EVAL_x64FRE_en-us.iso OSINFO=win2k25 FEATURES=FS-FileServer SCAN=1
+win2019-std-desktop-smb1-g1 ISO=17763.3650.221105-1748.rs5_release_svc_refresh_SERVER_EVAL_x64FRE_en-us.iso OSINFO=win2k19 FEATURES=FS-FileServer,FS-SMB1 SCAN=1
+win2022-std-desktop-smb1-g1 FEATURES=FS-FileServer,FS-SMB1 SCAN=1
+win2025-std-desktop-smb1-g1 ISO=26100.32230.260111-0550.lt_release_svc_refresh_SERVER_EVAL_x64FRE_en-us.iso OSINFO=win2k25 FEATURES=FS-FileServer,FS-SMB1 SCAN=1
+win2019-std-desktop-dns-g1 ISO=17763.3650.221105-1748.rs5_release_svc_refresh_SERVER_EVAL_x64FRE_en-us.iso OSINFO=win2k19 FEATURES=DNS SCAN=1
+win2022-std-desktop-dns-g1 FEATURES=DNS SCAN=1
+win2025-std-desktop-dns-g1 ISO=26100.32230.260111-0550.lt_release_svc_refresh_SERVER_EVAL_x64FRE_en-us.iso OSINFO=win2k25 FEATURES=DNS SCAN=1
+win2019-std-desktop-dhcp-g1 ISO=17763.3650.221105-1748.rs5_release_svc_refresh_SERVER_EVAL_x64FRE_en-us.iso OSINFO=win2k19 FEATURES=DHCP SCAN=1
+win2022-std-desktop-dhcp-g1 FEATURES=DHCP SCAN=1
+win2025-std-desktop-dhcp-g1 ISO=26100.32230.260111-0550.lt_release_svc_refresh_SERVER_EVAL_x64FRE_en-us.iso OSINFO=win2k25 FEATURES=DHCP SCAN=1
+win2019-std-desktop-print-g1 ISO=17763.3650.221105-1748.rs5_release_svc_refresh_SERVER_EVAL_x64FRE_en-us.iso OSINFO=win2k19 FEATURES=Print-Server SCAN=1
+win2022-std-desktop-print-g1 FEATURES=Print-Server SCAN=1
+win2025-std-desktop-print-g1 ISO=26100.32230.260111-0550.lt_release_svc_refresh_SERVER_EVAL_x64FRE_en-us.iso OSINFO=win2k25 FEATURES=Print-Server SCAN=1
+win2019-std-desktop-rds-g1 ISO=17763.3650.221105-1748.rs5_release_svc_refresh_SERVER_EVAL_x64FRE_en-us.iso OSINFO=win2k19 FEATURES=RDS-RD-Server SCAN=1
+win2022-std-desktop-rds-g1 FEATURES=RDS-RD-Server SCAN=1
+win2025-std-desktop-rds-g1 ISO=26100.32230.260111-0550.lt_release_svc_refresh_SERVER_EVAL_x64FRE_en-us.iso OSINFO=win2k25 FEATURES=RDS-RD-Server SCAN=1
+win2019-std-desktop-nps-g1 ISO=17763.3650.221105-1748.rs5_release_svc_refresh_SERVER_EVAL_x64FRE_en-us.iso OSINFO=win2k19 FEATURES=NPAS SCAN=1
+win2022-std-desktop-nps-g1 FEATURES=NPAS SCAN=1
+win2025-std-desktop-nps-g1 ISO=26100.32230.260111-0550.lt_release_svc_refresh_SERVER_EVAL_x64FRE_en-us.iso OSINFO=win2k25 FEATURES=NPAS SCAN=1
+win2019-std-desktop-ca-g1 ISO=17763.3650.221105-1748.rs5_release_svc_refresh_SERVER_EVAL_x64FRE_en-us.iso OSINFO=win2k19 ROLE=DC FEATURES=ADCS-Cert-Authority,ADCS-Web-Enrollment SCAN=1
+win2022-std-desktop-ca-g1 ROLE=DC FEATURES=ADCS-Cert-Authority,ADCS-Web-Enrollment SCAN=1
+win2025-std-desktop-ca-g1 ISO=26100.32230.260111-0550.lt_release_svc_refresh_SERVER_EVAL_x64FRE_en-us.iso OSINFO=win2k25 ROLE=DC FEATURES=ADCS-Cert-Authority,ADCS-Web-Enrollment SCAN=1
+win2019-std-desktop-ssh-g1 ISO=17763.3650.221105-1748.rs5_release_svc_refresh_SERVER_EVAL_x64FRE_en-us.iso OSINFO=win2k19 FEATURES=OpenSSH SCAN=1
+win2022-std-desktop-ssh-g1 FEATURES=OpenSSH SCAN=1
+win2025-std-desktop-ssh-g1 ISO=26100.32230.260111-0550.lt_release_svc_refresh_SERVER_EVAL_x64FRE_en-us.iso OSINFO=win2k25 FEATURES=OpenSSH SCAN=1
+win2019-std-desktop-rras-g1 ISO=17763.3650.221105-1748.rs5_release_svc_refresh_SERVER_EVAL_x64FRE_en-us.iso OSINFO=win2k19 FEATURES=RemoteAccess,DirectAccess-VPN,Routing SCAN=1
+win2022-std-desktop-rras-g1 FEATURES=RemoteAccess,DirectAccess-VPN,Routing SCAN=1
+win2025-std-desktop-rras-g1 ISO=26100.32230.260111-0550.lt_release_svc_refresh_SERVER_EVAL_x64FRE_en-us.iso OSINFO=win2k25 FEATURES=RemoteAccess,DirectAccess-VPN,Routing SCAN=1

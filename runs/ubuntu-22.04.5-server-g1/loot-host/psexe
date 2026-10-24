@@ -1,0 +1,123 @@
+      1 root     systemd         /sbin/init
+      2 root     kthreadd        [kthreadd]
+      3 root     rcu_gp          [rcu_gp]
+      4 root     rcu_par_gp      [rcu_par_gp]
+      5 root     slub_flushwq    [slub_flushwq]
+      6 root     netns           [netns]
+      8 root     kworker/0:0H-ev [kworker/0:0H-events_highpri]
+     10 root     mm_percpu_wq    [mm_percpu_wq]
+     11 root     rcu_tasks_rude_ [rcu_tasks_rude_]
+     12 root     rcu_tasks_trace [rcu_tasks_trace]
+     13 root     ksoftirqd/0     [ksoftirqd/0]
+     14 root     rcu_sched       [rcu_sched]
+     15 root     migration/0     [migration/0]
+     16 root     idle_inject/0   [idle_inject/0]
+     17 root     kworker/0:1+eve [kworker/0:1+events]
+     18 root     cpuhp/0         [cpuhp/0]
+     19 root     cpuhp/1         [cpuhp/1]
+     20 root     idle_inject/1   [idle_inject/1]
+     21 root     migration/1     [migration/1]
+     22 root     ksoftirqd/1     [ksoftirqd/1]
+     24 root     kworker/1:0H-ev [kworker/1:0H-events_highpri]
+     25 root     kdevtmpfs       [kdevtmpfs]
+     26 root     inet_frag_wq    [inet_frag_wq]
+     27 root     kauditd         [kauditd]
+     28 root     khungtaskd      [khungtaskd]
+     29 root     oom_reaper      [oom_reaper]
+     30 root     writeback       [writeback]
+     31 root     kcompactd0      [kcompactd0]
+     32 root     ksmd            [ksmd]
+     33 root     khugepaged      [khugepaged]
+     80 root     kintegrityd     [kintegrityd]
+     81 root     kblockd         [kblockd]
+     82 root     blkcg_punt_bio  [blkcg_punt_bio]
+     83 root     tpm_dev_wq      [tpm_dev_wq]
+     84 root     ata_sff         [ata_sff]
+     85 root     md              [md]
+     86 root     edac-poller     [edac-poller]
+     87 root     devfreq_wq      [devfreq_wq]
+     88 root     watchdogd       [watchdogd]
+     90 root     kworker/1:1H-kb [kworker/1:1H-kblockd]
+     93 root     kswapd0         [kswapd0]
+     94 root     ecryptfs-kthrea [ecryptfs-kthrea]
+     96 root     kthrotld        [kthrotld]
+     97 root     irq/24-aerdrv   [irq/24-aerdrv]
+     98 root     irq/25-aerdrv   [irq/25-aerdrv]
+     99 root     irq/26-aerdrv   [irq/26-aerdrv]
+    100 root     irq/27-aerdrv   [irq/27-aerdrv]
+    101 root     irq/28-aerdrv   [irq/28-aerdrv]
+    102 root     irq/29-aerdrv   [irq/29-aerdrv]
+    103 root     irq/30-aerdrv   [irq/30-aerdrv]
+    104 root     irq/31-aerdrv   [irq/31-aerdrv]
+    105 root     irq/32-aerdrv   [irq/32-aerdrv]
+    106 root     irq/33-aerdrv   [irq/33-aerdrv]
+    107 root     irq/34-aerdrv   [irq/34-aerdrv]
+    108 root     irq/35-aerdrv   [irq/35-aerdrv]
+    109 root     irq/36-aerdrv   [irq/36-aerdrv]
+    110 root     irq/37-aerdrv   [irq/37-aerdrv]
+    111 root     acpi_thermal_pm [acpi_thermal_pm]
+    112 root     kworker/u4:2-ev [kworker/u4:2-events_unbound]
+    113 root     vfio-irqfd-clea [vfio-irqfd-clea]
+    114 root     mld             [mld]
+    115 root     ipv6_addrconf   [ipv6_addrconf]
+    117 root     kworker/u4:3-ev [kworker/u4:3-events_power_efficient]
+    125 root     kstrp           [kstrp]
+    128 root     zswap-shrink    [zswap-shrink]
+    129 root     kworker/u5:0    [kworker/u5:0]
+    136 root     charger_manager [charger_manager]
+    159 root     kworker/0:1H-kb [kworker/0:1H-kblockd]
+    182 root     kworker/1:2-eve [kworker/1:2-events]
+    183 root     hwrng           [hwrng]
+    184 root     scsi_eh_0       [scsi_eh_0]
+    185 root     scsi_tmf_0      [scsi_tmf_0]
+    186 root     cryptd          [cryptd]
+    204 root     scsi_eh_1       [scsi_eh_1]
+    205 root     scsi_tmf_1      [scsi_tmf_1]
+    206 root     scsi_eh_2       [scsi_eh_2]
+    207 root     scsi_tmf_2      [scsi_tmf_2]
+    208 root     scsi_eh_3       [scsi_eh_3]
+    209 root     scsi_tmf_3      [scsi_tmf_3]
+    210 root     scsi_eh_4       [scsi_eh_4]
+    211 root     scsi_tmf_4      [scsi_tmf_4]
+    212 root     scsi_eh_5       [scsi_eh_5]
+    214 root     scsi_tmf_5      [scsi_tmf_5]
+    215 root     kworker/u4:4-ev [kworker/u4:4-events_freezable_power_]
+    217 root     kworker/u4:5-ev [kworker/u4:5-events_unbound]
+    242 root     kdmflush        [kdmflush]
+    249 root     kworker/0:3-eve [kworker/0:3-events]
+    298 root     raid5wq         [raid5wq]
+    346 root     jbd2/dm-0-8     [jbd2/dm-0-8]
+    347 root     ext4-rsv-conver [ext4-rsv-conver]
+    420 root     systemd-journal /lib/systemd/systemd-journald
+    449 root     kaluad          [kaluad]
+    451 root     kmpath_rdacd    [kmpath_rdacd]
+    454 root     kmpathd         [kmpathd]
+    455 root     kmpath_handlerd [kmpath_handlerd]
+    456 root     multipathd      /sbin/multipathd -d -s
+    460 root     systemd-udevd   /lib/systemd/systemd-udevd
+    521 root     kworker/1:3-eve [kworker/1:3-events]
+    594 root     jbd2/vda2-8     [jbd2/vda2-8]
+    595 root     ext4-rsv-conver [ext4-rsv-conver]
+    620 systemd+ systemd-timesyn /lib/systemd/systemd-timesyncd
+    684 root     bpftrace        /run/bl-tools/bpftrace.d/AppRun -f json -o /var/lib/firru/conn-audit.jsonl /var/lib/firru/conn-audit.bt
+    702 root     bash            /bin/bash /run/bl-tools/collect.sh
+    717 systemd+ systemd-resolve /lib/systemd/systemd-resolved
+    812 systemd+ systemd-network /lib/systemd/systemd-networkd
+    835 root     cron            /usr/sbin/cron -f -P
+    836 message+ dbus-daemon     @dbus-daemon --system --address=systemd: --nofork --nopidfile --systemd-activation --syslog-only
+    842 root     irqbalance      /usr/sbin/irqbalance --foreground
+    843 root     networkd-dispat /usr/bin/python3 /usr/bin/networkd-dispatcher --run-startup-triggers
+    845 root     polkitd         /usr/libexec/polkitd --no-debug
+    849 syslog   rsyslogd        /usr/sbin/rsyslogd -n -iNONE
+    852 root     snapd           /usr/lib/snapd/snapd
+    854 root     systemd-logind  /lib/systemd/systemd-logind
+    856 root     udisksd         /usr/libexec/udisks2/udisksd
+    892 root     ModemManager    /usr/sbin/ModemManager
+    899 root     agetty          /sbin/agetty -o -p -- \u --keep-baud 115200,57600,38400,9600 ttyS0 vt220
+    914 root     agetty          /sbin/agetty -o -p -- \u --noclear tty1 linux
+    931 root     unattended-upgr /usr/bin/python3 /usr/share/unattended-upgrades/unattended-upgrade-shutdown --wait-for-signal
+   1906 root     kworker/1:0-eve [kworker/1:0-events]
+   1983 root     kworker/0:0-cgr [kworker/0:0-cgroup_free]
+   2041 root     systemd-timedat /lib/systemd/systemd-timedated
+   2075 root     bash            bash /run/bl-tools/loot-host.sh /var/tmp/baseline/loot-host
+   2084 root     ps              ps -eo pid,user,comm,args --no-headers

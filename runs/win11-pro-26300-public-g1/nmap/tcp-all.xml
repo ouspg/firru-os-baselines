@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE nmaprun>
+<?xml-stylesheet href="file:///usr/share/nmap/nmap.xsl" type="text/xsl"?>
+<!-- Nmap 7.92 scan initiated Sun Oct 18 10:50:57 2026 as: ~/.local/bin/nmap-raw -sT -p- -T4 -Pn -n -&#45;max-retries 1 -&#45;min-rate 1500 -oX ~/firru-os-baselines/work/win/nmap-win11-pro-26300-public-g1/tcp-all.xml 192.168.150.138 -->
+<nmaprun scanner="nmap" args="~/.local/bin/nmap-raw -sT -p- -T4 -Pn -n -&#45;max-retries 1 -&#45;min-rate 1500 -oX ~/firru-os-baselines/work/win/nmap-win11-pro-26300-public-g1/tcp-all.xml 192.168.150.138" start="1792309857" startstr="Sun Oct 18 10:50:57 2026" version="7.92" xmloutputversion="1.05">
+<scaninfo type="connect" protocol="tcp" numservices="65535" services="1-65535"/>
+<verbose level="0"/>
+<debugging level="0"/>
+<host starttime="1792309857" endtime="1792309945"><status state="up" reason="user-set" reason_ttl="0"/>
+<address addr="192.168.150.138" addrtype="ipv4"/>
+<hostnames>
+</hostnames>
+<ports><extraports state="filtered" count="65535">
+<extrareasons reason="no-response" count="65535" proto="tcp" ports="1-65535"/>
+</extraports>
+</ports>
+</host>
+<runstats><finished time="1792309945" timestr="Sun Oct 18 10:52:25 2026" summary="Nmap done at Sun Oct 18 10:52:25 2026; 1 IP address (1 host up) scanned in 88.21 seconds" elapsed="88.21" exit="success"/><hosts up="1" down="0" total="1"/>
+</runstats>
+</nmaprun>

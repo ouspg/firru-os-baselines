@@ -1,0 +1,4 @@
+tcp 0.0.0.0:22 /system.slice/ssh.service
+tcp [::]:22 /system.slice/ssh.service
+udp 192.168.122.158:68 /system.slice/ifup@enp1s0.service
+udp [fe80::8acb:538a:51b5:1a86]%enp1s0:546 /system.slice/ifup@enp1s0.service
